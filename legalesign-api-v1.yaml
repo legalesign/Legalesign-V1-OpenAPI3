@@ -1227,7 +1227,10 @@ components:
         - group
         - name
         - signers
-      description: Send a document to be signed. In addition to the required fields, the POST must also contain either text (raw html) or a reference to a saved template (html) or a templatepdf (uploaded pdf). Also recommended to review - do_email, auto_archive and pdftext (if using pdf).
+      description: >-
+         Send a document to be signed. In addition to the required fields, the POST must also 
+         contain either text (raw html) or a reference to a saved template (html) or a 
+         templatepdf (uploaded pdf). Also recommended - do_email, auto_archive and pdftext (if using pdf).
       properties:
         group:
           type: string
@@ -1986,7 +1989,7 @@ components:
           description: List of attachment resource URIs
           items:
             type: string
-            pattern: ^/api/v1/attachment/[-\w]+/$
+            pattern: ^/api/v1/attachment/[-\w]{1,60}/$
     TimezoneEnum:
       type: string
       description: List of available timezones
@@ -2948,7 +2951,7 @@ components:
         user:
           type: string
           description: Assign to group member if not the api user
-          pattern: '^/api/v1/user/[-\w]{0,75}/$'
+          pattern: '^/api/v1/user/[-\w]{1,75}/$'
         description:
           type: string
           maxLength: 250
