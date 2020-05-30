@@ -78,7 +78,7 @@ paths:
     post:
       tags:
         - attachment
-      summary: List or upload PDFs that will be static email attachments
+      summary: Upload attachment (PDF)
       operationId: postAttachment
       responses:
         '201':
@@ -103,7 +103,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AttachmentPost'
-        description: Upload a pdf file to be an email attachment
+        description: Upload a pdf to be an email attachment
         required: true
   '/attachment/{attachmentId}':
     parameters:
@@ -114,7 +114,7 @@ paths:
         schema:
           type: string
     get:
-      summary: Get attachment details
+      summary: Get attachment
       operationId: getAttachment
       tags:
         - attachment
@@ -137,10 +137,17 @@ paths:
     get:
       tags:
         - document
-      summary: Get sent document listings
-      description: List (unarchived) documents you have sent to be signed
+      summary: Get signing documents
+      description: List (unarchived) signing documents
       operationId: getDocuments
       parameters:
+        - name: archived
+          in: query
+          description: 'Filter on archived status, default is false'
+          required: false
+          schema:
+            type: string
+            default: false
         - name: email
           in: query
           description: Filter by signer email
@@ -154,6 +161,7 @@ paths:
             through results.
           required: false
           schema:
+            default: 20
             type: string
         - name: offset
           in: query
@@ -175,12 +183,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: archived
-          in: query
-          description: 'Filter on archived status, default is false'
-          required: false
-          schema:
-            type: string
         - name: nosigners
           in: query
           description: Add value '1' to remove signers information for a faster query
@@ -199,7 +201,7 @@ paths:
     post:
       tags:
         - document
-      summary: Send a document to be signed
+      summary: Create signing document
       operationId: postDocument
       responses:
         '201':
@@ -248,7 +250,7 @@ paths:
       tags:
         - document
       operationId: previewDocumentSigning
-      summary: See preview of signing page for HTML document
+      summary: Preview text document signing page
       description: >-
         Returns a redirect response (302) with link in the Location header to a
         one-use temporary URL you can redirect to, to see a preview of the
@@ -257,7 +259,7 @@ paths:
       responses:
         '302':
           description: >-
-            short-lived link (a few seconds) to signing page preview returned in
+            Short-lived link (a few seconds) to signing page preview returned in
             Location header
           headers:
             location:
@@ -283,7 +285,7 @@ paths:
     get:
       tags:
         - document
-      summary: Get document details
+      summary: Get document
       operationId: getDocument
       responses:
         '200':
@@ -295,7 +297,7 @@ paths:
     delete:
       tags:
         - document
-      summary: Mark document as removed and archive
+      summary: Void/archive signing document
       operationId: archiveDocument
       description: >-
         Delete does not remove permanently but sets it with status 40 (removed)  and archives it.
@@ -314,10 +316,10 @@ paths:
       delete:
         tags:
            - document
-        summary: Permanently delete
+        summary: Delete signing document
         operationId: deleteDocument
         description: >-
-         Permanently deletes date and files. You must enable group for automated deletion. 
+         Permanently deletes data and files. You must enable group automated deletion. 
         responses:
           '204':
             description: Successful operation
@@ -327,8 +329,9 @@ paths:
     get:
       tags:
         - group
-      summary: list of groups to which the api user belongs
+      summary: Get groups
       operationId: getGroups
+      description: List groups the api user belongs to
       parameters:
         - name: offset
           in: query
@@ -356,7 +359,7 @@ paths:
     post:
       tags:
         - group
-      summary: Create new group
+      summary: Create group
       operationId: postGroup
       responses:
         '201':
@@ -385,7 +388,7 @@ paths:
     get:
       tags:
         - group
-      summary: Get group information
+      summary: Get group
       operationId: getGroup
       parameters:
         - name: groupId
@@ -404,7 +407,7 @@ paths:
     patch:
       tags:
         - group
-      summary: update a group information
+      summary: Update group
       operationId: updateGroup
       responses:
         '202':
@@ -421,7 +424,8 @@ paths:
     get:
       tags:
         - member
-      summary: list all emails invited to join groups
+      summary: Get group invitations
+      description: Invitations to people to join the group are listed by email
       operationId: getGroupInvites
       parameters:
         - name: group
@@ -441,7 +445,7 @@ paths:
     delete:
       tags:
         - member
-      summary: remove person from invited list
+      summary: Delete invitation
       operationId: deleteGroupInvite
       parameters:
         - name: invitedId
@@ -456,7 +460,8 @@ paths:
     get:
       tags:
         - member
-      summary: get group members
+      summary: Get group members
+      description: List members of groups, one user may be in one or more groups
       operationId: getGroupMembers
       parameters:
         - name: group
@@ -481,6 +486,7 @@ paths:
           required: false
           schema:
             type: string
+            default: 20
       responses:
         '200':
           description: operation successful
@@ -491,11 +497,11 @@ paths:
     post:
       tags:
         - member
-      summary: add new member to a group
+      summary: Create group member
       operationId: postGroupMember
       description: >-
-        if person is a user of legalesign access will be immediate if not he/she
-        will be invited and join the group upon activating an account
+        If the email is a registered user then access to group will be immediate,
+        otherise an invitation will be created and emailed.
       responses:
         '201':
           description: operation successful
@@ -526,7 +532,7 @@ paths:
     get:
       tags:
         - member
-      summary: Return detail about a member of a group
+      summary: Get group member
       operationId: getGroupMember
       responses:
         '200':
@@ -547,7 +553,8 @@ paths:
     get:
       tags:
         - callback
-      summary: a list of your event notifications
+      summary: Get event notifications
+      description: Callbacks sent to URL of your choice
       operationId: getNotifications
       responses:
         '200':
@@ -568,13 +575,13 @@ paths:
                     url:
                       type: string
       externalDocs:
-        description: Information about callbacks
+        description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
   /pdf/preview:
     post:
       tags:
         - document
-      summary: HTML only. Return raw pdf preview.
+      summary: text/html as pdf preview.
       operationId: postPdfPreview
       responses:
         '200':
@@ -590,7 +597,8 @@ paths:
     get:
       tags:
         - document
-      summary: Returns 302 to download either draft or final PDF.
+      summary: Location to download PDF
+      description: Get the PDF for a signing document
       operationId: getPdf
       parameters:
         - name: docId
@@ -612,7 +620,8 @@ paths:
     get:
       tags:
         - signer
-      summary: Get status and details of an individual signer
+      summary: Get signer
+      description:  Get status and details of an individual signer
       operationId: getSigner
       parameters:
         - name: signerId
@@ -632,7 +641,7 @@ paths:
     get:
       tags:
         - signer
-      summary: Return list of signer form fields
+      summary: Get signer form fields
       operationId: getSignerFields
       parameters:
         - name: signerId
@@ -664,7 +673,7 @@ paths:
     get:
       tags:
         - signer
-      summary: Get access link for a signer
+      summary: Get signer access link
       operationId: getSignerLink
       description: >-
         Returns 1-use link for signer in Location header. 
@@ -687,7 +696,8 @@ paths:
     post:
       tags:
         - signer
-      summary: Reset to an earlier signer if forwarded
+      summary: Reset to earlier signer
+      description: Reset to an earlier signer if forwarded
       operationId: postSignerReset
       parameters:
         - name: signerId
@@ -713,7 +723,7 @@ paths:
     post:
       tags:
         - signer
-      summary: Send a reminder email to signer
+      summary: Send signer reminder email
       operationId: postSignerReminder
       parameters:
         - name: signerId
@@ -737,7 +747,8 @@ paths:
     get:
       tags:
         - signer
-      summary: If document rejected by signer, get the reason, if given
+      summary: Get signer rejection reason
+      description: Returns reason signer gave for rejecting a document, if given
       operationId: getSignerRejection
       parameters:
         - name: signerId
@@ -761,7 +772,8 @@ paths:
     get:
       tags:
         - document
-      summary: Shortened fast query for document status
+      summary: Get signing documents status
+      description: Shortened faster query for status of signing documents
       operationId: getStatuses
       parameters:
         - name: filter
@@ -797,7 +809,8 @@ paths:
     get:
       tags:
         - document
-      summary: Returns fast short version of key doc info
+      summary: Get signing document status
+      description: Faster short query for a document status
       operationId: getStatus
       parameters:
         - name: docId
@@ -817,7 +830,7 @@ paths:
     post:
       tags:
         - callback
-      summary: create an event notification
+      summary: Create notification
       operationId: postNotification
       responses:
         '201':
@@ -837,7 +850,7 @@ paths:
     get:
       tags:
         - template
-      summary: 'Return list of text templates, does not include text of each'
+      summary: Get text templates
       operationId: getTextTemplates
       parameters:
         - name: group
@@ -854,6 +867,7 @@ paths:
           required: false
           schema:
             type: string
+            default: 20
         - name: archive
           in: query
           required: false
@@ -880,7 +894,11 @@ paths:
     post:
       tags:
         - template
-      summary: Create a new html/text template. This is available, but why use it when you can send your HTML through at the same time you send your document... and that's probably why you are using HTML in the first place.
+      summary: Create text template
+      description: >-
+        Create a new html/text template. This probably isn't the method you are looking for.
+        You can use the 'text' attribute in /document/ to create and send your HTML as a signing
+        document in one call.
       operationId: postTextTemplate
       responses:
         '201':
@@ -894,9 +912,15 @@ paths:
     get:
       tags:
         - pdf
-      summary: return pdf templates listings
+      summary: Get PDF templates
       operationId: getPdfTemplates
       parameters:
+        - name: archive
+          in: query
+          required: false
+          schema:
+            type: string
+            default: false
         - name: group
           in: query
           description: can be full resource_uri or only id
@@ -911,11 +935,7 @@ paths:
           required: false
           schema:
             type: string
-        - name: archive
-          in: query
-          required: false
-          schema:
-            type: string
+            default: 20
         - name: offset
           in: query
           description: >-
@@ -934,7 +954,8 @@ paths:
     post:
       tags:
         - pdf
-      summary: Upload a new PDF template
+      summary: Create PDF template
+      description: Upload a PDF document you want to send to be signed
       operationId: postPdfTemplate
       responses:
         '201':
@@ -961,13 +982,13 @@ paths:
           type: string
           format: uuid
     get:
-      summary: Get PDF template details
+      summary: Get PDF template
       operationId: getPdfTemplate
       tags:
         - pdf
       responses:
         '200':
-          description: list of pdf-based templates
+          description:  PDF template details
           content:
             application/json:
               schema:
@@ -984,11 +1005,11 @@ paths:
     get:
       tags:
         - pdf
-      summary: return list of fields in the document
+      summary: Get PDF template fields
       operationId: getPdfTemplateFields
       responses:
         '200':
-          description: list of pdf-based templates
+          description: list of a pdf template fields
           content:
             application/json:
               schema:
@@ -996,7 +1017,8 @@ paths:
     post:
       tags:
         - pdf
-      summary: replace pdf fields
+      summary: Create PDF template fields
+      description: Replace existing pdf fields with new ones
       operationId: postPdfTemplateFields
       responses:
         '201':
@@ -1014,7 +1036,8 @@ paths:
     post:
       tags:
         - pdf
-      summary: Convert text tags in the pdf into fields
+      summary: Convert text tags
+      description: Convert any text tags in the PDF into fields
       operationId: postPdfTemplateTags
       parameters:
         - name: pdfId
@@ -1042,7 +1065,7 @@ paths:
     get:
       tags:
         - template
-      summary: 'A single template, includes latest text'
+      summary: Get text template
       operationId: getTextTemplate
       responses:
         '200':
@@ -1057,7 +1080,8 @@ paths:
     delete:
       tags:
         - template
-      summary: deletes a template (is recoverable, i.e. not fully deleted, if you need true data deletion contact us).
+      summary: Archive text template
+      description: Archives a template (is recoverable, i.e. not fully deleted, if you need true data deletion contact us).
       operationId: archiveTextTemplate
       responses:
         '204':
@@ -1065,7 +1089,7 @@ paths:
     patch:
       tags:
         - template
-      summary: Update template fields
+      summary: Update text template
       operationId:  patchTextTemplate
       responses:
         '202':
@@ -1081,7 +1105,7 @@ paths:
     post:
       tags:
         - callback
-      summary: remove an event notification
+      summary: Delete notification
       operationId: deleteNotification
       responses:
         '200':
@@ -1101,7 +1125,7 @@ paths:
     post:
       tags:
         - user
-      summary: add a new user to a group
+      summary: Create user
       operationId: postUser
       responses:
         '201':
@@ -1134,7 +1158,7 @@ paths:
     get:
       tags:
         - user
-      summary: get a users details
+      summary: Get user
       operationId: getUser
       parameters:
         - name: userId
@@ -1152,7 +1176,8 @@ paths:
     patch:
       tags:
         - user
-      summary: update the user first name or last name
+      summary: Update user
+      description: Update a user first name or last name
       operationId: patchUser
       parameters:
         - name: userId
