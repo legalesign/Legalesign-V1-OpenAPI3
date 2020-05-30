@@ -32,13 +32,13 @@ tags:
     description: Signing documents
   - name: signer
     description: Document signers
-  - name: templateText
+  - name: templatetext
     description: Text/html based templates
     externalDocs:
       description: Information about html/text templates
       url: >-
         https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/
-  - name: templatePdf
+  - name: templatepdf
     description: PDF based templates
   - name: group
     description: Groups (aka teams) contain everything
@@ -317,10 +317,10 @@ paths:
       delete:
         tags:
            - document
-        summary: Delete signing document
+        summary: Permanently delete signing document
         operationId: deleteDocument
         description: >-
-         Permanently deletes data and files. You must enable group automated deletion. 
+         Permanently deletes data and files. You must enable group automated deletion. We recommend archiveDocument.
         responses:
           '204':
             description: Successful operation
@@ -578,15 +578,12 @@ paths:
       externalDocs:
         description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
-  /document/html/pdf-preview:
+  '/pdf/preview':
     post:
       tags:
         - document
-      summary: text/html document as pdf preview.
+      summary: text/html document as pdf preview
       operationId: postPdfPreview
-      responses:
-        '200':
-          description: Returns raw pdf
       requestBody:
         content:
           application/json:
@@ -594,7 +591,15 @@ paths:
               $ref: '#/components/schemas/DocumentPdfPreview'
         description: Data to generate pdf
         required: true
-  '/document/{docId}/pdf':
+      responses:
+        '200':
+          description: A PDF file
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+  '/pdf/{docId}':
     get:
       tags:
         - document
@@ -608,13 +613,13 @@ paths:
           schema:
             type: string
       responses:
-        '302':
-          description: operation successful
-          headers:
-            Location:
+        '200':
+          description: A PDF file
+          content:
+            application/pdf:
               schema:
                 type: string
-              description: short-lived URL for PDF binary download
+                format: binary
         '201':
           description: being de-archived, available in 4 hours
   '/signer/{signerId}':
@@ -850,7 +855,7 @@ paths:
   /template:
     get:
       tags:
-        - templateText
+        - templatetext
       summary: Get text templates
       operationId: getTextTemplates
       parameters:
@@ -894,7 +899,7 @@ paths:
         url: 'https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/'
     post:
       tags:
-        - templateText
+        - templatetext
       summary: Create text template
       description: >-
         Create a new html/text template. This probably isn't the method you are looking for.
@@ -912,7 +917,7 @@ paths:
   /templatepdf:
     get:
       tags:
-        - templatePdf
+        - templatepdf
       summary: Get PDF templates
       operationId: getPdfTemplates
       parameters:
@@ -954,7 +959,7 @@ paths:
                 $ref: '#/components/schemas/TemplatePdfListResponse'
     post:
       tags:
-        - templatePdf
+        - templatepdf
       summary: Create PDF template
       description: Upload a PDF document you want to send to be signed
       operationId: postPdfTemplate
@@ -986,7 +991,7 @@ paths:
       summary: Get PDF template
       operationId: getPdfTemplate
       tags:
-        - templatePdf
+        - templatepdf
       responses:
         '200':
           description:  PDF template details
@@ -1005,7 +1010,7 @@ paths:
           format: uuid
     get:
       tags:
-        - templatePdf
+        - templatepdf
       summary: Get PDF template fields
       operationId: getPdfTemplateFields
       responses:
@@ -1017,7 +1022,7 @@ paths:
                 $ref: '#/components/schemas/TemplatePdfFieldsList'
     post:
       tags:
-        - templatePdf
+        - templatepdf
       summary: Create PDF template fields
       description: Replace existing pdf fields with new ones
       operationId: postPdfTemplateFields
@@ -1036,7 +1041,7 @@ paths:
   '/templatepdf/{pdfId}/tags':
     post:
       tags:
-        - templatePdf
+        - templatepdf
       summary: Convert text tags
       description: Convert any text tags in the PDF into fields
       operationId: postPdfTemplateTags
@@ -1065,7 +1070,7 @@ paths:
           format: uuid
     get:
       tags:
-        - templateText
+        - templatetext
       summary: Get text template
       operationId: getTextTemplate
       responses:
@@ -1080,7 +1085,7 @@ paths:
         url: 'https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/'
     delete:
       tags:
-        - templateText
+        - templatetext
       summary: Archive text template
       description: Archives a template (is recoverable, i.e. not fully deleted, if you need true data deletion contact us).
       operationId: archiveTextTemplate
@@ -1089,7 +1094,7 @@ paths:
           description: operation successful
     patch:
       tags:
-        - templateText
+        - templatetext
       summary: Update text template
       operationId:  patchTextTemplate
       responses:
@@ -1913,8 +1918,7 @@ components:
         password:
           type: string
           description: >-
-            if not set a verification email is sent. at least 6 chars with a
-            digit
+            if not set a verification email is sent. at least 6 chars with a digit
           minLength: 6
           pattern: '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$'
         groups:
@@ -2608,12 +2612,14 @@ components:
       properties:
         group:
           type: string
+          pattern: ^/api/v1/group/[-\w]{1,60}$
         pdf_file:
           type: string
           format: byte
           description: base64 encoded PDF file data
         title:
           type: string
+          maxLength: 120
         process_tags:
           type: boolean
         user:
