@@ -29,25 +29,25 @@ tags:
   - name: attachment
     description: Static email attachments
   - name: document
-    description: Sent documents
+    description: Signing documents
   - name: signer
     description: Document signers
-  - name: template
-    description: HTML-based text templates
+  - name: templateText
+    description: Text/html based templates
     externalDocs:
       description: Information about html/text templates
       url: >-
         https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/
-  - name: pdf
-    description: PDF-based templates
+  - name: templatePdf
+    description: PDF based templates
   - name: group
-    description: groups (aka teams) relevant to the user
+    description: Groups (aka teams) contain everything
   - name: member
-    description: a member is a user assigned to a group
+    description: A member is a user assigned to a group
   - name: user
-    description: a user provides login access
-  - name: callback
-    description: event notifications
+    description: A user provides login access
+  - name: webhook
+    description: Event notifications/webhooks
     externalDocs:
       description: Information about callbacks
       url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
@@ -113,6 +113,7 @@ paths:
         required: true
         schema:
           type: string
+          format: uuid
     get:
       summary: Get attachment
       operationId: getAttachment
@@ -426,7 +427,7 @@ paths:
         - member
       summary: Get group invitations
       description: Invitations to people to join the group are listed by email
-      operationId: getGroupInvites
+      operationId: getInvites
       parameters:
         - name: group
           in: query
@@ -446,7 +447,7 @@ paths:
       tags:
         - member
       summary: Delete invitation
-      operationId: deleteGroupInvite
+      operationId: deleteInvite
       parameters:
         - name: invitedId
           in: path
@@ -462,7 +463,7 @@ paths:
         - member
       summary: Get group members
       description: List members of groups, one user may be in one or more groups
-      operationId: getGroupMembers
+      operationId: getMembers
       parameters:
         - name: group
           in: query
@@ -498,7 +499,7 @@ paths:
       tags:
         - member
       summary: Create group member
-      operationId: postGroupMember
+      operationId: postMember
       description: >-
         If the email is a registered user then access to group will be immediate,
         otherise an invitation will be created and emailed.
@@ -533,7 +534,7 @@ paths:
       tags:
         - member
       summary: Get group member
-      operationId: getGroupMember
+      operationId: getMember
       responses:
         '200':
           description: operation successful
@@ -545,17 +546,17 @@ paths:
       tags:
         - member
       summary: remove member from group
-      operationId: deleteGroupMember
+      operationId: deleteMember
       responses:
         '204':
           description: operation successful
   /notifications:
     get:
       tags:
-        - callback
+        - webhook
       summary: Get event notifications
       description: Callbacks sent to URL of your choice
-      operationId: getNotifications
+      operationId: getWebhooks
       responses:
         '200':
           description: operation successful
@@ -577,11 +578,11 @@ paths:
       externalDocs:
         description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
-  /pdf/preview:
+  /document/html/pdf-preview:
     post:
       tags:
         - document
-      summary: text/html as pdf preview.
+      summary: text/html document as pdf preview.
       operationId: postPdfPreview
       responses:
         '200':
@@ -593,13 +594,13 @@ paths:
               $ref: '#/components/schemas/DocumentPdfPreview'
         description: Data to generate pdf
         required: true
-  '/pdf/{docId}':
+  '/document/{docId}/pdf':
     get:
       tags:
         - document
       summary: Location to download PDF
       description: Get the PDF for a signing document
-      operationId: getPdf
+      operationId: getDocumentPdf
       parameters:
         - name: docId
           in: path
@@ -829,16 +830,16 @@ paths:
   /subscribe:
     post:
       tags:
-        - callback
-      summary: Create notification
-      operationId: postNotification
+        - webhook
+      summary: Create webhooks
+      operationId: postWebhook
       responses:
         '201':
           description: operation successful
         '400':
           description: bad request
       externalDocs:
-        description: Information about callbacks
+        description: Information about webhooks/callbacks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
       requestBody:
         content:
@@ -911,7 +912,7 @@ paths:
   /templatepdf:
     get:
       tags:
-        - pdf
+        - templatePdf
       summary: Get PDF templates
       operationId: getPdfTemplates
       parameters:
@@ -953,7 +954,7 @@ paths:
                 $ref: '#/components/schemas/TemplatePdfListResponse'
     post:
       tags:
-        - pdf
+        - templatePdf
       summary: Create PDF template
       description: Upload a PDF document you want to send to be signed
       operationId: postPdfTemplate
@@ -985,7 +986,7 @@ paths:
       summary: Get PDF template
       operationId: getPdfTemplate
       tags:
-        - pdf
+        - templatePdf
       responses:
         '200':
           description:  PDF template details
@@ -1004,7 +1005,7 @@ paths:
           format: uuid
     get:
       tags:
-        - pdf
+        - templatePdf
       summary: Get PDF template fields
       operationId: getPdfTemplateFields
       responses:
@@ -1016,7 +1017,7 @@ paths:
                 $ref: '#/components/schemas/TemplatePdfFieldsList'
     post:
       tags:
-        - pdf
+        - templatePdf
       summary: Create PDF template fields
       description: Replace existing pdf fields with new ones
       operationId: postPdfTemplateFields
@@ -1035,7 +1036,7 @@ paths:
   '/templatepdf/{pdfId}/tags':
     post:
       tags:
-        - pdf
+        - templatePdf
       summary: Convert text tags
       description: Convert any text tags in the PDF into fields
       operationId: postPdfTemplateTags
@@ -1064,7 +1065,7 @@ paths:
           format: uuid
     get:
       tags:
-        - template
+        - templateText
       summary: Get text template
       operationId: getTextTemplate
       responses:
@@ -1079,7 +1080,7 @@ paths:
         url: 'https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/'
     delete:
       tags:
-        - template
+        - templateText
       summary: Archive text template
       description: Archives a template (is recoverable, i.e. not fully deleted, if you need true data deletion contact us).
       operationId: archiveTextTemplate
@@ -1088,7 +1089,7 @@ paths:
           description: operation successful
     patch:
       tags:
-        - template
+        - templateText
       summary: Update text template
       operationId:  patchTextTemplate
       responses:
@@ -1104,9 +1105,9 @@ paths:
   /unsubscribe:
     post:
       tags:
-        - callback
+        - webhook
       summary: Delete notification
-      operationId: deleteNotification
+      operationId: deleteWebhook
       responses:
         '200':
           description: operation successful, will return 200 whether url is actually subscribed or not
@@ -1593,20 +1594,18 @@ components:
                 description: nested arrays with signer details
                 items:
                   type: array
-                  items:
-                    type: string
-                    oneOf:
-                      - type: string
-                      - type: integer
-                    description: >-
-                      Always contains [signer URI, first name, last name, email, sms number, has_fields, status, signer order (0-indexed)]
+                  minItems: 8
+                  maxItems: 8
+                  items: {}
+                  description: >-
+                    Always contains [signer URI, first name, last name, email, sms number, has_fields, status, signer order (0-indexed)]
               signers_in_order:
                 type: boolean
               status:
                 $ref: '#/components/schemas/SignerStatusEnum'
               tag:
                 type: string
-                pattern: '^[-\w ]{1,250}$'
+                pattern: '^[-\w ]{0,250}$'
               template:
                 type: string
                 pattern: ^/api/v1/template/[-\w]{1,60}/$
@@ -1775,13 +1774,14 @@ components:
           maxLength: 60
         user:
           type: string
-          format: uri
+          pattern: ^/api/v1/user/[-\w]{1,60}/$
         xframe_allow:
           type: boolean
           description: Set to true if you want to embed your signing page. We recommend avoiding iframe.
         approve_all_deletions:
           type: boolean
-          description: set to false to disable secondary approval on deletions (if you wish to use permanent delete)
+          description: Set to false to disable secondary approval on deletions (if you wish to use permanent delete)
+          default: true
     AttachmentResponse:
       type: object
       properties:
@@ -2558,12 +2558,13 @@ components:
     CallbackCreatePost:
       type: object
       required:
-        - notify_when
+        - notify
         - url
       properties:
         url:
           type: string
           description: The URL where you wish to get notified
+          pattern: ^(http|https)://
         notify_when:
           type: string
           description: The type of callback to receive, value must be all or signed
@@ -2878,23 +2879,20 @@ components:
     ListMeta:
       type: object
       properties:
-        meta:
-          type: object
-          properties:
-            limit:
-              type: integer
-              format: int36
-            next:
-              type: string
-            offset:
-              type: integer
-              format: int36
-            previous:
-              type: string
-            total_count:
-              type: integer
-              format: int36
-              description: total number of objects
+        limit:
+          type: integer
+          format: int36
+        next:
+          type: string
+        offset:
+          type: integer
+          format: int36
+        previous:
+          type: string
+        total_count:
+          type: integer
+          format: int36
+          description: total number of objects
     GroupListResponse:
       properties:
         meta:
