@@ -850,7 +850,7 @@ paths:
   /template:
     get:
       tags:
-        - template
+        - templateText
       summary: Get text templates
       operationId: getTextTemplates
       parameters:
@@ -894,7 +894,7 @@ paths:
         url: 'https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/'
     post:
       tags:
-        - template
+        - templateText
       summary: Create text template
       description: >-
         Create a new html/text template. This probably isn't the method you are looking for.
