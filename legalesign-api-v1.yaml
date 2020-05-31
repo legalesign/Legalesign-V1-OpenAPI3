@@ -13,11 +13,13 @@ info:
 
 
     For any queries contact us at support@legalesign.com.
-  version: "1.0.0-oas3"
+  version: "1.0.0"
   title: Legalesign API
   termsOfService: 'https://legalesign.com/opn/terms/'
   contact:
     email: support@legalesign.com
+    name: API support
+    url: https://legalesign.com/contact/
 externalDocs:
   description: Find out more about Legalesign
   url: 'https://legalesign.com/'
