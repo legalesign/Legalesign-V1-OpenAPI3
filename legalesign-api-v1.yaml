@@ -66,6 +66,24 @@ paths:
           required: false
           schema:
             type: string
+            example: my-group
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          schema:
+            default: 20
+            type: integer
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: 'successful operation, list of attachment objects'
@@ -139,7 +157,7 @@ paths:
       tags:
         - document
       summary: Get signing documents
-      description: List (unarchived) signing documents
+      description: List (unarchived) signing documents. Use /status/ if you need high-level information.
       operationId: getDocuments
       parameters:
         - name: archived
@@ -163,7 +181,7 @@ paths:
           required: false
           schema:
             default: 20
-            type: string
+            type: integer
         - name: offset
           in: query
           description: >-
@@ -171,7 +189,7 @@ paths:
             through dataset.
           required: false
           schema:
-            type: string
+            type: integer
         - name: group
           in: query
           description: Filter by a specific group
@@ -183,7 +201,7 @@ paths:
           description: Filter on document status
           required: false
           schema:
-            type: string
+            type: integer
         - name: nosigners
           in: query
           description: Add value '1' to remove signers information for a faster query
@@ -341,7 +359,7 @@ paths:
             through dataset.
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: >-
@@ -349,7 +367,7 @@ paths:
             through results.
           required: false
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: operation successful
@@ -454,6 +472,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
       responses:
         '204':
           description: operation successful
@@ -478,7 +497,7 @@ paths:
             through dataset.
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: >-
@@ -486,7 +505,7 @@ paths:
             through results.
           required: false
           schema:
-            type: string
+            type: integer
             default: 20
       responses:
         '200':
@@ -569,12 +588,15 @@ paths:
                   properties:
                     active:
                       type: boolean
+                      example: true
                     notify_when:
                       description: 1 =  every 6 minutes, 2 =  upon signing
                       type: integer
                       enum: [1,2]
+                      example: 1
                     url:
                       type: string
+                      example: https://mywebsite.com/callback/
       externalDocs:
         description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
@@ -795,7 +817,7 @@ paths:
             through dataset.
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: >-
@@ -803,7 +825,7 @@ paths:
             through results.
           required: false
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: operation successful
@@ -872,7 +894,7 @@ paths:
             through results.
           required: false
           schema:
-            type: string
+            type: integer
             default: 20
         - name: archive
           in: query
@@ -886,7 +908,7 @@ paths:
             through dataset.
           required: false
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: list of text templates
@@ -940,7 +962,7 @@ paths:
             through results.
           required: false
           schema:
-            type: string
+            type: integer
             default: 20
         - name: offset
           in: query
@@ -949,7 +971,7 @@ paths:
             through dataset.
           required: false
           schema:
-            type: string
+            type: integer
       responses:
         '200':
           description: operation successful
@@ -1227,6 +1249,12 @@ components:
         user:
           type: string
           format: uri
+      example:
+        created: 2020-05-20T:15:10
+        modified: 2020-05-20T:15:10
+        permission: 1
+        resource_uri: /api/v1/member/m0m0m0m0-m0m0-m0m0-m0m0-m0m0m0m0m0m0/
+        user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
     DocumentPost:
       type: object
       required:
@@ -1545,7 +1573,7 @@ components:
           type: string
         first_name:
           type: string
-        last_namme:
+        last_name:
           type: string
         has_fields:
           type: boolean
@@ -1556,6 +1584,15 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/SignerStatusEnum'
+      example:
+        document: /api/v1/document/d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0/
+        email: joe.biggins@widgets.com
+        first_name: Joe
+        has_fields: True
+        last_name: Biggins
+        order: 0
+        resource_uri: /api/v1/signers/s0s0s0s0-s0s0-s0s0-s0s0-s0s0s0s0s0s0/
+        status: 20
     DocumentListResponse:
       properties:
         meta:
@@ -1627,6 +1664,30 @@ components:
               uuid:
                 type: string
                 format: uuid
+          example: 
+            - archived: false
+              auto_archive: true
+              cc_emails: None
+              created: 2020-05-20T:15:10
+              do_email: false
+              download_final: false
+              group: /api/v1/group/my-group/
+              modified: 2020-05-20T:15:10
+              name: test cs_agreement
+              pdftext: None
+              redirect: https://example.com/redirect-receive/
+              resource_uri: /api/v1/document/d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0/
+              signers:
+                - /api/v1/signers/s0s0s0s0-s0s0-s0s0-s0s0-s0s0s0s0s0s0/, Joe, Biggins, joe.biggins@widgets.com, '', true, 20, 0
+                - /api/v1/signers/s1s1s1s1-s1s1-s1s1-s1s1-s1s1s1s1s1s1/, Betty, MacLean, betty.maclean@widgets.comma, '', true, 10, 1
+              signer_in_order: true
+              status: 10
+              tag: contract2020myref
+              template: None
+              templatepdf: /api/v1/templatepdf/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
+              text: ''
+              user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+              uuid: d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0
     HTMLSigningPreviewPost:
       type: object
       properties:
@@ -1733,10 +1794,10 @@ components:
         footer:
           type: string
           description: html of content
-        header:
-          type: string
         footer_height:
           type: integer
+        header:
+          type: string
         is_active: 
           type: boolean
         members:
@@ -1766,6 +1827,25 @@ components:
           type: boolean
         xframe_allow_pdf_edit:
           type: boolean
+      example:
+        created: 2020-05-20T:15:10
+        default_email: None
+        default_extraemail: None
+        footer: None
+        footer_height: None
+        header: None
+        is_active: true
+        members:
+          - /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/,  /api/v1/user/u1u1u1u1-u1u1-u1u1-u1u1-u1u1u1u1u1u1/
+        modified: 2020-05-20T:15:10
+        name: my group
+        pagesize: 1
+        public_name: global exports
+        resource_uri: /api/v1/group/my-group/
+        slug: my-group
+        user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+        xframe_allow: false
+        xframe_allow_pdf_edit: false
     GroupPost:
       type: object
       required:
@@ -1806,7 +1886,14 @@ components:
           description: resource_uri for user
         uuid:
           type: string
+          format: uuid
           description: id for pdf object
+      example:
+        created: 2020-05-20T:15:10
+        description: "Attachment for supplier contract"
+        filename: attach1.pdf
+        resource_uri: /api/v1/attachment/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
+        uuid: f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0
     TemplateResponseDetail:
       type: object
       properties:
@@ -1833,6 +1920,7 @@ components:
           type: string
         uuid:
           type: string
+          format: uuid
         latest_text:
           type: string
     TemplateResponse:
@@ -1888,12 +1976,25 @@ components:
         last_login:
           type: string
           format: date-time
+        last_name:
+          type: string
         resource_uri:
           type: string
         timezone:
           $ref: '#/components/schemas/TimezoneEnum'
         username:
           type: string
+      example:
+        date_joined: 2020-05-20T:15:10
+        email: joe.biggins@widgets.com
+        first_name: Joe
+        groups: 
+          - /api/v1/group/my-group1/, api/v1/group/my-group2/
+        last_login: 2020-05-20T:15:10
+        last_name: Biggins
+        resource_uri: /api/v1/user/34034334ab34334333rh33434334f9/
+        timezone: Europe/Chisinau
+        username: 34034334ab34334333rh33434334f9
     UserPost:
       type: object
       required:
@@ -1950,6 +2051,7 @@ components:
         after they have activated their account. N.B. Make sure you add the user
         to at least one of your groups, otherwise you will not have API access
         to the user information.
+      
     DocumentSignerPost:
       type: object
       required:
@@ -2451,6 +2553,11 @@ components:
               resource_uri: 
                 type: string
                 format: uri
+            example:
+              created: 2020-05-20T:15:10
+              email: job.biggins@widgets.comma
+              group: /api/v1/group/my-group/
+              resource_uri: /api/v1/invites/i0i0i0i0-i0i0-i0i0-i0i0-i0i0i0i0i0i0/
     DocumentResponseDetail:
       properties:
         archived:
@@ -2559,6 +2666,45 @@ components:
           type: string
           format: uuid
           description: Object ID alone
+      example: 
+        - archived: false
+          auto_archive: true
+          cc_emails: None
+          created: 2020-05-20T:15:10
+          do_email: false
+          download_final: false
+          footer: ''
+          footer_height: 
+          group: /api/v1/group/my-group/
+          has_fields: true
+          hash_value: None
+          header: ''
+          header_height: None
+          modified: 2020-05-20T:15:10
+          name: test cs_agreement
+          pdf_password: None
+          pdf_password_type: None
+          pdftext: None
+          redirect: https://example.com/redirect-receive/
+          resource_uri: /api/v1/document/d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0/
+          return_signer_links: false
+          sign_mouse: true
+          sign_time: None
+          sign_type: true
+          sign_upload: true
+          signature_placement: 2
+          signature_type: 4
+          signers:
+            - /api/v1/signers/s0s0s0s0-s0s0-s0s0-s0s0-s0s0s0s0s0s0/, John, Smith, john.smith@example.comma, '', true, 20, 0
+            - /api/v1/signers/s1s1s1s1-s1s1-s1s1-s1s1-s1s1s1s1s1s1/, Betty, MacLean, betty.maclean@example.comma, '', true, 10, 1
+          signer_in_order: true
+          status: 10
+          tag: contract2020myref
+          template: None
+          templatepdf: /api/v1/templatepdf/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
+          text: ''
+          user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+          uuid: d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0
     CallbackCreatePost:
       type: object
       required:
@@ -2582,6 +2728,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttachmentResponse'
+      example:
+        meta:
+          limit: 20
+          next:  /api/v1/attachment/?offset=20&limit=20
+          previous: None
+          total_count: 26
+        objects:
+          - created: 2020-05-20T:15:10
+            description: "Attachment for supplier contract"
+            filename: attach1.pdf
+            resource_uri: /api/v1/attachment/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
+            uuid: f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0
     StatusResponse:
       type: object
       properties:
@@ -2595,6 +2753,12 @@ components:
           type: boolean
         tag:
           type: string
+      example:
+        archived: false
+        download_final: false
+        resource_uri: /api/v1/status/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
+        status: 10
+        tag: contract2020
     MemberListResponse:
       type: object
       properties:
@@ -2873,6 +3037,16 @@ components:
         valid:
           type: boolean
           description: Is able to be sent (if fields do not validate)
+      example:
+        created: 2020-05-20T:15:10
+        group: /api/v1/group/my-group/
+        modified: 2020-05-20T:15:10
+        page_count: 10
+        resource_uri: api/v1/templatepdf/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
+        title: 'Template Supplier Agreement'
+        user: /api/v1/user/34034334ab34334333rh33434334f9/
+        uuid: t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0
+        valid: true
     StatusListResponse:
       type: object
       properties:
@@ -2931,6 +3105,17 @@ components:
                 type: boolean
               xframe_allow_pdf_edit:
                 type: boolean
+          example:
+            created: 2020-05-20T:15:10
+            is_active: true
+            modified: 2020-05-20T:15:10
+            name: my group
+            public_name: global exports
+            resource_uri: /api/v1/group/my-group/
+            slug: my-group
+            user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+            xframe_allow: false
+            xframe_allow_pdf_edit: false
     AttachmentPost:
       type: object
       required:
