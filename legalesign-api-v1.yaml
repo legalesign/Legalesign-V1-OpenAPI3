@@ -102,7 +102,12 @@ paths:
       operationId: postAttachment
       responses:
         '201':
-          description: Success. Attachment URI will be in Location header.
+          description: Success
+          headers:
+            Location:
+              description: Resource URI for new attachment
+              schema:
+                type: string
         '400':
           description: 'Bad Request, read response for error information'
           content:
@@ -231,10 +236,9 @@ paths:
             return_signer_links was set to true, the body will contain a JSON dict containing the signing links.
           headers:
             Location:
-              description: new document resource uri
+              description: Resource URI for new signing document
               schema:
                 type: string
-                format: uri
           content:
             application/json:
               schema:
@@ -387,7 +391,7 @@ paths:
           description: operation successful
           headers:
             location:
-              description: resource_uri for new group
+              description: new group resource_uri
               schema:
                 type: string
         '400':
