@@ -1918,11 +1918,11 @@ components:
           format: date-time
         description:
           type: string
+        filename:
+          type: string
         group:
           type: string
         resource_uri:
-          type: string
-        filename:
           type: string
         user:
           type: string
@@ -1930,7 +1930,7 @@ components:
         uuid:
           type: string
           format: uuid
-          description: id for pdf object
+          description: id for attachment object
       example:
         created: 2020-05-20T:15:10
         description: "Attachment for supplier contract"
