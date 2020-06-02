@@ -594,6 +594,7 @@ paths:
                     notify_when:
                       description: 1 =  every 6 minutes, 2 =  upon signing
                       type: integer
+                      x-enum-varnames:: ['callback1','callback2']
                       enum: [1,2]
                       example: 1
                     url:
@@ -1349,6 +1350,7 @@ components:
           description: If the group is not set to use a password you must also use pdf_password_type
         pdf_password_type:
           type: integer
+          x-enum-varnames: ['passtype1','passtype2']
           enum: [1,2]
           description: 1 to store password, 2 for to delete from our records upon final signing.
         pdftext:
@@ -1586,6 +1588,7 @@ components:
               * 2 - middle 
               * 3 - right
           enum: [1,2,3]
+          x-enum-varnames: ['left','center','right']
         font_size:
           type: number
           format: float
@@ -1681,7 +1684,8 @@ components:
                   type: array
                   minItems: 8
                   maxItems: 8
-                  items: {}
+                  items:
+                    type: string
                   description: >-
                     Always contains [signer URI, first name, last name, email, sms number, has_fields, status, signer order (0-indexed)]
               signers_in_order:
@@ -2890,6 +2894,30 @@ components:
          * 40 - signed 
          * 50 - downloaded 
          * 60 - rejected
+      x-enum-varnames:
+        - signerUnsent
+        - signerScheduled
+        - signerSent
+        - signerEmailOpened
+        - signerVisited
+        - signerFieldsComplete
+        - signerFieldsCompleteExSignature
+        - signerWitnessToSign
+        - signerSigned
+        - signerDownloaded
+        - signerRejected
+      x-enum-descriptions:
+        - "Unsent"
+        - "Schedule to send"
+        - "Sent"
+        - "Email opened"
+        - "Visited"
+        - "Fields completed"
+        - "Fields complete except signature"
+        - "Witness to sign"
+        - "Signed"
+        - "Downloaded"
+        - "Rejected"
       enum:
         - 4
         - 5
@@ -2911,6 +2939,18 @@ components:
           * 30 - Signed 
           * 40 - Removed (before signing) 
           * 50 - Rejected
+      x-enum-varnames:
+        - docCreated
+        - docFieldsComplete
+        - docSigned
+        - docRemoved
+        - docRejected
+      x-enum-descriptions:
+        - "Created"
+        - "Fields completed"
+        - "Signed"
+        - "Removed"
+        - "Rejected"
       enum:
         - 10
         - 20
@@ -2927,13 +2967,27 @@ components:
            * 4 - no team sent docs visible, send only
            * 5 - no team docs visible, create & send
            * 6 - team docs visible, read only
-        enum:
-          - '1'
-          - '2'
-          - '3'
-          - '4'
-          - '5'
-          - '6'
+      x-enum-varnames:
+          - permissionAdmin
+          - permissionTeamCreateSend
+          - permissionTeamSend
+          - permissionSoloSend
+          - permissionSoloCreateSend
+          - permissionReadOnly
+      x-enum-descriptions:
+          - "Admin"
+          - "Team visible, create and send"
+          - "Team visible, send only"
+          - "Team not visible, send only"
+          - "Team not visible, create and send"
+          - "Team visible, read only"
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
     UserPatch:
       type: object
       properties:
@@ -3026,75 +3080,144 @@ components:
           * 73 - secret code, add code in options 
           * 74 - file attach, append to email to signer 
           * 75 - file attach, append to final PDF
+      x-enum-varnames:
+        - 'f1'
+        - 'f2'
+        - 'f3'
+        - 'f4'
+        - 'f5'
+        - 'f6'
+        - 'f7'
+        - 'f8'
+        - 'f9'
+        - 'f10'
+        - 'f11'
+        - 'f12'
+        - 'f13'
+        - 'f14'
+        - 'f15'
+        - 'f16'
+        - 'f17'
+        - 'f18'
+        - 'f19'
+        - 'f20'
+        - 'f24'
+        - 'f25'
+        - 'f26'
+        - 'f30'
+        - 'f31'
+        - 'f32'
+        - 'f33'
+        - 'f34'
+        - 'f35'
+        - 'f36'
+        - 'f37'
+        - 'f38'
+        - 'f39'
+        - 'f40'
+        - 'f41'
+        - 'f42'
+        - 'f43'
+        - 'f44'
+        - 'f45'
+        - 'f46'
+        - 'f47'
+        - 'f48'
+        - 'f50'
+        - 'f51'
+        - 'f52'
+        - 'f53'
+        - 'f54'
+        - 'f55'
+        - 'f56'
+        - 'f57'
+        - 'f58'
+        - 'f59'
+        - 'f60'
+        - 'f61'
+        - 'f62'
+        - 'f63'
+        - 'f64'
+        - 'f65'
+        - 'f66'
+        - 'f67'
+        - 'f68'
+        - 'f69'
+        - 'f70'
+        - 'f71'
+        - 'f72'
+        - 'f73'
+        - 'f74'
+        - 'f75'
       enum:
-        - '1'
-        - '2'
-        - '3'
-        - '4'
-        - '5'
-        - '6'
-        - '7'
-        - '8'
-        - '9'
-        - '10'
-        - '11'
-        - '12'
-        - '13'
-        - '14'
-        - '15'
-        - '16'
-        - '17'
-        - '18'
-        - '19'
-        - '20'
-        - '24'
-        - '25'
-        - '26'
-        - '30'
-        - '31'
-        - '32'
-        - '33'
-        - '34'
-        - '35'
-        - '36'
-        - '37'
-        - '38'
-        - '39'
-        - '40'
-        - '41'
-        - '42'
-        - '43'
-        - '44'
-        - '45'
-        - '46'
-        - '47'
-        - '48'
-        - '50'
-        - '51'
-        - '52'
-        - '53'
-        - '54'
-        - '55'
-        - '56'
-        - '57'
-        - '58'
-        - '59'
-        - '60'
-        - '61'
-        - '62'
-        - '63'
-        - '64'
-        - '65'
-        - '66'
-        - '67'
-        - '68'
-        - '69'
-        - '70'
-        - '71'
-        - '72'
-        - '73'
-        - '74'
-        - '75'
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+        - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 19
+        - 20
+        - 24
+        - 25
+        - 26
+        - 30
+        - 31
+        - 32
+        - 33
+        - 34
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
+        - 45
+        - 46
+        - 47
+        - 48
+        - 50
+        - 51
+        - 52
+        - 53
+        - 54
+        - 55
+        - 56
+        - 57
+        - 58
+        - 59
+        - 60
+        - 61
+        - 62
+        - 63
+        - 64
+        - 65
+        - 66
+        - 67
+        - 68
+        - 69
+        - 70
+        - 71
+        - 72
+        - 73
+        - 74
+        - 75
     TemplatePdfResponse:
       type: object
       properties:
