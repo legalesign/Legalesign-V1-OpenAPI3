@@ -102,12 +102,7 @@ paths:
       operationId: postAttachment
       responses:
         '201':
-          description: Success
-          headers:
-            Location:
-              description: Resource URI for new attachment
-              schema:
-                type: string
+          description: Success. Attachment URI will be in Location header.
         '400':
           description: 'Bad Request, read response for error information'
           content:
@@ -236,9 +231,10 @@ paths:
             return_signer_links was set to true, the body will contain a JSON dict containing the signing links.
           headers:
             Location:
-              description: Resource URI for new signing document
+              description: new document resource uri
               schema:
                 type: string
+                format: uri
           content:
             application/json:
               schema:
@@ -391,7 +387,7 @@ paths:
           description: operation successful
           headers:
             location:
-              description: new group resource_uri
+              description: resource_uri for new group
               schema:
                 type: string
         '400':
@@ -2895,17 +2891,17 @@ components:
          * 50 - downloaded 
          * 60 - rejected
       enum:
-        - '4'
-        - '5'
-        - '10'
-        - '15'
-        - '20'
-        - '30'
-        - '35'
-        - '39'
-        - '40'
-        - '50'
-        - '60'
+        - 4
+        - 5
+        - 10
+        - 15
+        - 20
+        - 30
+        - 35
+        - 39
+        - 40
+        - 50
+        - 60
     DocumentStatusEnum:
       type: integer
       description: >
@@ -2916,11 +2912,11 @@ components:
           * 40 - Removed (before signing) 
           * 50 - Rejected
       enum:
-        - '10'
-        - '20'
-        - '30'
-        - '40'
-        - '50'
+        - 10
+        - 20
+        - 30
+        - 40
+        - 50
     PermissionsEnum:
       type: integer
       description: >
