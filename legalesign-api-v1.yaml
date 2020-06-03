@@ -1363,7 +1363,11 @@ components:
           type: string
           maxLength: 250
           pattern: ^https://
-          description: URL to send the signer to after signing (instead of download page)
+          description: >-
+            URL to send the signer to after signing (instead of download page). 
+            
+            Your URL will include query parameters with ID and state information
+            as follows: YOUR-URL?signer=[signer_uid]&doc=[doc_id]&group=[group_id]&signer_state=[signer_status]&doc_state=[doc_status]
         reminders:
           type: string
           pattern: ^(default|)$
