@@ -2183,7 +2183,10 @@ components:
         expires:
           type: string
           format: date-time
-          description: ISO8601 formed datetime
+          description: ISO8601 formed datetime, set to TZ of sender or timezone if used
+        timezone:
+          type: string
+          description: TZ of the signer, must be valid TZ as per timezoneenum (if blank uses tz of the sender)
         attachments:
           type: array
           description: List of attachment resource URIs
