@@ -2902,17 +2902,17 @@ components:
          * 50 - downloaded 
          * 60 - rejected
       x-enum-varnames:
-        - signerUnsent
-        - signerScheduled
-        - signerSent
-        - signerEmailOpened
-        - signerVisited
-        - signerFieldsComplete
-        - signerFieldsCompleteExSignature
-        - signerWitnessToSign
-        - signerSigned
-        - signerDownloaded
-        - signerRejected
+        - N4
+        - N5
+        - N10
+        - N15
+        - N20
+        - N30
+        - N35
+        - N39
+        - N40
+        - N50
+        - N60
       x-enum-descriptions:
         - "Unsent"
         - "Schedule to send"
