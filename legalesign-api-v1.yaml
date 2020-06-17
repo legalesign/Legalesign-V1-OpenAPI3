@@ -646,7 +646,14 @@ paths:
                 type: string
                 format: binary
         '201':
-          description: being de-archived, available in 4 hours
+          description: Being de-archived, available in 4 hours
+        '302':
+          description: Redirect to the download location
+          headers:
+            location:
+              description: A short lived location for download, do not use Legalesign authentication
+              schema:
+                type: string
   '/signer/{signerId}':
     get:
       tags:
