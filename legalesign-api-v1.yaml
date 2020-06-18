@@ -638,7 +638,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':kkkkkkkkkj
+        '200':
           description: A PDF file
           content:
             application/pdf:
