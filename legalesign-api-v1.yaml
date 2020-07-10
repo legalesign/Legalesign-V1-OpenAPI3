@@ -2821,7 +2821,7 @@ components:
           type: string
           description: The URL where you wish to get notified
           pattern: ^(http|https)://
-        notify_when:
+        notify:
           type: string
           description: The type of callback to receive, value must be all or signed
           pattern: ^(all|signed)$
