@@ -1287,7 +1287,7 @@ components:
         group:
           type: string
           format: uri
-          pattern: ^/api/v1/group/[-\w]{1,60}/$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
         name:
           type: string
           minLength: 1
@@ -1674,7 +1674,7 @@ components:
                 type: boolean
               group:
                 type: string
-                pattern: ^/api/v1/group/[-\w]{1,60}/$
+                pattern: ^/api/v1/group/[-\w]{1,50}/$
               modified:
                 type: string
                 format: date-time
@@ -1755,7 +1755,7 @@ components:
           type: string
         group:
           type: string
-          pattern: ^/api/v1/group/[-\w]{1,75}/$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
         signee_count:
           type: integer
           format: int36
@@ -1781,7 +1781,7 @@ components:
           type: integer
         group:
           type: string
-          pattern: ^/api/v1/group/[-\w]{1,75}/$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
         title:
           type: string
         header:
@@ -1822,7 +1822,7 @@ components:
       properties:
         group:
           type: string
-          pattern: ^/api/v1/group/[-\w]{1,60}/$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
         email:
           type: string
           format: email
@@ -2005,7 +2005,7 @@ components:
           pattern: ^[-\w ]{1,60}$
         group:
           type: string
-          pattern: ^/api/v1/group/[-\w]{1,60}/$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
         latest_text:
           type: string
           description: text/html for template
@@ -2125,7 +2125,7 @@ components:
           pattern: '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$'
         groups:
           type: string
-          pattern:  ^/api/v1/group/[-\w]{1,60}/$
+          pattern:  ^/api/v1/group/[-\w]{1,50}/$
           description: >-
             comma delimited list of groups to add user to, can be full group
             resource_uri or groupId
@@ -2882,7 +2882,7 @@ components:
       properties:
         group:
           type: string
-          pattern: ^/api/v1/group/[-\w]{1,60}$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
         pdf_file:
           type: string
           format: byte
@@ -3351,12 +3351,12 @@ components:
         group:
           type: string
           description: URI of the group name
-          pattern: ^/api/v1/group/[-\w]{1,75}/$
+          pattern: ^/api/v1/group/[-\w]{1,50}/$
           maxLength: 90
         pdf_file:
           type: string
           format: byte
-          description: base64 encoded PDF file data
+          description: Base64 encoded PDF file data, max size is a group setting, 5MB by default
         filename:
           type: string
           pattern:  ^[-\w]{1,250}.pdf$
