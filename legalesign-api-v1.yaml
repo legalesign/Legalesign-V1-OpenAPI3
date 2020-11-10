@@ -2122,7 +2122,7 @@ components:
           description: >-
             if not set a verification email is sent. at least 6 chars with a digit
           minLength: 6
-          pattern: '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$'
+          pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[=+\-^$*.\[\]{}()?"!@#%&/\\,><:;|_~`])\S{8,99}$'
         groups:
           type: string
           pattern:  ^/api/v1/group/[-\w]{1,50}/$
