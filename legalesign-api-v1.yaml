@@ -1190,7 +1190,7 @@ paths:
                   value:
                     user:
                       password:
-                        - Ensure this value has at least 6 characters
+                        - Ensure this value has at least 8 characters
       requestBody:
         content:
           application/json:
@@ -2122,7 +2122,7 @@ components:
           description: >-
             If not set a verification email is sent. Password must be at least 8 chars, include upper and lower case, with a number and a special character
           minLength: 8
-          pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[=+\-^$*.\[\]{}()?"!@#%&/\\,><:;|_~`])\S{8,99}$'
+          pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[=+\-^$*.\[\]{}()?"!@#%&/\\,><':;|_~`])\S{8,99}$
         groups:
           type: string
           pattern:  ^/api/v1/group/[-\w]{1,50}/$
