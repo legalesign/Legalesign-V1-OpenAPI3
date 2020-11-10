@@ -2120,7 +2120,7 @@ components:
         password:
           type: string
           description: >-
-            if not set a verification email is sent. at least 6 chars with a digit
+            If not set a verification email is sent. Password must be at least 8 chars, include upper and lower case, with a number and a special character
           minLength: 6
           pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[=+\-^$*.\[\]{}()?"!@#%&/\\,><:;|_~`])\S{8,99}$'
         groups:
