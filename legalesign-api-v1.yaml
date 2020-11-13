@@ -1313,7 +1313,8 @@ components:
             $ref: '#/components/schemas/DocumentSignerPost'
         signature_type:
           type: integer
-          description: Use 4 to get your executed PDF Certified. Recommended. Sorry this is obscure, a legacy issue.
+          description: Use 4 to get your executed PDF Certified. Recommended. Defaults to 1 (uses a sha256 hash for document integrity).
+          default: 1
         append_pdf:
           type: boolean
           description: >-
