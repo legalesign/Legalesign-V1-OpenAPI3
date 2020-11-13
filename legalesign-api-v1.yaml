@@ -1311,6 +1311,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentSignerPost'
+        signature_type:
+          type: integer
+          description: Use 4 to get your executed PDF Certified. Recommended. Sorry this is obscure, a legacy issue.
         append_pdf:
           type: boolean
           description: >-
