@@ -10,15 +10,9 @@ This repository holds the yaml specification of the API interface for Legalesign
 
 Use the [OpenApi Generator](https://github.com/OpenAPITools/openapi-generator), or [Swagger](https://app.swaggerhub.com/apis/legalesign/legalesign-api/oas3.2-oas3) to get an SDK in your preferred language. 
 
-We have pre-prepared some SDKs in C#, PHP, Python and Ruby on [Legalesign Github repos](https://github.com/legalesign).
 
-Review the quickstarts in the [esignature documentation](https://legalesign.com/articles/esignature-api/).
+Review the quickstarts of some SDKs in the [esignature documentation](https://legalesign.com/articles/esignature-api/).
 
-# Development in Postman
-
-Visit the [Legalesign POSTMAN collection](https://postman.legalesign.com/?version=latest). 
-
-The Postman documentation also has useful code snippets in many languages.
 
 # Documentation
 
