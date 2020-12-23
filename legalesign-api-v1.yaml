@@ -1510,11 +1510,11 @@ components:
           description: user for certain validation types
         page:
           type: integer
-          format: int36
+          format: int32
           description: which page to place field on
         signer:
           type: integer
-          format: int36
+          format: int32
           description: 1-indexed number for signer
           minimum: 1
         substantive:
@@ -1588,11 +1588,11 @@ components:
           description: Additional values for certain validation types.
         page:
           type: integer
-          format: int36
+          format: int32
           description: which page to place field on
         signer:
           type: integer
-          format: int36
+          format: int32
           description: 1-indexed number for signer
           minimum: 1
         align:
@@ -1640,7 +1640,7 @@ components:
           type: boolean
         order:
           type: integer
-          format: int36
+          format: int32
         resource_uri:
           type: string
         status:
@@ -1762,7 +1762,7 @@ components:
           pattern: ^/api/v1/group/[-\w]{1,50}/$
         signee_count:
           type: integer
-          format: int36
+          format: int32
     DocumentPdfPreview:
       type: object
       required:
@@ -1777,7 +1777,7 @@ components:
           description: raw html
         signee_count:
           type: integer
-          format: int36
+          format: int32
           description: number of signers
         signature_type:
           type: integer
@@ -1977,7 +1977,7 @@ components:
           type: string
         signee_count:
           type: integer
-          format: int36
+          format: int32
         title:
           type: string
         user:
@@ -2036,7 +2036,7 @@ components:
           type: string
         signee_count:
           type: integer
-          format: int36
+          format: int32
         title:
           type: string
         user:
@@ -3290,17 +3290,17 @@ components:
       properties:
         limit:
           type: integer
-          format: int36
+          format: int32
         next:
           type: string
         offset:
           type: integer
-          format: int36
+          format: int32
         previous:
           type: string
         total_count:
           type: integer
-          format: int36
+          format: int32
           description: total number of objects
     GroupListResponse:
       properties:
