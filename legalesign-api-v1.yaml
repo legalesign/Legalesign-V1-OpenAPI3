@@ -1462,6 +1462,15 @@ components:
     TemplatePdfFieldDetail:
       type: object
       properties:
+        align:
+          type: integer
+          description: >
+            one of the following: 
+              * 1 - left 
+              * 2 - middle 
+              * 3 - right
+          enum: [1,2,3]
+          nullable: true
         ax:
           type: number
           format: float
@@ -1493,9 +1502,13 @@ components:
             - initials
             - text
             - admin
+        fieldorder:
+          type: integer
+          format: int32
+          description: order signer progresses through fields, top-down if blank
         font_name:
           type: string
-          enum: ['', 'arial','courier','helvetica','liberation','verdana']
+          enum: ['','arial','courier','helvetica','liberation','verdana']
         font_size:
           type: integer
         hide_border:
@@ -1503,6 +1516,10 @@ components:
         label:
           type: string
           description: help signer/sender understand what to do
+        label_extra:
+          type: string
+          description: not in use
+          deprecated: true
         optional:
           type: boolean
         options:
@@ -1515,7 +1532,7 @@ components:
         signer:
           type: integer
           format: int32
-          description: 1-indexed number for signer
+          description: 1-Index number for signer (witness+100) (approver+200)
           minimum: 1
         substantive:
           type: boolean
@@ -1535,11 +1552,19 @@ components:
         - bx
         - by
         - element_type
-        - fieldorder
-        - label
         - page
         - signer
       properties:
+        align:
+          type: integer
+          description: >
+            one of the following: 
+              * 1 - left 
+              * 2 - middle 
+              * 3 - right
+          enum: [1,2,3]
+          nullable: true
+          x-enum-varnames: ['left','center','right']
         ax:
           type: number
           format: float
@@ -1569,20 +1594,34 @@ components:
             - initials
             - text
             - admin
-        font_name:
-          type: string
-          enum: ['arial','courier','helvetica','liberation','verdana']
         fieldorder:
           type: integer
           format: int32
+          nullable: true
           description: Ordering of fields as the signer progresses (top-down by if left blank)
+        font_name:
+          type: string
+          enum: ['', 'arial','courier','helvetica','liberation','verdana']
+        font_size:
+          type: number
+          format: float
+          minimum: 6
+          maximum: 20
+        hide_border:
+          type: boolean
         label:
           type: string
           pattern: ^[-\w ]{0,60}$
           description: Help a signer/sender understand what to do with the form field
         label_extra:
           type: string
+          maxLength: 250
           description: unused. more label if required
+          deprecated: true
+        optional:
+          type: boolean
+          description: Set true to allow field to be ignored
+          default: false
         options:
           type: string
           description: Additional values for certain validation types.
@@ -1593,28 +1632,8 @@ components:
         signer:
           type: integer
           format: int32
-          description: 1-indexed number for signer
+          description: 1-indexed number of signer (witness+100) (approver+200)
           minimum: 1
-        align:
-          type: integer
-          description: >
-            one of the following: 
-              * 1 - left 
-              * 2 - middle 
-              * 3 - right
-          enum: [1,2,3]
-          x-enum-varnames: ['left','center','right']
-        font_size:
-          type: number
-          format: float
-          minimum: 6
-          maximum: 20
-        hide_border:
-          type: boolean
-        optional:
-          type: boolean
-          description: Set true to allow field to be ignored
-          default: false
         substantive:
           type: boolean
           description: >-
@@ -3030,6 +3049,7 @@ components:
           description: Email notify current signer access is being withdrawn
     PdfFieldValidationEnum:
       type: integer
+      nullable: true
       description: >
         fields types and validations:
           * 1 - Email 
