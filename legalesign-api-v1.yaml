@@ -1358,7 +1358,8 @@ components:
         pdf_password:
           type: string
           pattern: ^[-\w ]{0,150}$
-          description: If the group is not set to use a password you must also use pdf_password_type
+          description: >-
+            Set a password. Must be ascii encode-able, you must also set signature_type to 4 and choose a pdf_password_type.
         pdf_password_type:
           type: integer
           x-enum-varnames: ['passtype1','passtype2']
