@@ -38,7 +38,7 @@ If you find anything wrong with the specification then [open an issue](https://g
 
 This software is published under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 
-	Copyright (c) 2020 Legalesign Limited
+	Copyright (c) 2021 Legalesign Limited
 
 	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
