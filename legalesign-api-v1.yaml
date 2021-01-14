@@ -3130,6 +3130,17 @@ components:
           * 73 - secret code, add code in options 
           * 74 - file attach, append to email to signer 
           * 75 - file attach, append to final PDF
+          * 76 - file attach, zip with final PDF for internal use, but not signer
+          * 77 - force to title caps
+          * 78 - force to uppercase
+          * 79 - force to lowercase
+          * 80 - mm/yy
+          * 81 - mm/yyyy 
+          * 82 - mm.yy
+          * 83 - mm.yyyy
+          * 84 - mm-yy 
+          * 85 - mm-yyyy
+          * 90 - drawn field
       x-enum-varnames:
         - 'f1'
         - 'f2'
