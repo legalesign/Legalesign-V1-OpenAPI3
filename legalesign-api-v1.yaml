@@ -2225,7 +2225,8 @@ components:
           type: boolean
           description: >-
             Add this you want the previous signer or approver to decide who the next person should be. 
-            Commonly used for witnesses (see \"role\"). First signer cannot use this attribute.
+            Commonly used for witnesses (see \"role\"). If you use this leave all other attributes blank.
+            First signer cannot use this attribute.
         expires:
           type: string
           format: date-time
@@ -2236,9 +2237,8 @@ components:
         role:
           type: string
           description: >-
-            If this person is a witness (you have witnesss signature in your PDF template), 
-            add \"witness\". You must use thie attribute if a witness is in your PDF. Where the person 
-            is not a witness use \"approver\" to swith signer role to approver role.
+            If this person is a witness use \"witness\". You must include this if a witness is defined in your PDF. Where the person 
+            is a normal signer, use \"approver\" to person to an approver role. Witnesses and witnessed signer require \"sms\", see also \"decide_later\".
         sms:
           type: string
           description: Use international format number to add SMS verification. Required if a witness or a witnessed signer.
