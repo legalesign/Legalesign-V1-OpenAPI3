@@ -1294,19 +1294,19 @@ components:
           maxLength: 60
         text:
           type: string
-          description: Raw html. Post data  must contain either one of the attributes text, templatepdf, template.
+          description: Raw html. This API call must contain either one of the attributes text, templatepdf, template.
         templatepdf:
           type: string
           format: uri
           pattern: ^/api/v1/templatepdf/[-\w]{1,60}/$
           description: >-
-            Resource URI of templatepdf object. Post data  must contain either one of the attributes text, templatepdf, template.
+            Resource URI of templatepdf object. This API call must contain either one of the attributes text, templatepdf, template.
         template:
           type: string
           pattern: ^/api/v1/template/[-\w]{1,60}/$
           format: uri
           description: >-
-            Resource URI of text template object. Post data must contain either one of the attributes text, templatepdf, template.
+            Resource URI of text template object. This call must contain either one of the attributes text, templatepdf, template.
         signers:
           type: array
           items:
@@ -1327,7 +1327,8 @@ components:
           default: true
         do_email:
           type: boolean
-          description: Use Legalesign email to send notification emails
+          description: >-
+            Use Legalesign email to send notification emails. If false suppresses all emails.
           default: false
         cc_emails:
           type: string
@@ -1377,7 +1378,6 @@ components:
           pattern: ^https://
           description: >-
             URL to send the signer to after signing (instead of download page). 
-            
             Your URL will include query parameters with ID and state information
             as follows: YOUR-URL?signer=[signer_uid]&doc=[doc_id]&group=[group_id]&signer_state=[signer_status]&doc_state=[doc_status]
         reminders:
