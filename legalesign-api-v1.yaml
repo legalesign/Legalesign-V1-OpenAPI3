@@ -2192,12 +2192,12 @@ components:
         - email
         - firstname
         - lastname
-        - order
       properties:
         order:
           type: integer
           format: int32
-          description: Zero-indexed signer ordering
+          description: Zero-indexed signer ordering, deprecated. Ordering of signers/witnesses/approvers is now the natural order of your signers list.
+          deprecated: true
         email:
           type: string
           maxLength: 75
@@ -2210,31 +2210,47 @@ components:
           type: string
           maxLength: 60
           pattern: ^[-\w' ]{1,60}
-        behalfof:
-          type: string
-          maxLength: 120
-        message:
-          type: string
-          description: Use keyword \"default\" to use group message
-        subject:
-          type: string
-          maxLength: 150
-          description: Subject line for outbound email
-        expires:
-          type: string
-          format: date-time
-          description: ISO8601 formed datetime, set to TZ of sender or timezone if used
-        timezone:
-          type: string
-          description: >-
-           TZ of the signer, must be valid TZ as per timezoneenum (see User for timezoneenum details). 
-           If blank uses tz of the sender.
         attachments:
           type: array
           description: List of attachment resource URIs
           items:
             type: string
             pattern: ^/api/v1/attachment/[-\w]{1,60}/$
+        behalfof:
+          type: string
+          maxLength: 120
+          description: deprecated, do not use
+          deprecated: true
+        decide_later:
+          type: boolean
+          description: >-
+            Add this you want the previous signer or approver to decide who the next person should be. 
+            Commonly used for witnesses (see \"role\"). First signer cannot use this attribute.
+        expires:
+          type: string
+          format: date-time
+          description: ISO8601 formed datetime, set to TZ of sender or timezone if used
+        message:
+          type: string
+          description: Use keyword \"default\" to use group message
+        role:
+          type: string
+          description: >-
+            If this person is a witness (you have witnesss signature in your PDF template), 
+            add \"witness\". You must use thie attribute if a witness is in your PDF. Where the person 
+            is not a witness use \"approver\" to swith signer role to approver role.
+        sms:
+          type: string
+          description: Use international format number to add SMS verification. Required if a witness or a witnessed signer.
+        subject:
+          type: string
+          maxLength: 150
+          description: Subject line for outbound email
+        timezone:
+          type: string
+          description: >-
+           TZ of the signer, must be valid TZ as per timezoneenum (see User for timezoneenum details). 
+           If blank uses tz of the sender.
     TimezoneEnum:
       type: string
       description: List of available timezones
