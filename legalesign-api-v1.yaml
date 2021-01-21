@@ -2236,9 +2236,16 @@ components:
           description: Use keyword \"default\" to use group message
         role:
           type: string
+          enum:
+            - witness
+            - approver
+          x-enum-varnames:
+            - witness
+            - approver
           description: >-
-            If this person is a witness use \"witness\". You must include this if a witness is defined in your PDF. Where the person 
-            is a normal signer, use \"approver\" to person to an approver role. Witnesses and witnessed signer require \"sms\", see also \"decide_later\".
+            If this person is a witness use \"witness\". Required where a witness is defined in your PDF.
+            If this person is a normal signer, use \"approver\" to switch to an approver role. 
+            Witnesses and witnessed signers also require \"sms\" (see also \"decide_later\").
         sms:
           type: string
           description: Use international format number to add SMS verification. Required if a witness or a witnessed signer.
