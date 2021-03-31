@@ -1738,7 +1738,7 @@ components:
                 $ref: '#/components/schemas/SignerStatusEnum'
               tag:
                 type: string
-                pattern: '^[-\w\[\]\:\;\/\.\, _]{0,250}$'
+                pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
               template:
                 type: string
                 pattern: ^/api/v1/template/[-\w]{1,60}/$
@@ -3457,7 +3457,7 @@ components:
         user:
           type: string
           description: Assign to group member if not the api user
-          pattern: '^/api/v1/user/[-\w]{1,75}/$'
+          pattern: ^/api/v1/user/[-\w]{1,75}/$
         description:
           type: string
           maxLength: 250
