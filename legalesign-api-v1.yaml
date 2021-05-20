@@ -1433,10 +1433,15 @@ components:
               bx: 0.446891191709845
               by: 0.425434569754081
               element_type: signature
+              fieldorder: null,
               font_name': ''
               font_size: 12
               hide_border: false
               label: Sign here,
+              label_extra: '',
+              logic_action: null,
+              logic_group: '',
+              map_to: ''
               optional: false
               options: ''
               page: 1,
@@ -1444,6 +1449,7 @@ components:
               substantive: false
               validation: None
               value': ''
+
             - ax: 0.20207253886010362
               ay: 0.23421773535334944
               bx: 0.47797927461139894
@@ -1453,6 +1459,10 @@ components:
               font_size: 11
               hide_border: False
               label: ''
+              label_extra: '',
+              logic_action: null,
+              logic_group: '',
+              map_to: ''
               optional: false
               options: ''
               page: 1
@@ -1529,6 +1539,24 @@ components:
           type: string
           description: not in use
           deprecated: true
+        logic_action:
+          type: string
+          x-enum-varnames: ['one-of-a-group','sum','conditional']
+          enum: [1,2,3]
+          description: >-
+          offers options for more advanced forms
+          1 = One of a set of field (radio group), 2 = Sum a set of fields, 
+          3 = Conditional upon another field
+        map_to:
+          type: string
+          pattern: ^[\.-_  \w:]{0,120}$
+          maxlength: 120
+          description: custom data for form integrations
+        logic_group:
+          type: string
+          pattern: ^[\.-_  \w:]{0,60}$
+          maxlength: 60
+          description: values to enable a given logic_action in the form
         optional:
           type: boolean
         options:
@@ -1622,12 +1650,34 @@ components:
         label:
           type: string
           pattern: ^[-\w ]{0,60}$
+          maxlength: 60
           description: Help a signer/sender understand what to do with the form field
         label_extra:
           type: string
           maxLength: 250
           description: unused. more label if required
           deprecated: true
+        logic_action:
+          type: string
+          x-enum-varnames: ['one-of-a-group','sum','conditional']
+          enum:
+            - 1
+            - 2
+            - 3
+          description: >-
+          offers options for more advanced forms
+          1 = One of a set of field (radio group), 2 = Sum a set of fields, 
+          3 = Conditional upon another field
+        logic_group:
+          type: string
+          pattern: ^[\.-_  \w:]{0,60}$
+          maxlength: 60
+          description: values to enable a given logic_action in the form
+        map_to:
+          type: string
+          pattern: ^[\.-_  \w:]{0,120}$
+          maxlength: 120
+          description: custom data for form integrations
         optional:
           type: boolean
           description: Set true to allow field to be ignored
