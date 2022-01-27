@@ -1438,9 +1438,9 @@ components:
               font_size: 12
               hide_border: false
               label: Sign here,
-              label_extra: '',
-              logic_action: null,
-              logic_group: '',
+              label_extra: ''
+              logic_action: null
+              logic_group: ''
               map_to: ''
               optional: false
               options: ''
@@ -1459,9 +1459,9 @@ components:
               font_size: 11
               hide_border: False
               label: ''
-              label_extra: '',
-              logic_action: null,
-              logic_group: '',
+              label_extra: ''
+              logic_action: null
+              logic_group: ''
               map_to: ''
               optional: false
               options: ''
