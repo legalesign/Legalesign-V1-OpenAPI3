@@ -1664,7 +1664,7 @@ components:
             - 1
             - 2
             - 3
-          description: >-
+          description: >
             offers options for more advanced forms
             1 = One of a set of field (radio group)
             2 = Sum a set of fields
