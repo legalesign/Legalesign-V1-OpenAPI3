@@ -1666,9 +1666,9 @@ components:
             - 3
           description: >
             offers options for more advanced forms
-            1 = One of a set of field (radio group)
-            2 = Sum a set of fields
-            3 = Conditional upon another field
+              1 = One of a set of field - radio group
+              2 = Sum a set of fields
+              3 = Conditional upon another field
         logic_group:
           type: string
           pattern: ^[\.-_  \w:]{0,60}$
