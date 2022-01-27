@@ -1665,18 +1665,18 @@ components:
             - 2
             - 3
           description: >-
-          offers options for more advanced forms
-          1 = One of a set of field (radio group), 2 = Sum a set of fields, 
-          3 = Conditional upon another field
+            offers options for more advanced forms
+            1 = One of a set of field (radio group), 2 = Sum a set of fields, 
+            3 = Conditional upon another field
         logic_group:
           type: string
           pattern: ^[\.-_  \w:]{0,60}$
-          maxlength: 60
+          maxLength: 60
           description: values to enable a given logic_action in the form
         map_to:
           type: string
           pattern: ^[\.-_  \w:]{0,120}$
-          maxlength: 120
+          maxLength: 120
           description: custom data for form integrations
         optional:
           type: boolean
