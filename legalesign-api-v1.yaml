@@ -576,7 +576,7 @@ paths:
     get:
       tags:
         - webhook
-      summary: Get event notifications
+      summary: Get webhooks
       description: Callbacks sent to URL of your choice
       operationId: getWebhooks
       responses:
@@ -869,7 +869,7 @@ paths:
     post:
       tags:
         - webhook
-      summary: Create webhooks
+      summary: Create webhook
       operationId: postWebhook
       responses:
         '201':
@@ -1152,7 +1152,7 @@ paths:
     post:
       tags:
         - webhook
-      summary: Delete notification
+      summary: Delete webhook
       operationId: deleteWebhook
       responses:
         '200':
