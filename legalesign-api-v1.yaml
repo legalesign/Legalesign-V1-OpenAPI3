@@ -1334,6 +1334,9 @@ components:
           type: string
           description: >-
             Comma delimited string of email addresses that are notified of signing or rejection.
+        convert_sender_to_signer:
+          type: boolean
+          description: If any sender fields are left blank, convert them to signer fields.
         footer:
           type: string
           description: >-
@@ -1540,9 +1543,12 @@ components:
           description: not in use
           deprecated: true
         logic_action:
-          type: string
+          type: integer
           x-enum-varnames: ['one-of-a-group','sum','conditional']
-          enum: [1,2,3]
+          enum:
+            - 1
+            - 2
+            - 3
           description: >-
             offers options for more advanced forms
             1 = One of a set of field (radio group), 2 = Sum a set of fields, 
@@ -1600,7 +1606,10 @@ components:
               * 1 - left 
               * 2 - middle 
               * 3 - right
-          enum: [1,2,3]
+          enum: 
+            - 1
+            - 2
+            - 3
           nullable: true
           x-enum-varnames: ['left','center','right']
         ax:
@@ -1650,7 +1659,6 @@ components:
         label:
           type: string
           pattern: ^[-\w ]{0,60}$
-          maxlength: 60
           description: Help a signer/sender understand what to do with the form field
         label_extra:
           type: string
@@ -1658,7 +1666,7 @@ components:
           description: unused. more label if required
           deprecated: true
         logic_action:
-          type: string
+          type: integer
           x-enum-varnames: ['one-of-a-group','sum','conditional']
           enum:
             - 1
@@ -2285,6 +2293,10 @@ components:
         message:
           type: string
           description: Use keyword \"default\" to use group message
+        reviewers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewersPost'
         role:
           type: string
           enum:
@@ -2309,6 +2321,32 @@ components:
           description: >-
            TZ of the signer, must be valid TZ as per timezoneenum (see User for timezoneenum details). 
            If blank uses tz of the sender.
+    ReviewersPost:
+      type: object
+      description: >-
+        Create a reviewer. A reviewer is linked to a signer and 
+        receives emailed copies of draft and signed documents.
+        N.B. they only receive them if their associated signer does.
+        Therefore make sure your admin/experience settings are set to attach
+        PDFs to your signer emails.
+        You can set to include the signing link to a reviewer, and thereby hit the use
+        case to send a document to a group of people where the first who signs, signs.
+      required:
+        - email
+      properties:
+        firstname:
+          type: string
+          maxLength: 60
+        lastname:
+          type: string
+          maxLength: 60
+        email:  
+          type: string
+          format: email
+        include_link:
+          type: boolean
+          default: false
+          description: include a link to the signing pages enabling a reviewer to signer
     TimezoneEnum:
       type: string
       description: List of available timezones
