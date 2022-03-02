@@ -316,6 +316,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DocumentResponseDetail'
+  '/document/{docId}/fields':
+    parameters:
+      - name: docId
+        in: path
+        description: document id
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags:
+        - document
+      summary: Get document fields
+      operationId: getDocumentFields
+      responses:
+        '200':
+          description: operation successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    element_type:
+                      type: string
+                      enum:
+                        - signature
+                        - initials
+                        - admin
+                        - text
+                    fieldorder:
+                      type: integer
+                      nullable: true
+                    label:
+                      type: string
+                    label_extra:
+                      type: string
+                      nullable: true
+                    signers:
+                      type: integer
+                    state:
+                      type: boolean
+                      description: if saved by signer
+                    validation:
+                      $ref: '#/components/schemas/PdfFieldValidationEnum'
+                    value:
+                      type: string
     delete:
       tags:
         - document
@@ -700,6 +748,8 @@ paths:
                   type: object
                   properties:
                     label:
+                      type: string
+                    label_extra:
                       type: string
                     state:
                       type: boolean
@@ -3254,6 +3304,8 @@ components:
           * 84 - mm-yy 
           * 85 - mm-yyyy
           * 90 - drawn field
+          * 91 - countries list
+          * 92 - honorifics list
       x-enum-varnames:
         - 'f1'
         - 'f2'
@@ -3334,6 +3386,8 @@ components:
         - 'f84'
         - 'f85'
         - 'f90'
+        - 'f91'
+        - 'f92'
       enum:
         - 1
         - 2
@@ -3414,6 +3468,8 @@ components:
         - 84
         - 85
         - 90
+        - 91
+        - 92
     TemplatePdfResponse:
       type: object
       properties:
