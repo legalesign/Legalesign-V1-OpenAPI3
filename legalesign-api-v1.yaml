@@ -2353,6 +2353,8 @@ components:
           enum:
             - witness
             - approver
+          deprecated: true
+          description: Deprecated. PDF Only. Role (i.e. signer, witness or approver) is now automagically assigned based on what the PDF expect/how it is prepared. See TemplatePdfResponse parties.
           x-enum-varnames:
             - witness
             - approver
@@ -3481,6 +3483,9 @@ components:
         modified:
           type: string
           format: date-time
+        parties:
+          type: string
+          description: JSON stringified array of document parties
         page_count:
           type: integer
         resource_uri:
@@ -3505,6 +3510,7 @@ components:
         group: /api/v1/group/my-group/
         modified: 2020-05-20T:15:10
         page_count: 10
+        parties: '["Signer", "Witness", "Approvers"]'
         resource_uri: api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
         title: 'Template Supplier Agreement'
         user: /api/v1/user/34034334ab34334333rh33434334f9/
