@@ -2354,7 +2354,6 @@ components:
             - witness
             - approver
           deprecated: true
-          description: Deprecated. PDF Only. Role (i.e. signer, witness or approver) is now automagically assigned based on what the PDF expect/how it is prepared. See TemplatePdfResponse parties.
           x-enum-varnames:
             - witness
             - approver
