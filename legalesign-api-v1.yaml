@@ -2354,9 +2354,6 @@ components:
             - witness
             - approver
           deprecated: true
-          x-enum-varnames:
-            - witness
-            - approver
           description: >-
             If this person is a witness use \"witness\". Required where a witness is defined in your PDF.
             If this person is a normal signer, use \"approver\" to switch to an approver role. 
