@@ -3074,6 +3074,9 @@ components:
         - group
         - pdf_file
       properties:
+        archive_upon_send: 
+          type: boolean
+          description: archive PDF when sent
         group:
           type: string
           pattern: ^/api/v1/group/[-\w]{1,50}/$
@@ -3081,11 +3084,11 @@ components:
           type: string
           format: byte
           description: base64 encoded PDF file data
+        process_tags:
+          type: boolean
         title:
           type: string
           maxLength: 120
-        process_tags:
-          type: boolean
         user:
           type: string
           description: assign to group member if not api user
