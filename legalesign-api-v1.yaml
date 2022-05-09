@@ -316,6 +316,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DocumentResponseDetail'
+    delete:
+      tags:
+        - document
+      summary: Void/archive signing document
+      operationId: archiveDocument
+      description: >-
+        Delete does not remove permanently but sets it with status 40 (removed)  and archives it.
+      responses:
+        '204':
+          description: successful operation
   '/document/{docId}/fields':
     parameters:
       - name: docId
@@ -364,16 +374,6 @@ paths:
                       $ref: '#/components/schemas/PdfFieldValidationEnum'
                     value:
                       type: string
-    delete:
-      tags:
-        - document
-      summary: Void/archive signing document
-      operationId: archiveDocument
-      description: >-
-        Delete does not remove permanently but sets it with status 40 (removed)  and archives it.
-      responses:
-        '204':
-          description: successful operation
   '/document/{docId}/delete':  
       parameters:
       - name: docId
@@ -615,7 +615,7 @@ paths:
     delete:
       tags:
         - member
-      summary: remove member from group
+      summary: Remove member from group
       operationId: deleteMember
       responses:
         '204':
