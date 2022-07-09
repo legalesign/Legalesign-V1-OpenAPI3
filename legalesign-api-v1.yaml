@@ -6,7 +6,7 @@ info:
 
 
     Start by creating a trial account at
-    https://app1.legalesign.com/auth/intro/. Upon account activation, select the
+    https://access.legalesign.com/?q=signUp. Upon account activation, select the
     API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills.
     You will need to show experience in API dev. 
     You will be in sandbox mode that will limit you to 5 signers. Add them on
@@ -620,7 +620,7 @@ paths:
       responses:
         '204':
           description: operation successful
-  /notifications:
+  '/notifications':
     get:
       tags:
         - webhook
@@ -641,10 +641,9 @@ paths:
                       type: boolean
                       example: true
                     notify_when:
-                      description: 1 =  every 6 minutes, 2 =  upon signing
+                      description: 1 =  every 6 minutes, 2 = upon signing, 3 = when sent, 4 when rejected
                       type: integer
-                      x-enum-varnames:: ['callback1','callback2']
-                      enum: [1,2]
+                      enum: [1,2,3,4]
                       example: 1
                     url:
                       type: string
@@ -652,6 +651,43 @@ paths:
       externalDocs:
         description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
+  '/subscribe':
+    post:
+      tags:
+        - webhook
+      summary: Create a webhook
+      description: Create webhooks to get notified of events
+      operationId: postWebhook
+      requestBody:
+        content: 
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/WebhookPost'
+        description: Data to create a webhook
+        required: true
+      responses:
+        '201':
+          description: operation successful, webhook created
+        '400':
+          description: the URL submitted is not valid or notify number not recognised
+  '/unsubscribe':
+    post:
+      tags:
+        - webhook
+      summary: Remove a webhook
+      operationId: deleteWebhook
+      requestBody:
+        content: 
+          application/json:
+            schema: 
+              $ref: '#/components/schema/WebhookDelete'
+        description: Data to create a webhook
+        required: true
+      responses:
+        '200':
+          description: operation successful, any webhooks with that url are delete
+        '400':
+          description: the URL submitted is not valid
   '/pdf/preview':
     post:
       tags:
@@ -3612,3 +3648,27 @@ components:
         description:
           type: string
           maxLength: 250
+    WebhookPost:
+      type: object
+      required:
+        - notify
+        - url
+      properties:
+        notify: 
+          type: string
+          enum:
+            - 'all'
+            - 'signed'
+            - 'sent'
+            - 'rejected'
+        url: 
+          type: string
+          description: full url of your webhook destination
+    WebhookDelete:
+      type: object
+      required:
+        - url
+      properties:
+        url: 
+          type: string
+          description: full url of webhook to delete
