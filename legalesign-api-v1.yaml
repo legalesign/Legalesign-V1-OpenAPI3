@@ -641,10 +641,10 @@ paths:
                       type: boolean
                       example: true
                     notify_when:
-                      description: 1 =  every 6 minutes, 2 =  upon signing
+                      description: 1 =  every 6 minutes, 2 =  upon signing, 3 = sent, 4 = rejected
                       type: integer
                       x-enum-varnames:: ['callback1','callback2']
-                      enum: [1,2]
+                      enum: [1,2,3,4]
                       example: 1
                     url:
                       type: string
@@ -1206,7 +1206,7 @@ paths:
       operationId: deleteWebhook
       responses:
         '200':
-          description: operation successful, will return 200 whether url is actually subscribed or not
+          description: operation successful, will return 200 whether url is subscribed or not
         '400':
           description: 'bad request - not json data or not a valid url'
       externalDocs:
@@ -2343,7 +2343,10 @@ components:
           description: ISO8601 formed datetime, set to TZ of sender or timezone if used
         message:
           type: string
-          description: Use keyword \"default\" to use group message
+          description: >-
+            Your personal message for the party, entered in the centre of the group email template.
+            Use the name of a saved email template to use that template. 
+            If there is more than one template of the same name it'll use the one last modified.
         reviewers:
           type: array
           items:
