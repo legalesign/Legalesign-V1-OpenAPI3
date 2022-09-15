@@ -2345,7 +2345,7 @@ components:
           type: string
           description: >-
             Your personal message for the party, entered in the centre of the group email template.
-            Use the name of a saved email template to use that template. 
+            Use the name of a saved email template preceeded by a hash symbol to use that template. 
             If there is more than one template of the same name it will select the one last modified.
         reviewers:
           type: array
