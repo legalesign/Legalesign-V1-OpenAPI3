@@ -126,7 +126,7 @@ paths:
               $ref: '#/components/schemas/AttachmentPost'
         description: Upload a pdf to be an email attachment
         required: true
-  '/attachment/{attachmentId}':
+  '/attachment/{attachmentId}/':
     parameters:
       - name: attachmentId
         in: path
@@ -155,7 +155,7 @@ paths:
       responses:
         '204':
           description: successful operation
-  /document:
+  /document/:
     get:
       tags:
         - document
@@ -267,7 +267,7 @@ paths:
               $ref: '#/components/schemas/DocumentPost'
         description: Send a document to be signed
         required: true
-  /document/preview:
+  /document/preview/:
     post:
       tags:
         - document
@@ -295,7 +295,7 @@ paths:
               $ref: '#/components/schemas/HTMLSigningPreviewPost'
         description: Preview signing page for HTML document
         required: true
-  '/document/{docId}':
+  '/document/{docId}/':
     parameters:
       - name: docId
         in: path
@@ -326,7 +326,7 @@ paths:
       responses:
         '204':
           description: successful operation
-  '/document/{docId}/fields':
+  '/document/{docId}/fields/':
     parameters:
       - name: docId
         in: path
@@ -374,7 +374,7 @@ paths:
                       $ref: '#/components/schemas/PdfFieldValidationEnum'
                     value:
                       type: string
-  '/document/{docId}/delete':  
+  '/document/{docId}/delete/':  
       parameters:
       - name: docId
         in: path
@@ -395,7 +395,7 @@ paths:
             description: Successful operation
           '200':
             description: Something went wrong, probably you need to allow automated deleetions.
-  /group:
+  /group/:
     get:
       tags:
         - group
@@ -447,7 +447,7 @@ paths:
             schema:
               $ref: '#/components/schemas/GroupPost'
         required: true
-  '/group/{groupId}':
+  '/group/{groupId}/':
     parameters:
       - name: groupId
         in: path
@@ -490,7 +490,7 @@ paths:
             schema:
               $ref: '#/components/schemas/GroupPatch'
         required: true
-  /invited:
+  /invited/:
     get:
       tags:
         - member
@@ -511,7 +511,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvitedListResponse'
-  '/invited/{invitedId}':
+  '/invited/{invitedId}/':
     delete:
       tags:
         - member
@@ -527,7 +527,7 @@ paths:
       responses:
         '204':
           description: operation successful
-  /member:
+  /member/:
     get:
       tags:
         - member
@@ -591,7 +591,7 @@ paths:
             schema:
               $ref: '#/components/schemas/MemberPost'
         required: true
-  '/member/{memberId}':
+  '/member/{memberId}/':
     parameters:
       - name: memberId
         in: path
@@ -620,7 +620,7 @@ paths:
       responses:
         '204':
           description: operation successful
-  /notifications:
+  /notifications/:
     get:
       tags:
         - webhook
@@ -652,7 +652,7 @@ paths:
       externalDocs:
         description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
-  '/pdf/preview':
+  '/pdf/preview/':
     post:
       tags:
         - document
@@ -673,7 +673,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  '/pdf/{docId}':
+  '/pdf/{docId}/':
     get:
       tags:
         - document
@@ -703,7 +703,7 @@ paths:
               description: A short lived location for download, do not use Legalesign authentication
               schema:
                 type: string
-  '/signer/{signerId}':
+  '/signer/{signerId}/':
     get:
       tags:
         - signer
@@ -724,7 +724,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignerResponse'
-  '/signer/{signerId}/fields1':
+  '/signer/{signerId}/fields1/':
     get:
       tags:
         - signer
@@ -758,7 +758,7 @@ paths:
                       nullable: true
                     value:
                       type: string
-  '/signer/{signerId}/new-link':
+  '/signer/{signerId}/new-link/':
     get:
       tags:
         - signer
@@ -781,7 +781,7 @@ paths:
               description: Contains new link
               schema:
                 type: string
-  '/signer/{signerId}/reset':
+  '/signer/{signerId}/reset/':
     post:
       tags:
         - signer
@@ -808,7 +808,7 @@ paths:
               $ref: '#/components/schemas/SignerResetResponse'
         description: 'Email of the earlier signer, notify current signer by email of event'
         required: true
-  '/signer/{signerId}/send-reminder':
+  '/signer/{signerId}/send-reminder/':
     post:
       tags:
         - signer
@@ -832,7 +832,7 @@ paths:
               $ref: '#/components/schemas/SendReminderPost'
         description: Message text
         required: true
-  '/signer/{signerId}/rejection':
+  '/signer/{signerId}/rejection/':
     get:
       tags:
         - signer
@@ -857,7 +857,7 @@ paths:
                     type: integer
                   reason:
                     type: string
-  /status:
+  /status/:
     get:
       tags:
         - document
@@ -894,7 +894,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusListResponse'
-  '/status/{docId}':
+  '/status/{docId}/':
     get:
       tags:
         - document
@@ -915,7 +915,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StatusResponse'
-  /subscribe:
+  /subscribe/:
     post:
       tags:
         - webhook
@@ -935,7 +935,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CallbackCreatePost'
         required: true
-  /template:
+  /template/:
     get:
       tags:
         - templatetext
@@ -1005,7 +1005,7 @@ paths:
         description: data for template creation
         required: true
         
-  /templatepdf:
+  /templatepdf/:
     get:
       tags:
         - templatepdf
@@ -1069,7 +1069,7 @@ paths:
               $ref: '#/components/schemas/TemplatePdfFieldPost'
         description: Data for PDF upload
         required: true
-  '/templatepdf/{pdfId}':
+  '/templatepdf/{pdfId}/':
     parameters:
       - name: pdfId
         in: path
@@ -1090,7 +1090,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TemplatePdfResponse'
-  '/templatepdf/{pdfId}/fields':
+  '/templatepdf/{pdfId}/fields/':
     parameters:
       - name: pdfId
         in: path
@@ -1129,7 +1129,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PdfFieldsPost'
-  '/templatepdf/{pdfId}/tags':
+  '/templatepdf/{pdfId}/tags/':
     post:
       tags:
         - templatepdf
@@ -1150,7 +1150,7 @@ paths:
       externalDocs:
         description: text tags in pdfs
         url: 'https://legalesign.com/articles/pdf-documents/text-tags-on-legalesign/'
-  '/template/{templateId}':
+  '/template/{templateId}/':
     parameters:
       - name: templateId
         in: path
@@ -1198,7 +1198,7 @@ paths:
               $ref: '#/components/schemas/TemplateDetailPatch'
         description: Updated text template object
         required: true
-  /unsubscribe:
+  /unsubscribe/:
     post:
       tags:
         - webhook
@@ -1218,7 +1218,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CallbackDeletePost'
         required: true
-  /user:
+  /user/:
     post:
       tags:
         - user
@@ -1251,7 +1251,7 @@ paths:
       externalDocs:
         description: Read more about selecting the right permission
         url: 'https://legalesign.com/articles/users-and-user-permissions/user-permissions-explained/'
-  '/user/{userId}':
+  '/user/{userId}/':
     get:
       tags:
         - user
