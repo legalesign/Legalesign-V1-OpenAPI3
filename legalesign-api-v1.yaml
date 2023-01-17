@@ -22,8 +22,8 @@ info:
     name: API support
     url: https://legalesign.com/contact/
 externalDocs:
-  description: Find out more about Legalesign
-  url: 'https://legalesign.com/'
+  description: Find out more about Legalesign API
+  url: 'https://apidocs.legalesign.com/'
 servers:
   - url: 'https://eu-api.legalesign.com/api/v1'
 security:
@@ -1458,6 +1458,14 @@ components:
            type: string
            pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
            maxLength: 250
+        tag1:
+           type: string
+           pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+           maxLength: 250
+        tag2:
+           type: string
+           pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+           maxLength: 250
         user:
           type: string
           format: uri
@@ -1849,6 +1857,12 @@ components:
               tag:
                 type: string
                 pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+              tag1:
+                type: string
+                pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+              tag2:
+                type: string
+                pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
               template:
                 type: string
                 pattern: ^/api/v1/template/[-\w]{1,60}/$
@@ -1884,6 +1898,8 @@ components:
               signer_in_order: true
               status: 10
               tag: contract2020myref
+              tag1: my_other_ref
+              tag2: andFinalRef
               template: None
               templatepdf: /api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
               text: ''
@@ -2956,6 +2972,12 @@ components:
         tag:
           type: string
           description: your reference
+        tag1:
+          type: string
+          description: your reference
+        tag2:
+          type: string
+          description: your reference
         template:
           type: string
         templatepdf:
@@ -3003,6 +3025,8 @@ components:
           signer_in_order: true
           status: 10
           tag: contract2020myref
+          tag1: my_other_ref
+          tag2: andFinalRef
           template: None
           templatepdf: /api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
           text: ''
@@ -3056,12 +3080,18 @@ components:
           type: boolean
         tag:
           type: string
+        tag1:
+          type: string
+        tag2:
+          type: string
       example:
         archived: false
         download_final: false
         resource_uri: /api/v1/status/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
         status: 10
         tag: contract2020
+        tag1: userRef
+        tag2: otherRef
     MemberListResponse:
       type: object
       properties:
