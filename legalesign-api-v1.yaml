@@ -641,14 +641,19 @@ paths:
                       type: boolean
                       example: true
                     notify_when:
-                      description: 1 =  every 6 minutes, 2 =  upon signing, 3 = sent, 4 = rejected
+                      description: 1 =  every 6 minutes, 2 =  upon signing, 3 = sent, 4 = rejected, 10 = realtime
                       type: integer
                       x-enum-varnames:: ['callback1','callback2']
-                      enum: [1,2,3,4]
+                      enum: [1,2,3,4, 10]
                       example: 1
                     url:
                       type: string
                       example: https://mywebsite.com/callback/
+                    group_id:
+                      type: integer
+                    event_filter:
+                      $ref: '#/components/schemas/WebhookEventFilterEnum'
+
       externalDocs:
         description: Information about callbacks/webhooks
         url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
@@ -1966,6 +1971,12 @@ components:
           type: string
           pattern: ^(http|https)://
           description: URL to remove, it must match any registered callback exactly
+        eventFilter: 
+          description: if event filter is used, specify it
+          $ref: '#/components/schemas/WebhookEventFilterEnum'
+        group:
+          description: if a group filter is applied refer to it with slug or resource_uri
+          type: integer
     SendReminderPost:
       type: object
       properties:
@@ -3044,8 +3055,12 @@ components:
           pattern: ^(http|https)://
         notify:
           type: string
-          description: The type of callback to receive, value must be all, signed, sent or rejected
-          pattern: ^(all|signed|sent|rejected)$
+          description: The type of callback to receive, value must be all, signed, sent, rejected or realtime
+          pattern: ^(all|signed|sent|rejected|realtime)$
+        eventFilter:
+          $ref: '#/components/schemas/WebhookEventFilterEnum'
+        group:
+          type: string
     AttachmentListResponse:
       type: object
       properties:
@@ -3203,6 +3218,17 @@ components:
         - 30
         - 40
         - 50
+    WebhookEventFilterEnum:
+      type: string
+      enum:
+        - ''
+        - 'document.*'
+        - 'document.created'
+        - 'document.rejected'
+        - 'document.finalPdfCreated'
+        - 'recipient.*'
+        - 'recipient.completed'
+        - 'recipient.rejected'
     PermissionsEnum:
       type: integer
       description: >
