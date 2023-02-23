@@ -774,7 +774,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        '201':
           description: operation sucessful
           headers:
             Location:
