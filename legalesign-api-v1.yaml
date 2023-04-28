@@ -763,6 +763,8 @@ paths:
                       nullable: true
                     value:
                       type: string
+                      nullable: true
+                      description: 'If the field is a signer file this value will be a short lived download URL'
   '/signer/{signerId}/new-link/':
     get:
       tags:
