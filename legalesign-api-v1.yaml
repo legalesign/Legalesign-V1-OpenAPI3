@@ -1646,6 +1646,7 @@ components:
           minimum: 1
         substantive:
           type: boolean
+          deprecated: true
           description: >-
             Set if field substantive to contract terms, if so will not let others
             sign till this field completed
