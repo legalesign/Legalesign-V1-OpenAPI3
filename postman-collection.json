@@ -1,0 +1,5152 @@
+{
+	"info": {
+		"_postman_id": "245c1a85-5ec9-4543-8849-5cc6003a9a4f",
+		"name": "Legalesign API",
+		"description": "Legalesign.com is an electronic signature software. This is the documentation for its REST API. \n\nStart by creating a trial account at https://access.legalesign.com/?q=signUp. Upon account activation, select the API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills. You will need to show experience in API dev.  You will be in sandbox mode that will limit you to 5 signers. Add them on https://app1.legalesign.com/acc/settings/#api. Contact support to move to production mode when you are ready.\n\nFor any queries contact us at support@legalesign.com.\n\n\nContact Support:\n Name: API support\n Email: support@legalesign.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28149860"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "{userId}",
+					"item": [
+						{
+							"name": "Get user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId",
+										""
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId",
+												""
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"date_joined\": \"<dateTime>\",\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"last_login\": \"<dateTime>\",\n  \"last_name\": \"<string>\",\n  \"resource_uri\": \"<string>\",\n  \"timezone\": \"UTC\",\n  \"username\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update user",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId",
+										""
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>"
+										}
+									]
+								},
+								"description": "Update a user first name or last name"
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId",
+												""
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "poor password"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"gGhsuk-ko9 16NG8E27Q2YlqRvkpsR\",\n  \"last_name\": \"hytm2AScjgP8DdGEw-BY-O- wbZSEL\",\n  \"timezone\": \"UTC\",\n  \"password\": \">NCS$:AnW|>plp<A\",\n  \"groups\": \"/api/v1/group/IoCWbaD/\",\n  \"permission\": \"6\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "operation succesful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"gGhsuk-ko9 16NG8E27Q2YlqRvkpsR\",\n  \"last_name\": \"hytm2AScjgP8DdGEw-BY-O- wbZSEL\",\n  \"timezone\": \"UTC\",\n  \"password\": \">NCS$:AnW|>plp<A\",\n  \"groups\": \"/api/v1/group/IoCWbaD/\",\n  \"permission\": \"6\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "location",
+									"value": "<string>",
+									"description": {
+										"content": "resource_uri for new user (if password set)",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "poor password"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"gGhsuk-ko9 16NG8E27Q2YlqRvkpsR\",\n  \"last_name\": \"hytm2AScjgP8DdGEw-BY-O- wbZSEL\",\n  \"timezone\": \"UTC\",\n  \"password\": \">NCS$:AnW|>plp<A\",\n  \"groups\": \"/api/v1/group/IoCWbaD/\",\n  \"permission\": \"6\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "poor password"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"examples\": {\n    \"response\": {\n      \"value\": {\n        \"user\": {\n          \"password\": [\n            \"Ensure this value has at least 8 characters\"\n          ]\n        }\n      }\n    }\n  }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "unsubscribe",
+			"item": [
+				{
+					"name": "Delete webhook",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.created\",\n  \"group\": \"<integer>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/unsubscribe/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"unsubscribe",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "operation successful, will return 200 whether url is subscribed or not",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.created\",\n  \"group\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/unsubscribe/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"unsubscribe",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "bad request - not json data or not a valid url",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.created\",\n  \"group\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/unsubscribe/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"unsubscribe",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "templatepdf",
+			"item": [
+				{
+					"name": "{pdfId}",
+					"item": [
+						{
+							"name": "tags",
+							"item": [
+								{
+									"name": "Convert text tags",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/templatepdf/:pdfId/tags/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"templatepdf",
+												":pdfId",
+												"tags",
+												""
+											],
+											"variable": [
+												{
+													"key": "pdfId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Convert any text tags in the PDF into fields"
+									},
+									"response": [
+										{
+											"name": "operation successful",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/templatepdf/:pdfId/tags/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"templatepdf",
+														":pdfId",
+														"tags",
+														""
+													],
+													"variable": [
+														{
+															"key": "pdfId"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "bad request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/templatepdf/:pdfId/tags/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"templatepdf",
+														":pdfId",
+														"tags",
+														""
+													],
+													"variable": [
+														{
+															"key": "pdfId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "fields",
+							"item": [
+								{
+									"name": "Get PDF template fields",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/templatepdf/:pdfId/fields/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"templatepdf",
+												":pdfId",
+												"fields",
+												""
+											],
+											"variable": [
+												{
+													"key": "pdfId",
+													"value": "<uuid>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "list of a pdf template fields",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/templatepdf/:pdfId/fields/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"templatepdf",
+														":pdfId",
+														"fields",
+														""
+													],
+													"variable": [
+														{
+															"key": "pdfId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"ax\": \"<float>\",\n      \"ay\": \"<float>\",\n      \"bx\": \"<float>\",\n      \"by\": \"<float>\",\n      \"element_type\": \"admin\",\n      \"page\": \"<integer>\",\n      \"signer\": \"<integer>\",\n      \"align\": 3,\n      \"fieldorder\": \"<integer>\",\n      \"font_name\": \"courier\",\n      \"font_size\": \"<integer>\",\n      \"hide_border\": \"<boolean>\",\n      \"label\": \"<string>\",\n      \"label_extra\": \"<string>\",\n      \"logic_action\": 1,\n      \"map_to\": \"tg1mB<du^_Bc9\\\\3Nfr>AHCWpMTZQboz_7kYp1Uu@1GUq/pJK4fmn.WtNG/k\\\\jT<Ehv4jO Vxr7_uEsW/6f0DDfeE=fWgX<Swh9TL_kqmL.U\",\n      \"logic_group\": \"702r@o^fa4wUN/WrC3FV_H01Zg1oD\\\\yr@I/Ey:2cZk.xO5^\",\n      \"optional\": \"<boolean>\",\n      \"options\": false,\n      \"substantive\": false,\n      \"validation\": 51,\n      \"value\": \"<string>\"\n    },\n    {\n      \"ax\": \"<float>\",\n      \"ay\": \"<float>\",\n      \"bx\": \"<float>\",\n      \"by\": \"<float>\",\n      \"element_type\": \"admin\",\n      \"page\": \"<integer>\",\n      \"signer\": \"<integer>\",\n      \"align\": 1,\n      \"fieldorder\": \"<integer>\",\n      \"font_name\": \"liberation\",\n      \"font_size\": \"<integer>\",\n      \"hide_border\": \"<boolean>\",\n      \"label\": \"<string>\",\n      \"label_extra\": \"<string>\",\n      \"logic_action\": 2,\n      \"map_to\": \"Z<x?962jCLx2JFlxB;d=_Sgfb@L57=5[dmtUng5/^s/k[[D2WwEjYuGVoSC>AAGf:qK/WyzaJL?zyCaDhI>8G C6WTIXu^ti2k7w\",\n      \"logic_group\": \"dQFRAvfa;fHD5W5.CSw:P0fNeqAXn.:^8R92c0s^yXNq19sm7jx[F=uwD;\",\n      \"optional\": \"<boolean>\",\n      \"options\": false,\n      \"substantive\": false,\n      \"validation\": 73,\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Create PDF template fields",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"initials\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 3,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"HZbygs2f vy\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 2,\n    \"logic_group\": \"HwR9Ig/h@UY\",\n    \"map_to\": \"JaiWOY70pZ.zjMA^Coh<G?KG5TA9unDgjn4Y<rMP OE/3;m]dSr/vRAL\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 36,\n    \"value\": \"<string>\"\n  },\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"initials\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"arial\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"yuXf\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 2,\n    \"logic_group\": \"mpZp/?:3tk;pQ_upjk]tCk9\",\n    \"map_to\": \"H1^IR[8WY5Q0[VV.XckW7ez8gFhrWh0FENFB=QOz][quO8DYm]?Zh^ZyK;AQBnauiOHvTaepn\\\\\\\\D^e@=bST\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 20,\n    \"value\": \"<string>\"\n  }\n]",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/templatepdf/:pdfId/fields/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"templatepdf",
+												":pdfId",
+												"fields",
+												""
+											],
+											"variable": [
+												{
+													"key": "pdfId",
+													"value": "<uuid>"
+												}
+											]
+										},
+										"description": "Replace existing pdf fields with new ones"
+									},
+									"response": [
+										{
+											"name": "operation successful",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"initials\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 3,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"HZbygs2f vy\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 2,\n    \"logic_group\": \"HwR9Ig/h@UY\",\n    \"map_to\": \"JaiWOY70pZ.zjMA^Coh<G?KG5TA9unDgjn4Y<rMP OE/3;m]dSr/vRAL\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 36,\n    \"value\": \"<string>\"\n  },\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"initials\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"arial\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"yuXf\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 2,\n    \"logic_group\": \"mpZp/?:3tk;pQ_upjk]tCk9\",\n    \"map_to\": \"H1^IR[8WY5Q0[VV.XckW7ez8gFhrWh0FENFB=QOz][quO8DYm]?Zh^ZyK;AQBnauiOHvTaepn\\\\\\\\D^e@=bST\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 20,\n    \"value\": \"<string>\"\n  }\n]",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/templatepdf/:pdfId/fields/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"templatepdf",
+														":pdfId",
+														"fields",
+														""
+													],
+													"variable": [
+														{
+															"key": "pdfId"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get PDF template",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/templatepdf/:pdfId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templatepdf",
+										":pdfId",
+										""
+									],
+									"variable": [
+										{
+											"key": "pdfId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PDF template details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/templatepdf/:pdfId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"templatepdf",
+												":pdfId",
+												""
+											],
+											"variable": [
+												{
+													"key": "pdfId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"created\": \"<dateTime>\",\n  \"group\": \"<string>\",\n  \"modified\": \"<dateTime>\",\n  \"parties\": \"<string>\",\n  \"page_count\": \"<integer>\",\n  \"resource_uri\": \"<uri>\",\n  \"signer_count\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"user\": \"<uri>\",\n  \"uuid\": \"<string>\",\n  \"valid\": \"<boolean>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get PDF templates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/templatepdf/?archive=false&group=<string>&limit=20&offset=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"templatepdf",
+								""
+							],
+							"query": [
+								{
+									"key": "archive",
+									"value": "false"
+								},
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "can be full resource_uri or only id"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								},
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/templatepdf/?archive=false&group=<string>&limit=20&offset=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templatepdf",
+										""
+									],
+									"query": [
+										{
+											"key": "archive",
+											"value": "false"
+										},
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "can be full resource_uri or only id"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<string>\",\n      \"modified\": \"<dateTime>\",\n      \"parties\": \"<string>\",\n      \"page_count\": \"<integer>\",\n      \"resource_uri\": \"<uri>\",\n      \"signer_count\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"user\": \"<uri>\",\n      \"uuid\": \"<string>\",\n      \"valid\": \"<boolean>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<string>\",\n      \"modified\": \"<dateTime>\",\n      \"parties\": \"<string>\",\n      \"page_count\": \"<integer>\",\n      \"resource_uri\": \"<uri>\",\n      \"signer_count\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"user\": \"<uri>\",\n      \"uuid\": \"<string>\",\n      \"valid\": \"<boolean>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create PDF template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"group\": \"/api/v1/group/UOGi3ydS7Fl19Qvu4MYUSeL5rtYFjcy/\",\n  \"pdf_file\": \"<string>\",\n  \"archive_upon_send\": \"<boolean>\",\n  \"process_tags\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/templatepdf/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"templatepdf",
+								""
+							]
+						},
+						"description": "Upload a PDF document you want to send to be signed"
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/UOGi3ydS7Fl19Qvu4MYUSeL5rtYFjcy/\",\n  \"pdf_file\": \"<string>\",\n  \"archive_upon_send\": \"<boolean>\",\n  \"process_tags\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/templatepdf/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"templatepdf",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "location",
+									"value": "<string>",
+									"description": {
+										"content": "resource_uri for new pdf template",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "template",
+			"item": [
+				{
+					"name": "{templateId}",
+					"item": [
+						{
+							"name": "Get text template",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/template/:templateId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"template",
+										":templateId",
+										""
+									],
+									"variable": [
+										{
+											"key": "templateId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/template/:templateId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"template",
+												":templateId",
+												""
+											],
+											"variable": [
+												{
+													"key": "templateId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"archive\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"group\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"latest_text\": \"<string>\",\n  \"modified\": \"<dateTime>\",\n  \"resource_uri\": \"<string>\",\n  \"signee_count\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\",\n  \"uuid\": \"<uuid>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Archive text template",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/template/:templateId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"template",
+										":templateId",
+										""
+									],
+									"variable": [
+										{
+											"key": "templateId",
+											"value": "<uuid>"
+										}
+									]
+								},
+								"description": "Archives a template (is recoverable, i.e. not fully deleted, if you need true data deletion contact us)."
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/template/:templateId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"template",
+												":templateId",
+												""
+											],
+											"variable": [
+												{
+													"key": "templateId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update text template",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<string>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/template/:templateId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"template",
+										":templateId",
+										""
+									],
+									"variable": [
+										{
+											"key": "templateId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/template/:templateId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"template",
+												":templateId",
+												""
+											],
+											"variable": [
+												{
+													"key": "templateId"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get text templates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/template/?group=<string>&limit=20&archive=<string>&offset=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"template",
+								""
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "can be full resource_uri or only id"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								},
+								{
+									"key": "archive",
+									"value": "<string>"
+								},
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list of text templates",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/template/?group=<string>&limit=20&archive=<string>&offset=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"template",
+										""
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "can be full resource_uri or only id"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										},
+										{
+											"key": "archive",
+											"value": "<string>"
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archive\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"group\": \"<string>\",\n      \"has_fields\": \"<boolean>\",\n      \"modified\": \"<dateTime>\",\n      \"resource_uri\": \"<string>\",\n      \"signee_count\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"user\": \"<string>\",\n      \"uuid\": \"<string>\"\n    },\n    {\n      \"archive\": \"<boolean>\",\n      \"created\": \"<dateTime>\",\n      \"group\": \"<string>\",\n      \"has_fields\": \"<boolean>\",\n      \"modified\": \"<dateTime>\",\n      \"resource_uri\": \"<string>\",\n      \"signee_count\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"user\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create text template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"5Li\",\n  \"latest_text\": \"<string>\",\n  \"group\": \"/api/v1/group/4vg7oLTSiWJf_H54_3b0Q7vt-uMfbAgDtyIQzELCB_brVV/\",\n  \"user\": \"/api/v1/user/YmGv8sLOqthmK60mwow2IBzeK4WFVEk2yQcIITK262Wy1uhfUbjy/\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/template/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"template",
+								""
+							]
+						},
+						"description": "Create a new html/text template. This probably isn't the method you are looking for. You can use the 'text' attribute in /document/ to create and send your HTML as a signing document in one call."
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"5Li\",\n  \"latest_text\": \"<string>\",\n  \"group\": \"/api/v1/group/4vg7oLTSiWJf_H54_3b0Q7vt-uMfbAgDtyIQzELCB_brVV/\",\n  \"user\": \"/api/v1/user/YmGv8sLOqthmK60mwow2IBzeK4WFVEk2yQcIITK262Wy1uhfUbjy/\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/template/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"template",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Location",
+									"value": "<string>",
+									"description": {
+										"content": "resource_uri for new template",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "subscribe",
+			"item": [
+				{
+					"name": "Create webhook",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"notify\": \"signed\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.*\",\n  \"group\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscribe/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribe",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"notify\": \"signed\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.*\",\n  \"group\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/subscribe/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"subscribe",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"notify\": \"signed\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.*\",\n  \"group\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/subscribe/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"subscribe",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "status",
+			"item": [
+				{
+					"name": "{docId}",
+					"item": [
+						{
+							"name": "Get signing document status",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/status/:docId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"status",
+										":docId",
+										""
+									],
+									"variable": [
+										{
+											"key": "docId",
+											"value": "<string>"
+										}
+									]
+								},
+								"description": "Faster short query for a document status"
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/status/:docId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"status",
+												":docId",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"archived\": \"<boolean>\",\n  \"resource_uri\": \"<string>\",\n  \"status\": 35,\n  \"download_final\": \"<boolean>\",\n  \"tag\": \"<string>\",\n  \"tag1\": \"<string>\",\n  \"tag2\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get signing documents status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/status/?filter=<string>&offset=<integer>&limit=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"status",
+								""
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "<string>",
+									"description": "Filter on archived status, default is false"
+								},
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								}
+							]
+						},
+						"description": "Shortened faster query for status of signing documents"
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/status/?filter=<string>&offset=<integer>&limit=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"status",
+										""
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "<string>",
+											"description": "Filter on archived status, default is false"
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archived\": \"<boolean>\",\n      \"resource_uri\": \"<string>\",\n      \"status\": 60,\n      \"download_final\": \"<boolean>\",\n      \"tag\": \"<string>\",\n      \"tag1\": \"<string>\",\n      \"tag2\": \"<string>\"\n    },\n    {\n      \"archived\": \"<boolean>\",\n      \"resource_uri\": \"<string>\",\n      \"status\": 35,\n      \"download_final\": \"<boolean>\",\n      \"tag\": \"<string>\",\n      \"tag1\": \"<string>\",\n      \"tag2\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "signer",
+			"item": [
+				{
+					"name": "{signerId}",
+					"item": [
+						{
+							"name": "send-reminder",
+							"item": [
+								{
+									"name": "Send signer reminder email",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/signer/:signerId/send-reminder/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"signer",
+												":signerId",
+												"send-reminder",
+												""
+											],
+											"variable": [
+												{
+													"key": "signerId",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "operation successful",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"text\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/send-reminder/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"send-reminder",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "failed to send",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"text\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/send-reminder/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"send-reminder",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "reset",
+							"item": [
+								{
+									"name": "Reset to earlier signer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"<string>\",\n  \"notify\": \"<boolean>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/signer/:signerId/reset/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"signer",
+												":signerId",
+												"reset",
+												""
+											],
+											"variable": [
+												{
+													"key": "signerId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Reset to an earlier signer if forwarded"
+									},
+									"response": [
+										{
+											"name": "Ok",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"notify\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/reset/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"reset",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "error - document either signed, or email is same as existing, or if previous email not found. Read response body for error information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"notify\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/reset/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"reset",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "rejection",
+							"item": [
+								{
+									"name": "Get signer rejection reason",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/signer/:signerId/rejection/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"signer",
+												":signerId",
+												"rejection",
+												""
+											],
+											"variable": [
+												{
+													"key": "signerId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Returns reason signer gave for rejecting a document, if given"
+									},
+									"response": [
+										{
+											"name": "operation successful",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/rejection/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"rejection",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<integer>\",\n  \"reason\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "new-link",
+							"item": [
+								{
+									"name": "Get signer access link",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/signer/:signerId/new-link/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"signer",
+												":signerId",
+												"new-link",
+												""
+											],
+											"variable": [
+												{
+													"key": "signerId",
+													"value": "<string>"
+												}
+											]
+										},
+										"description": "Returns 1-use link for signer in Location header. "
+									},
+									"response": [
+										{
+											"name": "operation sucessful",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/new-link/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"new-link",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Location",
+													"value": "<string>",
+													"description": {
+														"content": "Contains new link",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "fields1",
+							"item": [
+								{
+									"name": "Get signer form fields",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/signer/:signerId/fields1/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"signer",
+												":signerId",
+												"fields1",
+												""
+											],
+											"variable": [
+												{
+													"key": "signerId",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "operation successful",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/signer/:signerId/fields1/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"signer",
+														":signerId",
+														"fields1",
+														""
+													],
+													"variable": [
+														{
+															"key": "signerId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"state\": \"<boolean>\",\n    \"fieldorder\": \"<integer>\",\n    \"value\": \"<string>\"\n  },\n  {\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"state\": \"<boolean>\",\n    \"fieldorder\": \"<integer>\",\n    \"value\": \"<string>\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get signer",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/signer/:signerId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signer",
+										":signerId",
+										""
+									],
+									"variable": [
+										{
+											"key": "signerId",
+											"value": "<string>"
+										}
+									]
+								},
+								"description": "Get status and details of an individual signer"
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/signer/:signerId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"signer",
+												":signerId",
+												""
+											],
+											"variable": [
+												{
+													"key": "signerId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"document\": \"<string>\",\n  \"email\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"order\": \"<integer>\",\n  \"resource_uri\": \"<string>\",\n  \"status\": 20\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "pdf",
+			"item": [
+				{
+					"name": "{docId}",
+					"item": [
+						{
+							"name": "Location to download PDF",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/pdf"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pdf/:docId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pdf",
+										":docId",
+										""
+									],
+									"variable": [
+										{
+											"key": "docId",
+											"value": "<string>"
+										}
+									]
+								},
+								"description": "Get the PDF for a signing document"
+							},
+							"response": [
+								{
+									"name": "A PDF file",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/pdf"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pdf/:docId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pdf",
+												":docId",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/pdf"
+										}
+									],
+									"cookie": [],
+									"body": "<string>"
+								},
+								{
+									"name": "Being de-archived, available in 4 hours",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pdf/:docId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pdf",
+												":docId",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Redirect to the download location",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pdf/:docId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pdf",
+												":docId",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId"
+												}
+											]
+										}
+									},
+									"status": "Found",
+									"code": 302,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "location",
+											"value": "<string>",
+											"description": {
+												"content": "A short lived location for download, do not use Legalesign authentication",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "preview",
+					"item": [
+						{
+							"name": "text/html document as pdf preview",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/pdf"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/HJnO1Fa_zv0doT/\",\n  \"is_signature_per_page\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signee_count\": \"<integer>\",\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"header\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"footer_height\": \"<long>\",\n  \"pdfheader\": \"<boolean>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pdf/preview/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pdf",
+										"preview",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "A PDF file",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/pdf"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"group\": \"/api/v1/group/HJnO1Fa_zv0doT/\",\n  \"is_signature_per_page\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signee_count\": \"<integer>\",\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"header\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"footer_height\": \"<long>\",\n  \"pdfheader\": \"<boolean>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/pdf/preview/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pdf",
+												"preview",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/pdf"
+										}
+									],
+									"cookie": [],
+									"body": "<string>"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "Get webhooks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/notifications/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"notifications",
+								""
+							]
+						},
+						"description": "Callbacks sent to URL of your choice"
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/notifications/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"notifications",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"active\": \"<boolean>\",\n    \"notify_when\": 3,\n    \"url\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"event_filter\": \"recipient.rejected\"\n  },\n  {\n    \"active\": \"<boolean>\",\n    \"notify_when\": 2,\n    \"url\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"event_filter\": \"document.*\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "member",
+			"item": [
+				{
+					"name": "{memberId}",
+					"item": [
+						{
+							"name": "Get group member",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/member/:memberId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"member",
+										":memberId",
+										""
+									],
+									"variable": [
+										{
+											"key": "memberId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/member/:memberId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"member",
+												":memberId",
+												""
+											],
+											"variable": [
+												{
+													"key": "memberId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"created\": \"<dateTime>\",\n  \"group\": \"<uri>\",\n  \"modified\": \"<dateTime>\",\n  \"permission\": 6,\n  \"resource_uri\": \"<uri>\",\n  \"user\": \"<uri>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Remove member from group",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/member/:memberId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"member",
+										":memberId",
+										""
+									],
+									"variable": [
+										{
+											"key": "memberId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/member/:memberId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"member",
+												":memberId",
+												""
+											],
+											"variable": [
+												{
+													"key": "memberId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get group members",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/member/?group=<string>&offset=<integer>&limit=20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"member",
+								""
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "filter list by a given group"
+								},
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								}
+							]
+						},
+						"description": "List members of groups, one user may be in one or more groups"
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/member/?group=<string>&offset=<integer>&limit=20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"member",
+										""
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "filter list by a given group"
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<uri>\",\n      \"modified\": \"<dateTime>\",\n      \"permission\": 4,\n      \"resource_uri\": \"<uri>\",\n      \"user\": \"<uri>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<uri>\",\n      \"modified\": \"<dateTime>\",\n      \"permission\": 3,\n      \"resource_uri\": \"<uri>\",\n      \"user\": \"<uri>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create group member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/nFt-s3LOK30DOz-ng-u5/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/member/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"member",
+								""
+							]
+						},
+						"description": "If the email is a registered user then access to group will be immediate, otherise an invitation will be created and emailed."
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/nFt-s3LOK30DOz-ng-u5/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/member/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"member",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "operation not successful, e.g. person is already a member or not yet joined",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/nFt-s3LOK30DOz-ng-u5/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/member/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"member",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"example\": {\n    \"response\": {\n      \"value\": {\n        \"member\": {\n          \"exists\": \"User is already a member of the group\"\n        }\n      }\n    }\n  }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "invited",
+			"item": [
+				{
+					"name": "{invitedId}",
+					"item": [
+						{
+							"name": "Delete invitation",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/invited/:invitedId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"invited",
+										":invitedId",
+										""
+									],
+									"variable": [
+										{
+											"key": "invitedId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/invited/:invitedId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"invited",
+												":invitedId",
+												""
+											],
+											"variable": [
+												{
+													"key": "invitedId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get group invitations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/invited/?group=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"invited",
+								""
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "filter list by a given group"
+								}
+							]
+						},
+						"description": "Invitations to people to join the group are listed by email"
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/invited/?group=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"invited",
+										""
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "filter list by a given group"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"email\": \"<email>\",\n      \"group\": \"<uri>\",\n      \"resource_uri\": \"<uri>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"email\": \"<email>\",\n      \"group\": \"<uri>\",\n      \"resource_uri\": \"<uri>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "{groupId}",
+					"item": [
+						{
+							"name": "Get group",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/group/:groupId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										":groupId",
+										""
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/group/:groupId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"group",
+												":groupId",
+												""
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"created\": \"<dateTime>\",\n  \"default_email\": \"<string>\",\n  \"default_extraemail\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<integer>\",\n  \"header\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"members\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"modified\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"pagesize\": \"<integer>\",\n  \"public_name\": \"<string>\",\n  \"resource_uri\": \"<uri>\",\n  \"slug\": \"<string>\",\n  \"user\": \"<string>\",\n  \"xframe_allow\": \"<boolean>\",\n  \"xframe_allow_pdf_edit\": \"<boolean>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update group",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"public_name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/group/:groupId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										":groupId",
+										""
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "operation successful",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"public_name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/group/:groupId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"group",
+												":groupId",
+												""
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"public_name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/group/:groupId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"group",
+												":groupId",
+												""
+											],
+											"variable": [
+												{
+													"key": "groupId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/group/?offset=<integer>&limit=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								""
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								}
+							]
+						},
+						"description": "List groups the api user belongs to"
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/group/?offset=<integer>&limit=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										""
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"is_active\": \"<boolean>\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"public_name\": \"<string>\",\n      \"resource_uri\": \"<uri>\",\n      \"slug\": \"<string>\",\n      \"user\": \"<string>\",\n      \"xframe_allow\": \"<boolean>\",\n      \"xframe_allow_pdf_edit\": \"<boolean>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"is_active\": \"<boolean>\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"public_name\": \"<string>\",\n      \"resource_uri\": \"<uri>\",\n      \"slug\": \"<string>\",\n      \"user\": \"<string>\",\n      \"xframe_allow\": \"<boolean>\",\n      \"xframe_allow_pdf_edit\": \"<boolean>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create group",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/r3YAGKt8zqeEps11zB4ZtzcBE8ikihjTg5OyXA/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/group/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "operation successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/r3YAGKt8zqeEps11zB4ZtzcBE8ikihjTg5OyXA/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/group/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "location",
+									"value": "<string>",
+									"description": {
+										"content": "resource_uri for new group",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "groups allowance exceeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/r3YAGKt8zqeEps11zB4ZtzcBE8ikihjTg5OyXA/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/group/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "document",
+			"item": [
+				{
+					"name": "{docId}",
+					"item": [
+						{
+							"name": "fields",
+							"item": [
+								{
+									"name": "Get document fields",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/document/:docId/fields/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"document",
+												":docId",
+												"fields",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId",
+													"value": "<uuid>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "operation successful",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/document/:docId/fields/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"document",
+														":docId",
+														"fields",
+														""
+													],
+													"variable": [
+														{
+															"key": "docId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"element_type\": \"signature\",\n    \"fieldorder\": \"<integer>\",\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"signers\": \"<integer>\",\n    \"state\": \"<boolean>\",\n    \"validation\": 10,\n    \"value\": \"<string>\"\n  },\n  {\n    \"element_type\": \"text\",\n    \"fieldorder\": \"<integer>\",\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"signers\": \"<integer>\",\n    \"state\": \"<boolean>\",\n    \"validation\": 31,\n    \"value\": \"<string>\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "Permanently delete signing document",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/document/:docId/delete/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"document",
+												":docId",
+												"delete",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId",
+													"value": "<uuid>"
+												}
+											]
+										},
+										"description": "Permanently deletes data and files. You must enable group automated deletion. We recommend archiveDocument."
+									},
+									"response": [
+										{
+											"name": "Something went wrong, probably you need to allow automated deleetions.",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/document/:docId/delete/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"document",
+														":docId",
+														"delete",
+														""
+													],
+													"variable": [
+														{
+															"key": "docId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Successful operation",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/document/:docId/delete/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"document",
+														":docId",
+														"delete",
+														""
+													],
+													"variable": [
+														{
+															"key": "docId"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get document",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/document/:docId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										":docId",
+										""
+									],
+									"variable": [
+										{
+											"key": "docId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/document/:docId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"document",
+												":docId",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"archived\": \"<boolean>\",\n  \"auto_archive\": true,\n  \"cc_emails\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"do_email\": \"<boolean>\",\n  \"download_final\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<integer>\",\n  \"group\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"hash_value\": \"<string>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<integer>\",\n  \"modified\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"pdf_password\": \"<string>\",\n  \"pdf_password_type\": \"<string>\",\n  \"pdftext\": \"<string>\",\n  \"redirect\": \"<string>\",\n  \"resource_uri\": \"<string>\",\n  \"return_signer_links\": \"<boolean>\",\n  \"sign_mouse\": \"<boolean>\",\n  \"sign_time\": \"<dateTime>\",\n  \"sign_type\": \"<boolean>\",\n  \"sign_upload\": \"<boolean>\",\n  \"signature_placement\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signers\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"signers_in_order\": \"<boolean>\",\n  \"status\": 20,\n  \"tag\": \"<string>\",\n  \"tag1\": \"<string>\",\n  \"tag2\": \"<string>\",\n  \"template\": \"<string>\",\n  \"templatepdf\": \"<string>\",\n  \"text\": \"<string>\",\n  \"user\": \"<string>\",\n  \"uuid\": \"<uuid>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Void/archive signing document",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/document/:docId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										":docId",
+										""
+									],
+									"variable": [
+										{
+											"key": "docId",
+											"value": "<uuid>"
+										}
+									]
+								},
+								"description": "Delete does not remove permanently but sets it with status 40 (removed)  and archives it."
+							},
+							"response": [
+								{
+									"name": "successful operation",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/document/:docId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"document",
+												":docId",
+												""
+											],
+											"variable": [
+												{
+													"key": "docId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "preview",
+					"item": [
+						{
+							"name": "Preview text document signing page",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"group\": \"/api/v1/group/pZ_cStwpLhqdCEy6a8AIz2ywvNJGfOT1bFMPMB9Ua/\",\n  \"signee_count\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/document/preview/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										"preview",
+										""
+									]
+								},
+								"description": "Returns a redirect response (302) with link in the Location header to a one-use temporary URL you can redirect to, to see a preview of the signing page. Follow the redirect immediately since it expires after a few seconds."
+							},
+							"response": [
+								{
+									"name": "Short-lived link (a few seconds) to signing page preview returned in Location header",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"group\": \"/api/v1/group/pZ_cStwpLhqdCEy6a8AIz2ywvNJGfOT1bFMPMB9Ua/\",\n  \"signee_count\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/document/preview/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"document",
+												"preview",
+												""
+											]
+										}
+									},
+									"status": "Found",
+									"code": 302,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "location",
+											"value": "<string>",
+											"description": {
+												"content": "contains link to preview page",
+												"type": "text/plain"
+											}
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get signing documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/document/?archived=false&email=<string>&limit=20&offset=<integer>&group=<string>&status=<integer>&nosigners=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"document",
+								""
+							],
+							"query": [
+								{
+									"key": "archived",
+									"value": "false",
+									"description": "Filter on archived status, default is false"
+								},
+								{
+									"key": "email",
+									"value": "<string>",
+									"description": "Filter by signer email"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								},
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								},
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "Filter by a specific group"
+								},
+								{
+									"key": "status",
+									"value": "<integer>",
+									"description": "Filter on document status"
+								},
+								{
+									"key": "nosigners",
+									"value": "<string>",
+									"description": "Add value '1' to remove signers information for a faster query"
+								}
+							]
+						},
+						"description": "List (unarchived) signing documents. Use /status/ if you need high-level information."
+					},
+					"response": [
+						{
+							"name": "successful operation, list of document objects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/document/?archived=false&email=<string>&limit=20&offset=<integer>&group=<string>&status=<integer>&nosigners=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									],
+									"query": [
+										{
+											"key": "archived",
+											"value": "false",
+											"description": "Filter on archived status, default is false"
+										},
+										{
+											"key": "email",
+											"value": "<string>",
+											"description": "Filter by signer email"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										},
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "Filter by a specific group"
+										},
+										{
+											"key": "status",
+											"value": "<integer>",
+											"description": "Filter on document status"
+										},
+										{
+											"key": "nosigners",
+											"value": "<string>",
+											"description": "Add value '1' to remove signers information for a faster query"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archived\": \"<boolean>\",\n      \"auto_archive\": \"<boolean>\",\n      \"cc_emails\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"do_email\": \"<boolean>\",\n      \"download_final\": \"<boolean>\",\n      \"group\": \"/api/v1/group/Oxw5sPSPKYX3jo5W/\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"pdftext\": \"<string>\",\n      \"redirect\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"return_signer_links\": \"<boolean>\",\n      \"signers\": [\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"signers_in_order\": \"<boolean>\",\n      \"status\": 4,\n      \"tag\": \"_nO.H5a9j ;VXUsfC8PThxz[7xzErz_5qGAXric0-E7vcdIhxtHOVY;7.N]16NQjqsNzqUeAiylA]wb2jtn]I;JLt6PlDOviN6zcP,XdpF\",\n      \"tag1\": \"1[1S[ZzGGZAfo3rUjzfNU2c]S.NC[tHz-5liMZ,SpgkVq4R-A2FF H_],SX/BAK0W,l_p76_Lh1p]s,p]8rC.dMGBN3SfrXRh5_b-D\",\n      \"tag2\": \"NnCPwBb,\",\n      \"template\": \"/api/v1/template/fB49dYOP5fFjE5OhLzgcyoLdsjvhTpzifQdXT-uomWVvaw3ITdhQY_KT/\",\n      \"templatepdf\": \"/api/v1/templatepdf/ShaudCFg_qPIn_x8YtB2jl_AMFpotbVt8tmh6NDXemcNmfUfjeus9nAgkhG/\",\n      \"text\": \"<string>\",\n      \"user\": \"/api/v1/user/pR16-N2m6feW4zsOT/\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"archived\": \"<boolean>\",\n      \"auto_archive\": \"<boolean>\",\n      \"cc_emails\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"do_email\": \"<boolean>\",\n      \"download_final\": \"<boolean>\",\n      \"group\": \"/api/v1/group/FiKJG9Vco7G8WsmgRk/\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"pdftext\": \"<string>\",\n      \"redirect\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"return_signer_links\": \"<boolean>\",\n      \"signers\": [\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"signers_in_order\": \"<boolean>\",\n      \"status\": 15,\n      \"tag\": \"i:ztgMVczGbbAwdo\",\n      \"tag1\": \"HgkCX6Vh2:Tilyka4LQAa;aT/x,tP3ei7D-AOA7ywbSgSamf1gGT9lBH1jOjB[PxZ:-4gpD15T]Lx0:UZLRxmz,:O6[.[9pFw/OWxL-Mp,6Labwll5GD31D3g2V0SKNSmenQIbhQWAHc]aiulsVl\",\n      \"tag2\": \"cs,hLjpw;tBFitX0zn;idXS1buELUIt9JoaGGBlfGGK2jjlzd-8pFzZsu]pi44_Kobw:2F7mY5[4:AT8yRc OJT2SaAcn:ZtzBq:VZkQhx,omr7.y.F5REO._x3yZkOUx-8JKmT/qXp]d:BzX42U,DUp1JdLjvNtXeL]Vk9X4T]pLOt;VgQODX7dQ6vkn3GDeQuGnY2I:NKQ:cAYd/NTjsw7PnilZ-cODi_ IOl4\",\n      \"template\": \"/api/v1/template/24kZunU05MSCN/\",\n      \"templatepdf\": \"/api/v1/templatepdf/v3szru3Q0nhEnBN32VbgXK8aKs7SbkqwMHu7DzQ-BqtG/\",\n      \"text\": \"<string>\",\n      \"user\": \"/api/v1/user/v9cVnq5OsMOih8oQyqc9Xg0aTsld587gCQm3M_iJQP9I1K9LmRQ/\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Invalid status value",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/document/?archived=false&email=<string>&limit=20&offset=<integer>&group=<string>&status=<integer>&nosigners=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									],
+									"query": [
+										{
+											"key": "archived",
+											"value": "false",
+											"description": "Filter on archived status, default is false"
+										},
+										{
+											"key": "email",
+											"value": "<string>",
+											"description": "Filter by signer email"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										},
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "Filter by a specific group"
+										},
+										{
+											"key": "status",
+											"value": "<integer>",
+											"description": "Filter on document status"
+										},
+										{
+											"key": "nosigners",
+											"value": "<string>",
+											"description": "Add value '1' to remove signers information for a faster query"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create signing document",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"group\": \"/api/v1/group/1jinG_U0yRmv5UDwTJ/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"jVdUtsjFG ky0-h2AuTJVz8 m\",\n      \"lastname\": \"We gdEibkUcNhEPfvA1a\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/KAmtp6Vslt5cNA6E_H-ZDHDdVprOrzn5udPk-V9lN0FwYa/\",\n        \"/api/v1/attachment/3LsFka4eH6INHuxvzUeRJ6S492koR/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"w-f25ndqeNRBEFx\",\n      \"lastname\": \"w4otms\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/V2nzg6EkeJQMuiHFvMrgMFovPGn_3goE61_LPngMap9tvr3nWFbd3wYnXx1/\",\n        \"/api/v1/attachment/oWF3q9vumcL/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/_WrWHvZpmTdO1vjYc3Z1SlkOYi8YAoKh89rK0JaK2iip8d61Q/\",\n  \"template\": \"/api/v1/template/d58nWWRSbV8OTtTsS/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"ea66nvIujUGS1fCb4VwItFQ\",\n  \"pdf_password_type\": 2,\n  \"pdftext\": {\n    \"et97\": \"<string>\",\n    \"aliqua_f\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"default\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"consectetur_a\": \"<string>\",\n    \"voluptate_7d9\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"y:1 UkUtgD9i33WhMADCTxOaVwS9o\",\n  \"tag1\": \"dxbWR;:BnN7PMYQ1]LISUBiojsome:EO:Y3jWsoJUi1J7eJvvFRu;b, Y,Ak,SHsq2DPDQnq9N,:-bDZqYsrY6-TR_ykd,vfGiRh6vP-juSlkVHO3z3gBhL;OFM9zU;1c;/VdkH3,jBT.QFu2[6qawm0VQvdGnB4jK\",\n  \"tag2\": \"kB3ddkYwt2l5,:xs2148752I//xGxsnOW5YovTYV9skRxhWjEdnR_:7k898-c65OOeWKWuz6YzFi R,UA]l4Muxa,0lHDNcJ5k_]By.G3E-d[u7QZuOmD7upQ3MP_vyphwJ56j85/LiAx;bjDbqcLFw9t_.LbeiYWmq1dmxlk6cY/HdQ-2y01B\",\n  \"user\": \"<uri>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/document/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"document",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success. Document URI will be in Location header. If return_signer_links was set to true, the body will contain a JSON dict containing the signing links.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/1jinG_U0yRmv5UDwTJ/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"jVdUtsjFG ky0-h2AuTJVz8 m\",\n      \"lastname\": \"We gdEibkUcNhEPfvA1a\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/KAmtp6Vslt5cNA6E_H-ZDHDdVprOrzn5udPk-V9lN0FwYa/\",\n        \"/api/v1/attachment/3LsFka4eH6INHuxvzUeRJ6S492koR/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"w-f25ndqeNRBEFx\",\n      \"lastname\": \"w4otms\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/V2nzg6EkeJQMuiHFvMrgMFovPGn_3goE61_LPngMap9tvr3nWFbd3wYnXx1/\",\n        \"/api/v1/attachment/oWF3q9vumcL/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/_WrWHvZpmTdO1vjYc3Z1SlkOYi8YAoKh89rK0JaK2iip8d61Q/\",\n  \"template\": \"/api/v1/template/d58nWWRSbV8OTtTsS/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"ea66nvIujUGS1fCb4VwItFQ\",\n  \"pdf_password_type\": 2,\n  \"pdftext\": {\n    \"et97\": \"<string>\",\n    \"aliqua_f\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"default\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"consectetur_a\": \"<string>\",\n    \"voluptate_7d9\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"y:1 UkUtgD9i33WhMADCTxOaVwS9o\",\n  \"tag1\": \"dxbWR;:BnN7PMYQ1]LISUBiojsome:EO:Y3jWsoJUi1J7eJvvFRu;b, Y,Ak,SHsq2DPDQnq9N,:-bDZqYsrY6-TR_ykd,vfGiRh6vP-juSlkVHO3z3gBhL;OFM9zU;1c;/VdkH3,jBT.QFu2[6qawm0VQvdGnB4jK\",\n  \"tag2\": \"kB3ddkYwt2l5,:xs2148752I//xGxsnOW5YovTYV9skRxhWjEdnR_:7k898-c65OOeWKWuz6YzFi R,UA]l4Muxa,0lHDNcJ5k_]By.G3E-d[u7QZuOmD7upQ3MP_vyphwJ56j85/LiAx;bjDbqcLFw9t_.LbeiYWmq1dmxlk6cY/HdQ-2y01B\",\n  \"user\": \"<uri>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/document/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Location",
+									"value": "<uri>",
+									"description": {
+										"content": "new document resource uri",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"signer_1\": \"<string>\"\n}"
+						},
+						{
+							"name": "Bad Request, read response for error information",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "example error report"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/1jinG_U0yRmv5UDwTJ/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"jVdUtsjFG ky0-h2AuTJVz8 m\",\n      \"lastname\": \"We gdEibkUcNhEPfvA1a\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/KAmtp6Vslt5cNA6E_H-ZDHDdVprOrzn5udPk-V9lN0FwYa/\",\n        \"/api/v1/attachment/3LsFka4eH6INHuxvzUeRJ6S492koR/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"w-f25ndqeNRBEFx\",\n      \"lastname\": \"w4otms\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/V2nzg6EkeJQMuiHFvMrgMFovPGn_3goE61_LPngMap9tvr3nWFbd3wYnXx1/\",\n        \"/api/v1/attachment/oWF3q9vumcL/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/_WrWHvZpmTdO1vjYc3Z1SlkOYi8YAoKh89rK0JaK2iip8d61Q/\",\n  \"template\": \"/api/v1/template/d58nWWRSbV8OTtTsS/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"ea66nvIujUGS1fCb4VwItFQ\",\n  \"pdf_password_type\": 2,\n  \"pdftext\": {\n    \"et97\": \"<string>\",\n    \"aliqua_f\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"default\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"consectetur_a\": \"<string>\",\n    \"voluptate_7d9\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"y:1 UkUtgD9i33WhMADCTxOaVwS9o\",\n  \"tag1\": \"dxbWR;:BnN7PMYQ1]LISUBiojsome:EO:Y3jWsoJUi1J7eJvvFRu;b, Y,Ak,SHsq2DPDQnq9N,:-bDZqYsrY6-TR_ykd,vfGiRh6vP-juSlkVHO3z3gBhL;OFM9zU;1c;/VdkH3,jBT.QFu2[6qawm0VQvdGnB4jK\",\n  \"tag2\": \"kB3ddkYwt2l5,:xs2148752I//xGxsnOW5YovTYV9skRxhWjEdnR_:7k898-c65OOeWKWuz6YzFi R,UA]l4Muxa,0lHDNcJ5k_]By.G3E-d[u7QZuOmD7upQ3MP_vyphwJ56j85/LiAx;bjDbqcLFw9t_.LbeiYWmq1dmxlk6cY/HdQ-2y01B\",\n  \"user\": \"<uri>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/document/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "example error report"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"examples\": {\n    \"response\": {\n      \"value\": {\n        \"document\": {\n          \"name\": [\n            \"This field is required.\"\n          ]\n        }\n      }\n    }\n  }\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/1jinG_U0yRmv5UDwTJ/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"jVdUtsjFG ky0-h2AuTJVz8 m\",\n      \"lastname\": \"We gdEibkUcNhEPfvA1a\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/KAmtp6Vslt5cNA6E_H-ZDHDdVprOrzn5udPk-V9lN0FwYa/\",\n        \"/api/v1/attachment/3LsFka4eH6INHuxvzUeRJ6S492koR/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"w-f25ndqeNRBEFx\",\n      \"lastname\": \"w4otms\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/V2nzg6EkeJQMuiHFvMrgMFovPGn_3goE61_LPngMap9tvr3nWFbd3wYnXx1/\",\n        \"/api/v1/attachment/oWF3q9vumcL/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/_WrWHvZpmTdO1vjYc3Z1SlkOYi8YAoKh89rK0JaK2iip8d61Q/\",\n  \"template\": \"/api/v1/template/d58nWWRSbV8OTtTsS/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"ea66nvIujUGS1fCb4VwItFQ\",\n  \"pdf_password_type\": 2,\n  \"pdftext\": {\n    \"et97\": \"<string>\",\n    \"aliqua_f\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"default\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"consectetur_a\": \"<string>\",\n    \"voluptate_7d9\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"y:1 UkUtgD9i33WhMADCTxOaVwS9o\",\n  \"tag1\": \"dxbWR;:BnN7PMYQ1]LISUBiojsome:EO:Y3jWsoJUi1J7eJvvFRu;b, Y,Ak,SHsq2DPDQnq9N,:-bDZqYsrY6-TR_ykd,vfGiRh6vP-juSlkVHO3z3gBhL;OFM9zU;1c;/VdkH3,jBT.QFu2[6qawm0VQvdGnB4jK\",\n  \"tag2\": \"kB3ddkYwt2l5,:xs2148752I//xGxsnOW5YovTYV9skRxhWjEdnR_:7k898-c65OOeWKWuz6YzFi R,UA]l4Muxa,0lHDNcJ5k_]By.G3E-d[u7QZuOmD7upQ3MP_vyphwJ56j85/LiAx;bjDbqcLFw9t_.LbeiYWmq1dmxlk6cY/HdQ-2y01B\",\n  \"user\": \"<uri>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/document/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Throttled",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/1jinG_U0yRmv5UDwTJ/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"jVdUtsjFG ky0-h2AuTJVz8 m\",\n      \"lastname\": \"We gdEibkUcNhEPfvA1a\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/KAmtp6Vslt5cNA6E_H-ZDHDdVprOrzn5udPk-V9lN0FwYa/\",\n        \"/api/v1/attachment/3LsFka4eH6INHuxvzUeRJ6S492koR/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"w-f25ndqeNRBEFx\",\n      \"lastname\": \"w4otms\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/V2nzg6EkeJQMuiHFvMrgMFovPGn_3goE61_LPngMap9tvr3nWFbd3wYnXx1/\",\n        \"/api/v1/attachment/oWF3q9vumcL/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/_WrWHvZpmTdO1vjYc3Z1SlkOYi8YAoKh89rK0JaK2iip8d61Q/\",\n  \"template\": \"/api/v1/template/d58nWWRSbV8OTtTsS/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"ea66nvIujUGS1fCb4VwItFQ\",\n  \"pdf_password_type\": 2,\n  \"pdftext\": {\n    \"et97\": \"<string>\",\n    \"aliqua_f\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"default\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"consectetur_a\": \"<string>\",\n    \"voluptate_7d9\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"y:1 UkUtgD9i33WhMADCTxOaVwS9o\",\n  \"tag1\": \"dxbWR;:BnN7PMYQ1]LISUBiojsome:EO:Y3jWsoJUi1J7eJvvFRu;b, Y,Ak,SHsq2DPDQnq9N,:-bDZqYsrY6-TR_ykd,vfGiRh6vP-juSlkVHO3z3gBhL;OFM9zU;1c;/VdkH3,jBT.QFu2[6qawm0VQvdGnB4jK\",\n  \"tag2\": \"kB3ddkYwt2l5,:xs2148752I//xGxsnOW5YovTYV9skRxhWjEdnR_:7k898-c65OOeWKWuz6YzFi R,UA]l4Muxa,0lHDNcJ5k_]By.G3E-d[u7QZuOmD7upQ3MP_vyphwJ56j85/LiAx;bjDbqcLFw9t_.LbeiYWmq1dmxlk6cY/HdQ-2y01B\",\n  \"user\": \"<uri>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/document/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Usually unparseable JSON, or mis-referenced object",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"group\": \"/api/v1/group/1jinG_U0yRmv5UDwTJ/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"jVdUtsjFG ky0-h2AuTJVz8 m\",\n      \"lastname\": \"We gdEibkUcNhEPfvA1a\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/KAmtp6Vslt5cNA6E_H-ZDHDdVprOrzn5udPk-V9lN0FwYa/\",\n        \"/api/v1/attachment/3LsFka4eH6INHuxvzUeRJ6S492koR/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"w-f25ndqeNRBEFx\",\n      \"lastname\": \"w4otms\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/V2nzg6EkeJQMuiHFvMrgMFovPGn_3goE61_LPngMap9tvr3nWFbd3wYnXx1/\",\n        \"/api/v1/attachment/oWF3q9vumcL/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/_WrWHvZpmTdO1vjYc3Z1SlkOYi8YAoKh89rK0JaK2iip8d61Q/\",\n  \"template\": \"/api/v1/template/d58nWWRSbV8OTtTsS/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"ea66nvIujUGS1fCb4VwItFQ\",\n  \"pdf_password_type\": 2,\n  \"pdftext\": {\n    \"et97\": \"<string>\",\n    \"aliqua_f\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"default\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"consectetur_a\": \"<string>\",\n    \"voluptate_7d9\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"y:1 UkUtgD9i33WhMADCTxOaVwS9o\",\n  \"tag1\": \"dxbWR;:BnN7PMYQ1]LISUBiojsome:EO:Y3jWsoJUi1J7eJvvFRu;b, Y,Ak,SHsq2DPDQnq9N,:-bDZqYsrY6-TR_ykd,vfGiRh6vP-juSlkVHO3z3gBhL;OFM9zU;1c;/VdkH3,jBT.QFu2[6qawm0VQvdGnB4jK\",\n  \"tag2\": \"kB3ddkYwt2l5,:xs2148752I//xGxsnOW5YovTYV9skRxhWjEdnR_:7k898-c65OOeWKWuz6YzFi R,UA]l4Muxa,0lHDNcJ5k_]By.G3E-d[u7QZuOmD7upQ3MP_vyphwJ56j85/LiAx;bjDbqcLFw9t_.LbeiYWmq1dmxlk6cY/HdQ-2y01B\",\n  \"user\": \"<uri>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/document/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"document",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "attachment",
+			"item": [
+				{
+					"name": "{attachmentId}",
+					"item": [
+						{
+							"name": "Get attachment",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/attachment/:attachmentId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										":attachmentId",
+										""
+									],
+									"variable": [
+										{
+											"key": "attachmentId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/attachment/:attachmentId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"attachment",
+												":attachmentId",
+												""
+											],
+											"variable": [
+												{
+													"key": "attachmentId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"created\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"filename\": \"<string>\",\n  \"group\": \"<string>\",\n  \"resource_uri\": \"<string>\",\n  \"user\": \"<string>\",\n  \"uuid\": \"<uuid>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete attachment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/attachment/:attachmentId/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										":attachmentId",
+										""
+									],
+									"variable": [
+										{
+											"key": "attachmentId",
+											"value": "<uuid>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "successful operation",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/attachment/:attachmentId/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"attachment",
+												":attachmentId",
+												""
+											],
+											"variable": [
+												{
+													"key": "attachmentId"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get attachments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/attachment/?group=<string>&limit=20&offset=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"attachment",
+								""
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "Filter by a specific group"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "Length of dataset to return. Use with offset query to iterate through results."
+								},
+								{
+									"key": "offset",
+									"value": "<integer>",
+									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+								}
+							]
+						},
+						"description": "List attachments in your groups"
+					},
+					"response": [
+						{
+							"name": "successful operation, list of attachment objects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/attachment/?group=<string>&limit=20&offset=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "Filter by a specific group"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"group\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"user\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"group\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"user\": \"<string>\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Invalid status value",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/attachment/?group=<string>&limit=20&offset=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "Filter by a specific group"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "Length of dataset to return. Use with offset query to iterate through results."
+										},
+										{
+											"key": "offset",
+											"value": "<integer>",
+											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Upload attachment (PDF)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "example error report"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filename\": \"wzFLLWTt5uJ7w-HCBDPIqats1u_d3eNhS__ErYlnfPzIW8itOsUvm69m4NDXie_KRWD0ISTl2Is-ZJ-bPsVz9ZilNEyfKhKJpzoxsDowF8m_lB24bRomWMgCuzvORkLMKV4wKxRo7PIFdjjaoHEtUyyVppKU5O1KodqmASpK6mU1idjZm3VkxtRsCX1s2LPyon-vnmvQARq1rPWGtm5HSvqPds52nflNLpdf\",\n  \"group\": \"/api/v1/group/nCXqlf3Iw1iVukoElsyhcWJf7BwRcR/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/f1K4C6Zlr/\",\n  \"description\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/attachment/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"attachment",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success. Attachment URI will be in Location header.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"filename\": \"wzFLLWTt5uJ7w-HCBDPIqats1u_d3eNhS__ErYlnfPzIW8itOsUvm69m4NDXie_KRWD0ISTl2Is-ZJ-bPsVz9ZilNEyfKhKJpzoxsDowF8m_lB24bRomWMgCuzvORkLMKV4wKxRo7PIFdjjaoHEtUyyVppKU5O1KodqmASpK6mU1idjZm3VkxtRsCX1s2LPyon-vnmvQARq1rPWGtm5HSvqPds52nflNLpdf\",\n  \"group\": \"/api/v1/group/nCXqlf3Iw1iVukoElsyhcWJf7BwRcR/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/f1K4C6Zlr/\",\n  \"description\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachment/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request, read response for error information",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "example error report"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"filename\": \"wzFLLWTt5uJ7w-HCBDPIqats1u_d3eNhS__ErYlnfPzIW8itOsUvm69m4NDXie_KRWD0ISTl2Is-ZJ-bPsVz9ZilNEyfKhKJpzoxsDowF8m_lB24bRomWMgCuzvORkLMKV4wKxRo7PIFdjjaoHEtUyyVppKU5O1KodqmASpK6mU1idjZm3VkxtRsCX1s2LPyon-vnmvQARq1rPWGtm5HSvqPds52nflNLpdf\",\n  \"group\": \"/api/v1/group/nCXqlf3Iw1iVukoElsyhcWJf7BwRcR/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/f1K4C6Zlr/\",\n  \"description\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachment/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "example error report"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"examples\": {\n    \"response\": {\n      \"value\": {\n        \"document\": {\n          \"name\": \"Filename must be not more than 250 characters\"\n        }\n      }\n    }\n  }\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"filename\": \"wzFLLWTt5uJ7w-HCBDPIqats1u_d3eNhS__ErYlnfPzIW8itOsUvm69m4NDXie_KRWD0ISTl2Is-ZJ-bPsVz9ZilNEyfKhKJpzoxsDowF8m_lB24bRomWMgCuzvORkLMKV4wKxRo7PIFdjjaoHEtUyyVppKU5O1KodqmASpK6mU1idjZm3VkxtRsCX1s2LPyon-vnmvQARq1rPWGtm5HSvqPds52nflNLpdf\",\n  \"group\": \"/api/v1/group/nCXqlf3Iw1iVukoElsyhcWJf7BwRcR/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/f1K4C6Zlr/\",\n  \"description\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachment/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Throttled",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"filename\": \"wzFLLWTt5uJ7w-HCBDPIqats1u_d3eNhS__ErYlnfPzIW8itOsUvm69m4NDXie_KRWD0ISTl2Is-ZJ-bPsVz9ZilNEyfKhKJpzoxsDowF8m_lB24bRomWMgCuzvORkLMKV4wKxRo7PIFdjjaoHEtUyyVppKU5O1KodqmASpK6mU1idjZm3VkxtRsCX1s2LPyon-vnmvQARq1rPWGtm5HSvqPds52nflNLpdf\",\n  \"group\": \"/api/v1/group/nCXqlf3Iw1iVukoElsyhcWJf7BwRcR/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/f1K4C6Zlr/\",\n  \"description\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachment/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Usually unparseable JSON",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"filename\": \"wzFLLWTt5uJ7w-HCBDPIqats1u_d3eNhS__ErYlnfPzIW8itOsUvm69m4NDXie_KRWD0ISTl2Is-ZJ-bPsVz9ZilNEyfKhKJpzoxsDowF8m_lB24bRomWMgCuzvORkLMKV4wKxRo7PIFdjjaoHEtUyyVppKU5O1KodqmASpK6mU1idjZm3VkxtRsCX1s2LPyon-vnmvQARq1rPWGtm5HSvqPds52nflNLpdf\",\n  \"group\": \"/api/v1/group/nCXqlf3Iw1iVukoElsyhcWJf7BwRcR/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/f1K4C6Zlr/\",\n  \"description\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/attachment/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"attachment",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://eu-api.legalesign.com/api/v1"
+		}
+	]
+}
