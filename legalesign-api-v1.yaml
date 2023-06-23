@@ -1861,7 +1861,7 @@ components:
               signers_in_order:
                 type: boolean
               status:
-                $ref: '#/components/schemas/SignerStatusEnum'
+                $ref: '#/components/schemas/DocumentStatusEnum'
               tag:
                 type: string
                 pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
