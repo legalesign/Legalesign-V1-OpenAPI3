@@ -99,7 +99,7 @@ paths:
     post:
       tags:
         - attachment
-      summary: Upload attachment (PDF)
+      summary: Upload PDF attachment
       operationId: postAttachment
       responses:
         '201':

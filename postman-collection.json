@@ -4859,7 +4859,7 @@
 					]
 				},
 				{
-					"name": "Upload attachment (PDF)",
+					"name": "Upload PDF attachment",
 					"request": {
 						"method": "POST",
 						"header": [
