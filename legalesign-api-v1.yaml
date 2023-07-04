@@ -196,7 +196,7 @@ paths:
         - name: group
           in: query
           description: Filter by a specific group
-          required: false
+          required: true
           schema:
             type: string
         - name: status
