@@ -53,7 +53,7 @@ tags:
     description: Event notifications/webhooks
     externalDocs:
       description: Information about callbacks
-      url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
+      url: 'https://apidocs.legalesign.com/docs/webhooks'
 paths:
   /attachment/:
     get:
@@ -644,7 +644,7 @@ paths:
                       description: 1 =  every 6 minutes, 2 =  upon signing, 3 = sent, 4 = rejected, 10 = realtime
                       type: integer
                       x-enum-varnames:: ['callback1','callback2']
-                      enum: [1,2,3,4, 10]
+                      enum: [1,2,3,4,10]
                       example: 1
                     url:
                       type: string
@@ -655,8 +655,8 @@ paths:
                       $ref: '#/components/schemas/WebhookEventFilterEnum'
 
       externalDocs:
-        description: Information about callbacks/webhooks
-        url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
+        description: Information about webhooks
+        url: 'https://apidocs.legalesign.com/docs/webhooks'
   '/pdf/preview/':
     post:
       tags:
@@ -934,8 +934,8 @@ paths:
         '400':
           description: bad request
       externalDocs:
-        description: Information about webhooks/callbacks
-        url: 'https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/'
+        description: Information about webhooks
+        url: 'https://apidocs.legalesign.com/docs/webhooks'
       requestBody:
         content:
           application/json:
@@ -3232,6 +3232,9 @@ components:
         - 'recipient.*'
         - 'recipient.completed'
         - 'recipient.rejected'
+        - 'recipient.emailOpened'
+        - 'recipient.visiting'
+        - 'recipient.bounced'
     PermissionsEnum:
       type: integer
       description: >
