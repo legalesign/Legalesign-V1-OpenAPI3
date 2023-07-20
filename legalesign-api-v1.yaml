@@ -1097,6 +1097,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TemplatePdfResponse'
+  '/templatepdf/{pdfId}/edit-link/':
+    parameters:
+      - name: pdfId
+        in: path
+        description: uploaded PDF id
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags:
+        - templatepdf
+      summary: Get PDF embeddable link
+      operationId: getPdfTemplateEditLink
+      responses:
+        '201':
+          description: One-use link for embedding the pdf edit page
+          headers:
+            location:
+              schema:
+                type: string
+              description: One-use link to pdf edit page.
+          content:
+            application/json:
+              schema:
+                type: string          
   '/templatepdf/{pdfId}/fields/':
     parameters:
       - name: pdfId
@@ -1975,7 +2001,6 @@ components:
           pattern: ^(http|https)://
           description: URL to remove, it must match any registered callback exactly
         eventFilter: 
-          description: if event filter is used, specify it
           $ref: '#/components/schemas/WebhookEventFilterEnum'
         group:
           description: if a group filter is applied refer to it with slug or resource_uri
