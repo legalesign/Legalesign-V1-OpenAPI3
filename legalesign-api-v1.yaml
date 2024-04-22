@@ -1885,7 +1885,12 @@ components:
                   description: >-
                     Always contains [signer URI, first name, last name, email, sms number, has_fields, status, signer order (0-indexed)]
               signers_in_order:
-                type: boolean
+                type: integer
+                format: int32
+                enum:
+                - 0
+                - 1
+                minLength: 1
               status:
                 $ref: '#/components/schemas/DocumentStatusEnum'
               tag:
@@ -3622,11 +3627,13 @@ components:
           format: int32
         next:
           type: string
+          nullable: true
         offset:
           type: integer
           format: int32
         previous:
           type: string
+          nullable: true
         total_count:
           type: integer
           format: int32
