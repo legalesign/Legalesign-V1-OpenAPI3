@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "f67a2906-4445-4733-87c1-f3e6ce3af5e4",
 		"name": "Legalesign API",
-		"description": "Legalesign.com is an electronic signature software. This is the documentation for its REST API. \n\nStart by creating a trial account at https://access.legalesign.com/?q=signUp. Upon account activation, select the API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills. You will need to show experience in API dev.  You will be in sandbox mode that will limit you to 5 signers. Add them on https://app1.legalesign.com/acc/settings/#api. Contact support to move to production mode when you are ready.\n\nFor any queries contact us at support@legalesign.com.\n\n\nContact Support:\n Name: API support\n Email: support@legalesign.com",
+		"description": "Legalesign.com is an electronic signature software. This is the documentation for its REST API. \n\nStart by creating a trial account at https://legalesign.com/landing/free-trial/. Upon account activation, select the API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills. You will need to show experience in API dev.  You will be in sandbox mode that will limit you to 5 signers. Add them on https://app1.legalesign.com/acc/settings/#api. Contact support to move to production mode when you are ready.\n\nFor any queries contact us at support@legalesign.com.\n\n\nContact Support:\n Name: API support\n Email: support@legalesign.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28149860"
 	},
