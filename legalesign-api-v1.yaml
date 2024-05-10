@@ -2394,6 +2394,7 @@ components:
           type: string
           format: date-time
           description: ISO8601 formed datetime, set to TZ of sender or timezone if used
+          nullable: true
         message:
           type: string
           description: >-
