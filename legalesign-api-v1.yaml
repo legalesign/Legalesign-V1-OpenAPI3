@@ -156,6 +156,12 @@ paths:
       description: List (unarchived) signing documents. Use /status/ if you need high-level information.
       operationId: getDocuments
       parameters:
+        - name: group
+          in: query
+          description: Filter by a specific group, required.
+          required: true
+          schema:
+            type: string
         - name: archived
           in: query
           description: 'Filter on archived status, default is false'
@@ -186,12 +192,6 @@ paths:
           required: false
           schema:
             type: integer
-        - name: group
-          in: query
-          description: Filter by a specific group
-          required: true
-          schema:
-            type: string
         - name: status
           in: query
           description: Filter on document status
@@ -204,6 +204,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: created_gt
+          in: query
+          description: Filter for those documents created after a certain time
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: modified_gt
+          in: query
+          description: Filter for those documents modified after a certain time
+          required: false
+          schema:
+            type: string
+            format: date-time
       responses:
         '200':
           description: 'successful operation, list of document objects'
