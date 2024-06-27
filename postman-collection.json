@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "f67a2906-4445-4733-87c1-f3e6ce3af5e4",
+		"_postman_id": "4e6c8725-6219-4017-a92b-ebb556c45be8",
 		"name": "Legalesign API",
-		"description": "Legalesign.com is an electronic signature software. This is the documentation for its REST API. \n\nStart by creating a trial account at https://legalesign.com/landing/free-trial/. Upon account activation, select the API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills. You will need to show experience in API dev.  You will be in sandbox mode that will limit you to 5 signers. Add them on https://app1.legalesign.com/acc/settings/#api. Contact support to move to production mode when you are ready.\n\nFor any queries contact us at support@legalesign.com.\n\n\nContact Support:\n Name: API support\n Email: support@legalesign.com",
+		"description": "Legalesign.com is an electronic signature software.  This is the documentation for its REST API. \nStart by creating a trial account at https://legalesign.com/landing/free-trial/. Upon account activation, select the API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills. You will be in sandbox mode that will limit you to 5 signers. Set up 2FA on your account and then login to https://logs.legalesign.com to access the API Dashboard, where you can manage you api key, webhooks, and sandbox signers. Contact support to move to production mode when you are ready.\nFor any queries contact us at support@legalesign.com.\n\n\nContact Support:\n Name: API support\n Email: support@legalesign.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28149860"
 	},
@@ -36,7 +36,8 @@
 									"variable": [
 										{
 											"key": "attachmentId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) attachment id"
 										}
 									]
 								}
@@ -106,7 +107,8 @@
 									"variable": [
 										{
 											"key": "attachmentId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) attachment id"
 										}
 									]
 								}
@@ -310,7 +312,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"filename\": \"UvtPkjlida4GoXxxFYT-SJ0GGiDx9dUJf(pdf\",\n  \"group\": \"/api/v1/group/BrAaDdXANJSQT09WKpxuTA/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/N4aKKMveZLJ-dNvFMRz9/\",\n  \"description\": \"<string>\"\n}",
+							"raw": "{\n  \"filename\": \"6cW6DDDXBZaOxhrS4qwNZ4SHUMxdhC-jd-aBpJk6oSLyMa4yZ6ymQQHpDkj8Ykx0zcJF7mi6wW7qQF8Cmj8pk1wRNaAg1ozs65iqFnv382pA8zlxyxFN76IoK0Y3YGmKWhQpH0KedXYit4mcDmsOWEb0Qd2StUGASUo5CnJdUt1rF6-e_Vb39U-0oPSzAjWV89T3x_z3yOgLpD_w0HSYpdf\",\n  \"group\": \"/api/v1/group/qSQDjdfWrJV5m8qdQ/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/_5u4c/\",\n  \"description\": \"<string>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -347,7 +349,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"filename\": \"UvtPkjlida4GoXxxFYT-SJ0GGiDx9dUJf(pdf\",\n  \"group\": \"/api/v1/group/BrAaDdXANJSQT09WKpxuTA/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/N4aKKMveZLJ-dNvFMRz9/\",\n  \"description\": \"<string>\"\n}",
+									"raw": "{\n  \"filename\": \"6cW6DDDXBZaOxhrS4qwNZ4SHUMxdhC-jd-aBpJk6oSLyMa4yZ6ymQQHpDkj8Ykx0zcJF7mi6wW7qQF8Cmj8pk1wRNaAg1ozs65iqFnv382pA8zlxyxFN76IoK0Y3YGmKWhQpH0KedXYit4mcDmsOWEb0Qd2StUGASUo5CnJdUt1rF6-e_Vb39U-0oPSzAjWV89T3x_z3yOgLpD_w0HSYpdf\",\n  \"group\": \"/api/v1/group/qSQDjdfWrJV5m8qdQ/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/_5u4c/\",\n  \"description\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -394,7 +396,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"filename\": \"UvtPkjlida4GoXxxFYT-SJ0GGiDx9dUJf(pdf\",\n  \"group\": \"/api/v1/group/BrAaDdXANJSQT09WKpxuTA/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/N4aKKMveZLJ-dNvFMRz9/\",\n  \"description\": \"<string>\"\n}",
+									"raw": "{\n  \"filename\": \"6cW6DDDXBZaOxhrS4qwNZ4SHUMxdhC-jd-aBpJk6oSLyMa4yZ6ymQQHpDkj8Ykx0zcJF7mi6wW7qQF8Cmj8pk1wRNaAg1ozs65iqFnv382pA8zlxyxFN76IoK0Y3YGmKWhQpH0KedXYit4mcDmsOWEb0Qd2StUGASUo5CnJdUt1rF6-e_Vb39U-0oPSzAjWV89T3x_z3yOgLpD_w0HSYpdf\",\n  \"group\": \"/api/v1/group/qSQDjdfWrJV5m8qdQ/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/_5u4c/\",\n  \"description\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -442,7 +444,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"filename\": \"UvtPkjlida4GoXxxFYT-SJ0GGiDx9dUJf(pdf\",\n  \"group\": \"/api/v1/group/BrAaDdXANJSQT09WKpxuTA/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/N4aKKMveZLJ-dNvFMRz9/\",\n  \"description\": \"<string>\"\n}",
+									"raw": "{\n  \"filename\": \"6cW6DDDXBZaOxhrS4qwNZ4SHUMxdhC-jd-aBpJk6oSLyMa4yZ6ymQQHpDkj8Ykx0zcJF7mi6wW7qQF8Cmj8pk1wRNaAg1ozs65iqFnv382pA8zlxyxFN76IoK0Y3YGmKWhQpH0KedXYit4mcDmsOWEb0Qd2StUGASUo5CnJdUt1rF6-e_Vb39U-0oPSzAjWV89T3x_z3yOgLpD_w0HSYpdf\",\n  \"group\": \"/api/v1/group/qSQDjdfWrJV5m8qdQ/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/_5u4c/\",\n  \"description\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -485,7 +487,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"filename\": \"UvtPkjlida4GoXxxFYT-SJ0GGiDx9dUJf(pdf\",\n  \"group\": \"/api/v1/group/BrAaDdXANJSQT09WKpxuTA/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/N4aKKMveZLJ-dNvFMRz9/\",\n  \"description\": \"<string>\"\n}",
+									"raw": "{\n  \"filename\": \"6cW6DDDXBZaOxhrS4qwNZ4SHUMxdhC-jd-aBpJk6oSLyMa4yZ6ymQQHpDkj8Ykx0zcJF7mi6wW7qQF8Cmj8pk1wRNaAg1ozs65iqFnv382pA8zlxyxFN76IoK0Y3YGmKWhQpH0KedXYit4mcDmsOWEb0Qd2StUGASUo5CnJdUt1rF6-e_Vb39U-0oPSzAjWV89T3x_z3yOgLpD_w0HSYpdf\",\n  \"group\": \"/api/v1/group/qSQDjdfWrJV5m8qdQ/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/_5u4c/\",\n  \"description\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -528,7 +530,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"filename\": \"UvtPkjlida4GoXxxFYT-SJ0GGiDx9dUJf(pdf\",\n  \"group\": \"/api/v1/group/BrAaDdXANJSQT09WKpxuTA/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/N4aKKMveZLJ-dNvFMRz9/\",\n  \"description\": \"<string>\"\n}",
+									"raw": "{\n  \"filename\": \"6cW6DDDXBZaOxhrS4qwNZ4SHUMxdhC-jd-aBpJk6oSLyMa4yZ6ymQQHpDkj8Ykx0zcJF7mi6wW7qQF8Cmj8pk1wRNaAg1ozs65iqFnv382pA8zlxyxFN76IoK0Y3YGmKWhQpH0KedXYit4mcDmsOWEb0Qd2StUGASUo5CnJdUt1rF6-e_Vb39U-0oPSzAjWV89T3x_z3yOgLpD_w0HSYpdf\",\n  \"group\": \"/api/v1/group/qSQDjdfWrJV5m8qdQ/\",\n  \"pdf_file\": \"<string>\",\n  \"user\": \"/api/v1/user/_5u4c/\",\n  \"description\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -576,7 +578,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"group\": \"/api/v1/group/TtonaA0-ThefqJOoQaCAhrqG4P7S24torFFq/\",\n  \"signee_count\": \"<integer>\"\n}",
+									"raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"group\": \"/api/v1/group/Uu_jantkv66A75-USuEeU_xsLDWq-CrtZirf5/\",\n  \"signee_count\": \"<integer>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -615,7 +617,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"group\": \"/api/v1/group/TtonaA0-ThefqJOoQaCAhrqG4P7S24torFFq/\",\n  \"signee_count\": \"<integer>\"\n}",
+											"raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"group\": \"/api/v1/group/Uu_jantkv66A75-USuEeU_xsLDWq-CrtZirf5/\",\n  \"signee_count\": \"<integer>\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -685,7 +687,8 @@
 											"variable": [
 												{
 													"key": "docId",
-													"value": "<uuid>"
+													"value": "<uuid>",
+													"description": "(Required) document id"
 												}
 											]
 										}
@@ -734,7 +737,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "[\n  {\n    \"element_type\": \"text\",\n    \"fieldorder\": \"<integer>\",\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"signers\": \"<integer>\",\n    \"state\": \"<boolean>\",\n    \"validation\": 71,\n    \"value\": \"<string>\"\n  },\n  {\n    \"element_type\": \"initials\",\n    \"fieldorder\": \"<integer>\",\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"signers\": \"<integer>\",\n    \"state\": \"<boolean>\",\n    \"validation\": 14,\n    \"value\": \"<string>\"\n  }\n]"
+											"body": "[\n  {\n    \"element_type\": \"text\",\n    \"fieldorder\": \"<integer>\",\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"signers\": \"<integer>\",\n    \"state\": \"<boolean>\",\n    \"validation\": 79,\n    \"value\": \"<string>\"\n  },\n  {\n    \"element_type\": \"initials\",\n    \"fieldorder\": \"<integer>\",\n    \"label\": \"<string>\",\n    \"label_extra\": \"<string>\",\n    \"signers\": \"<integer>\",\n    \"state\": \"<boolean>\",\n    \"validation\": 75,\n    \"value\": \"<string>\"\n  }\n]"
 										}
 									]
 								}
@@ -762,7 +765,8 @@
 											"variable": [
 												{
 													"key": "docId",
-													"value": "<uuid>"
+													"value": "<uuid>",
+													"description": "(Required) document id"
 												}
 											]
 										},
@@ -868,7 +872,8 @@
 									"variable": [
 										{
 											"key": "docId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) document id"
 										}
 									]
 								}
@@ -916,7 +921,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"archived\": \"<boolean>\",\n  \"auto_archive\": true,\n  \"cc_emails\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"do_email\": \"<boolean>\",\n  \"download_final\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<integer>\",\n  \"group\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"hash_value\": \"<string>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<integer>\",\n  \"modified\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"pdf_password\": \"<string>\",\n  \"pdf_password_type\": \"<string>\",\n  \"pdftext\": \"<string>\",\n  \"redirect\": \"<string>\",\n  \"resource_uri\": \"<string>\",\n  \"return_signer_links\": \"<boolean>\",\n  \"sign_mouse\": \"<boolean>\",\n  \"sign_time\": \"<dateTime>\",\n  \"sign_type\": \"<boolean>\",\n  \"sign_upload\": \"<boolean>\",\n  \"signature_placement\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signers\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"signers_in_order\": \"<boolean>\",\n  \"status\": 40,\n  \"tag\": \"<string>\",\n  \"tag1\": \"<string>\",\n  \"tag2\": \"<string>\",\n  \"template\": \"<string>\",\n  \"templatepdf\": \"<string>\",\n  \"text\": \"<string>\",\n  \"user\": \"<string>\",\n  \"uuid\": \"<uuid>\"\n}"
+									"body": "{\n  \"archived\": \"<boolean>\",\n  \"auto_archive\": true,\n  \"cc_emails\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"do_email\": \"<boolean>\",\n  \"download_final\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<integer>\",\n  \"group\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"hash_value\": \"<string>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<integer>\",\n  \"modified\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"pdf_password\": \"<string>\",\n  \"pdf_password_type\": \"<string>\",\n  \"pdftext\": \"<string>\",\n  \"redirect\": \"<string>\",\n  \"resource_uri\": \"<string>\",\n  \"return_signer_links\": \"<boolean>\",\n  \"sign_mouse\": \"<boolean>\",\n  \"sign_time\": \"<dateTime>\",\n  \"sign_type\": \"<boolean>\",\n  \"sign_upload\": \"<boolean>\",\n  \"signature_placement\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signers\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"signers_in_order\": \"<boolean>\",\n  \"status\": 50,\n  \"tag\": \"<string>\",\n  \"tag1\": \"<string>\",\n  \"tag2\": \"<string>\",\n  \"template\": \"<string>\",\n  \"templatepdf\": \"<string>\",\n  \"text\": \"<string>\",\n  \"user\": \"<string>\",\n  \"uuid\": \"<uuid>\"\n}"
 								}
 							]
 						},
@@ -938,7 +943,8 @@
 									"variable": [
 										{
 											"key": "docId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) document id"
 										}
 									]
 								},
@@ -995,7 +1001,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/document/?archived=false&email=<string>&limit=20&offset=<integer>&group=<string>&status=<integer>&nosigners=<string>",
+							"raw": "{{baseUrl}}/document/?group=<string>&archived=false&email=<string>&limit=20&offset=<integer>&status=<integer>&nosigners=<string>&created_gt=<dateTime>&modified_gt=<dateTime>",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1004,6 +1010,11 @@
 								""
 							],
 							"query": [
+								{
+									"key": "group",
+									"value": "<string>",
+									"description": "(Required) Filter by a specific group, required."
+								},
 								{
 									"key": "archived",
 									"value": "false",
@@ -1025,11 +1036,6 @@
 									"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
 								},
 								{
-									"key": "group",
-									"value": "<string>",
-									"description": "(Required) Filter by a specific group"
-								},
-								{
 									"key": "status",
 									"value": "<integer>",
 									"description": "Filter on document status"
@@ -1038,6 +1044,16 @@
 									"key": "nosigners",
 									"value": "<string>",
 									"description": "Add value '1' to remove signers information for a faster query"
+								},
+								{
+									"key": "created_gt",
+									"value": "<dateTime>",
+									"description": "Filter for those documents created after a certain time"
+								},
+								{
+									"key": "modified_gt",
+									"value": "<dateTime>",
+									"description": "Filter for those documents modified after a certain time"
 								}
 							]
 						},
@@ -1060,7 +1076,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/document/?archived=false&email=<string>&limit=20&offset=<integer>&group=<string>&status=<integer>&nosigners=<string>",
+									"raw": "{{baseUrl}}/document/?group=<string>&archived=false&email=<string>&limit=20&offset=<integer>&status=<integer>&nosigners=<string>&created_gt=<dateTime>&modified_gt=<dateTime>",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1069,6 +1085,11 @@
 										""
 									],
 									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "(Required) Filter by a specific group, required."
+										},
 										{
 											"key": "archived",
 											"value": "false",
@@ -1090,11 +1111,6 @@
 											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
 										},
 										{
-											"key": "group",
-											"value": "<string>",
-											"description": "(Required) Filter by a specific group"
-										},
-										{
 											"key": "status",
 											"value": "<integer>",
 											"description": "Filter on document status"
@@ -1103,6 +1119,16 @@
 											"key": "nosigners",
 											"value": "<string>",
 											"description": "Add value '1' to remove signers information for a faster query"
+										},
+										{
+											"key": "created_gt",
+											"value": "<dateTime>",
+											"description": "Filter for those documents created after a certain time"
+										},
+										{
+											"key": "modified_gt",
+											"value": "<dateTime>",
+											"description": "Filter for those documents modified after a certain time"
 										}
 									]
 								}
@@ -1117,7 +1143,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archived\": \"<boolean>\",\n      \"auto_archive\": \"<boolean>\",\n      \"cc_emails\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"do_email\": \"<boolean>\",\n      \"download_final\": \"<boolean>\",\n      \"group\": \"/api/v1/group/ZLcbKPlb1JUM6/\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"pdftext\": \"<string>\",\n      \"redirect\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"return_signer_links\": \"<boolean>\",\n      \"signers\": [\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"signers_in_order\": \"<boolean>\",\n      \"status\": 20,\n      \"tag\": \" /,aW4m,FeO5_DaDjmxw]ELaIS;c]a0kOM_-Lh4M;W,bmG\",\n      \"tag1\": \"18kvcUs[GGCC_Jnx.TyZNAucRo[Vcu;H:jELw.N2K-O,SQLX .nA2ZYA9gheht];B84KhYdq9fX[mcWgChoAOuqJ7sp ZB:d5ol]xVQGt6n6J5ldHL4zw-9FCzHOvK;Nq]/Ta  jL-B5:Uo0hWd7UhsuXkPNZ41Cr7W,6r98]J1w,I]mg/K3[wdlh\",\n      \"tag2\": \"jxVl5tWWfbVEwA3 jBthQvfcH.0pIyKefyNECYa[B3j.HENdU5hzK3._.0agvKQiPy;P[qKrbIC2:7QF;GTTfQOa-c19u:Nxm;IWko9-K.yoMWFDF[rc9OM[,0j8Db;C.aqgMDAmOg6/ _xFn629rAyaS;b3PqTAM:NgsV6\",\n      \"template\": \"/api/v1/template/vxuFS7qT8j5Sio7hQMX5PtGSHfSwCdwri/\",\n      \"templatepdf\": \"/api/v1/templatepdf/BubzuLa8z92yT-Sj/\",\n      \"text\": \"<string>\",\n      \"user\": \"/api/v1/user/LJvgAoDGt4EuW6aeTHmkoDbcRrUtEPYcCDo8t342UevsxkaZAGU/\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"archived\": \"<boolean>\",\n      \"auto_archive\": \"<boolean>\",\n      \"cc_emails\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"do_email\": \"<boolean>\",\n      \"download_final\": \"<boolean>\",\n      \"group\": \"/api/v1/group/145XbCU/\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"pdftext\": \"<string>\",\n      \"redirect\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"return_signer_links\": \"<boolean>\",\n      \"signers\": [\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"signers_in_order\": \"<boolean>\",\n      \"status\": 30,\n      \"tag\": \".NVj]7[O7C-caS4;dYimta8kcvi/HT/,UJ,E7]Qw;Jemi7sqt9rS 39_IqZ J;wFtE.i9,am/ZPstB f/tbksSdqtrfkX;mG\",\n      \"tag1\": \"gi0G\",\n      \"tag2\": \"D[;SCnJKnTBpMt,DFDqdYt VA.lefuazvQuBm[KHcERD w48njv]E_0BsbX8tY rt;hTJN,OJ Gz54zwZSX\",\n      \"template\": \"/api/v1/template/Vgj4Fzwi5UN_NprSi2wZ-Z0RyHU/\",\n      \"templatepdf\": \"/api/v1/templatepdf/XX2rGiOYV-GAt/\",\n      \"text\": \"<string>\",\n      \"user\": \"/api/v1/user/Mjpn2A5Y03DJ4RYyDzxmeQynrkraeH/\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archived\": \"<boolean>\",\n      \"auto_archive\": \"<boolean>\",\n      \"cc_emails\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"do_email\": \"<boolean>\",\n      \"download_final\": \"<boolean>\",\n      \"group\": \"/api/v1/group/FF0C_q6Q-9p86H6qqnAILFW4pt/\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"pdftext\": \"<string>\",\n      \"redirect\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"return_signer_links\": \"<boolean>\",\n      \"signers\": [\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"signers_in_order\": 0,\n      \"status\": 30,\n      \"tag\": \"S-wm/yS46J-jOGAgRw,cPJPUqZ;mXpxgFJ0gl6r:2TXFMP.r-3-0;N,SbIvsryh3qN5Q5,JR[o-Z2[IC5Rgd6CD-Whb9LgEEPbD,B5-pFz/m3K/KIOdufu11PIj]sOG1lG/c6ammP8,[w:A1mJ6\",\n      \"tag1\": \"8b7u4dvurb9Hm49wN0YSRS1WRQggYA3CRH2VmbtUf-UKhEPrrbY,_h4 ,t__Xvhflm_DhQDUfXX5dpt-tkK[Y\",\n      \"tag2\": \"A/xRTG[XOOzr1vl0fyh9;6Oc7ExZoIy_CiV7OrTpWUaw6B6BHh8OlgqwyMb3\",\n      \"template\": \"/api/v1/template/ZQc1Pb1PgOd30a6MgyjJWYo3-E_V0sJqnU17SbNLwjv/\",\n      \"templatepdf\": \"/api/v1/templatepdf/5qPpn0Qo5wWoVMraerrq/\",\n      \"text\": \"<string>\",\n      \"user\": \"/api/v1/user/cwJvlU7-vInYqwDnm8Co20W/\",\n      \"uuid\": \"<uuid>\"\n    },\n    {\n      \"archived\": \"<boolean>\",\n      \"auto_archive\": \"<boolean>\",\n      \"cc_emails\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"do_email\": \"<boolean>\",\n      \"download_final\": \"<boolean>\",\n      \"group\": \"/api/v1/group/djoIyhLXkRh2/\",\n      \"modified\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"pdftext\": \"<string>\",\n      \"redirect\": \"<string>\",\n      \"resource_uri\": \"<string>\",\n      \"return_signer_links\": \"<boolean>\",\n      \"signers\": [\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"signers_in_order\": 1,\n      \"status\": 50,\n      \"tag\": \"ot\",\n      \"tag1\": \"rJP9f8JRNQMN2cJ6afJFjzTt5UM690oKBkLrmJg0:i\",\n      \"tag2\": \"TCW[9Vc0\",\n      \"template\": \"/api/v1/template/zeNrf9rhR1m-Yuv63CoUl8KkI2u5lAJBqT/\",\n      \"templatepdf\": \"/api/v1/templatepdf/up_DiANAzJfkzbb3F7BAO/\",\n      \"text\": \"<string>\",\n      \"user\": \"/api/v1/user/9KUoyYtXj5o3syJeJTiPu0Mp1kEoNhWspr0dpIltHIBoTq/\",\n      \"uuid\": \"<uuid>\"\n    }\n  ]\n}"
 						},
 						{
 							"name": "Invalid status value",
@@ -1131,7 +1157,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/document/?archived=false&email=<string>&limit=20&offset=<integer>&group=<string>&status=<integer>&nosigners=<string>",
+									"raw": "{{baseUrl}}/document/?group=<string>&archived=false&email=<string>&limit=20&offset=<integer>&status=<integer>&nosigners=<string>&created_gt=<dateTime>&modified_gt=<dateTime>",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1140,6 +1166,11 @@
 										""
 									],
 									"query": [
+										{
+											"key": "group",
+											"value": "<string>",
+											"description": "(Required) Filter by a specific group, required."
+										},
 										{
 											"key": "archived",
 											"value": "false",
@@ -1161,11 +1192,6 @@
 											"description": "Offset from start of dataset. Use with the limit query to iterate through dataset."
 										},
 										{
-											"key": "group",
-											"value": "<string>",
-											"description": "(Required) Filter by a specific group"
-										},
-										{
 											"key": "status",
 											"value": "<integer>",
 											"description": "Filter on document status"
@@ -1174,6 +1200,16 @@
 											"key": "nosigners",
 											"value": "<string>",
 											"description": "Add value '1' to remove signers information for a faster query"
+										},
+										{
+											"key": "created_gt",
+											"value": "<dateTime>",
+											"description": "Filter for those documents created after a certain time"
+										},
+										{
+											"key": "modified_gt",
+											"value": "<dateTime>",
+											"description": "Filter for those documents modified after a certain time"
 										}
 									]
 								}
@@ -1203,7 +1239,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"group\": \"/api/v1/group/3lompl4WeIZGwOIgp_fg2MOmQ9Lt2QR/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"tAU7lKvOMogYqLw5wTndWmH-E3fnz0mMCwimA9ZpKXwo\",\n      \"lastname\": \"NZO67\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uFo15P3czcM8yGtbBJpUbIJ/\",\n        \"/api/v1/attachment/K0b3ZJT/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"yJCkTX7nC\",\n      \"lastname\": \"ijQI-_D\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/diIw0vrlch4MgIVXs3C3mVtvU78BHhfuX1LkRcW/\",\n        \"/api/v1/attachment/X8US16wnjHurgolG8xORB3PtXs5-diDygVTej/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/tPp2Z2-FSGSdvhIcdSMaOQqJRSDTKP/\",\n  \"template\": \"/api/v1/template/CuTHV0k9XEMTO_MzgNfUMq8K-0228stv6db8foF/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"WDpxXU5zm3BxaWPu8syJiwJuaN2n-v4L2DJTy\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"ea_21\": \"<string>\",\n    \"dolore_fd8\": \"<string>\",\n    \"fugiat_61\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"in8\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"Ad3Rh5NYdo8/,rx7c9gdrI.EFVkp5Po91CZ[3sTZ.b]JissSdoJftAAILWU99KVVMeWzp3DtTK YpkOLA2aX.nk-zW]5nz4OTrkxzl A0e.N9y4/or_ 0.ki7.2az4EoFr\",\n  \"tag1\": \"lmU6_DKs0W-CjgqT-g:GipDNFF7,CkBJ.r.s.czhMt9zEp]6iAjx\",\n  \"tag2\": \"HQ2B76LplOGMv]h]P :3uvYF./2[LDUG-v_KjrC:2.pkXdt2PKczxHtMn/6eQ;95bKWU2EbBjYSUN9i:pTuRDP29/A6riAd[0LS\",\n  \"user\": \"<uri>\"\n}",
+							"raw": "{\n  \"group\": \"/api/v1/group/9Lx0fecNR4DbSjeTt/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"dcrZB7XT2xc5OpXkWF4hG5LGJV\",\n      \"lastname\": \"NWlaub1R8_3''eSsFB5rbx2BLoF2kqzUbpQC6PPiRAI'smdwLORbG6c\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uY6Yr1_H7KmvClZyze2nPpkvzSzu47NR2Wo1ubRHt6yJN/\",\n        \"/api/v1/attachment/MkB3-oB8u2/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"SOBThgB71a09o2uy3j50TYHU\",\n      \"lastname\": \"oq31m6 L3N RyBeqhZlaXvmEnOmv6WGgtR7xhwECSSDu\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/Q4Ujg_vAIy9YJFAattzYI2f08sdllzNg/\",\n        \"/api/v1/attachment/K/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/P2r-7Bk7qzGgi-MPcMndC496MIdZ0Q-15Cymk3rIT57J_mppi/\",\n  \"template\": \"/api/v1/template/FLkuvSo/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"7ZHr_JfwIBdI8rGdeUTpGl_JrOC4_HqxzBX__Ws4NFSrD73WjwDTqZixW-zOS3CCbww801as0-tkp\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"exercitation_c9\": \"<string>\",\n    \"incididunt_e02\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"ea3\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"L 4a2yeVhFsg53Ai3Fz4y n5MEl//1INAE5.,4-Nl1Qj1pXeT2dUhY0XLSxY\",\n  \"tag1\": \"]3 /EoA0:J0Cw/y-mMsyiuYxM6-]jsIM;i ZXCy6kFHc6[pbbvKrTRtHjDcx]qpbmLa8iqOhsE[.]l7::gK6q2wFe8XR]G .j52g90vR;9NCWhWDN::u9,jIOUN/KU2Muy[Bbk9,f_yze:QQbMHmhR.HFcp]PVA1ufhiEsJ7kM,v2EjT1/p[l:yr\",\n  \"tag2\": \"FnBQ[\",\n  \"user\": \"<uri>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1244,7 +1280,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/3lompl4WeIZGwOIgp_fg2MOmQ9Lt2QR/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"tAU7lKvOMogYqLw5wTndWmH-E3fnz0mMCwimA9ZpKXwo\",\n      \"lastname\": \"NZO67\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uFo15P3czcM8yGtbBJpUbIJ/\",\n        \"/api/v1/attachment/K0b3ZJT/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"yJCkTX7nC\",\n      \"lastname\": \"ijQI-_D\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/diIw0vrlch4MgIVXs3C3mVtvU78BHhfuX1LkRcW/\",\n        \"/api/v1/attachment/X8US16wnjHurgolG8xORB3PtXs5-diDygVTej/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/tPp2Z2-FSGSdvhIcdSMaOQqJRSDTKP/\",\n  \"template\": \"/api/v1/template/CuTHV0k9XEMTO_MzgNfUMq8K-0228stv6db8foF/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"WDpxXU5zm3BxaWPu8syJiwJuaN2n-v4L2DJTy\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"ea_21\": \"<string>\",\n    \"dolore_fd8\": \"<string>\",\n    \"fugiat_61\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"in8\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"Ad3Rh5NYdo8/,rx7c9gdrI.EFVkp5Po91CZ[3sTZ.b]JissSdoJftAAILWU99KVVMeWzp3DtTK YpkOLA2aX.nk-zW]5nz4OTrkxzl A0e.N9y4/or_ 0.ki7.2az4EoFr\",\n  \"tag1\": \"lmU6_DKs0W-CjgqT-g:GipDNFF7,CkBJ.r.s.czhMt9zEp]6iAjx\",\n  \"tag2\": \"HQ2B76LplOGMv]h]P :3uvYF./2[LDUG-v_KjrC:2.pkXdt2PKczxHtMn/6eQ;95bKWU2EbBjYSUN9i:pTuRDP29/A6riAd[0LS\",\n  \"user\": \"<uri>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/9Lx0fecNR4DbSjeTt/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"dcrZB7XT2xc5OpXkWF4hG5LGJV\",\n      \"lastname\": \"NWlaub1R8_3''eSsFB5rbx2BLoF2kqzUbpQC6PPiRAI'smdwLORbG6c\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uY6Yr1_H7KmvClZyze2nPpkvzSzu47NR2Wo1ubRHt6yJN/\",\n        \"/api/v1/attachment/MkB3-oB8u2/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"SOBThgB71a09o2uy3j50TYHU\",\n      \"lastname\": \"oq31m6 L3N RyBeqhZlaXvmEnOmv6WGgtR7xhwECSSDu\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/Q4Ujg_vAIy9YJFAattzYI2f08sdllzNg/\",\n        \"/api/v1/attachment/K/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/P2r-7Bk7qzGgi-MPcMndC496MIdZ0Q-15Cymk3rIT57J_mppi/\",\n  \"template\": \"/api/v1/template/FLkuvSo/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"7ZHr_JfwIBdI8rGdeUTpGl_JrOC4_HqxzBX__Ws4NFSrD73WjwDTqZixW-zOS3CCbww801as0-tkp\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"exercitation_c9\": \"<string>\",\n    \"incididunt_e02\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"ea3\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"L 4a2yeVhFsg53Ai3Fz4y n5MEl//1INAE5.,4-Nl1Qj1pXeT2dUhY0XLSxY\",\n  \"tag1\": \"]3 /EoA0:J0Cw/y-mMsyiuYxM6-]jsIM;i ZXCy6kFHc6[pbbvKrTRtHjDcx]qpbmLa8iqOhsE[.]l7::gK6q2wFe8XR]G .j52g90vR;9NCWhWDN::u9,jIOUN/KU2Muy[Bbk9,f_yze:QQbMHmhR.HFcp]PVA1ufhiEsJ7kM,v2EjT1/p[l:yr\",\n  \"tag2\": \"FnBQ[\",\n  \"user\": \"<uri>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1304,7 +1340,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/3lompl4WeIZGwOIgp_fg2MOmQ9Lt2QR/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"tAU7lKvOMogYqLw5wTndWmH-E3fnz0mMCwimA9ZpKXwo\",\n      \"lastname\": \"NZO67\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uFo15P3czcM8yGtbBJpUbIJ/\",\n        \"/api/v1/attachment/K0b3ZJT/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"yJCkTX7nC\",\n      \"lastname\": \"ijQI-_D\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/diIw0vrlch4MgIVXs3C3mVtvU78BHhfuX1LkRcW/\",\n        \"/api/v1/attachment/X8US16wnjHurgolG8xORB3PtXs5-diDygVTej/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/tPp2Z2-FSGSdvhIcdSMaOQqJRSDTKP/\",\n  \"template\": \"/api/v1/template/CuTHV0k9XEMTO_MzgNfUMq8K-0228stv6db8foF/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"WDpxXU5zm3BxaWPu8syJiwJuaN2n-v4L2DJTy\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"ea_21\": \"<string>\",\n    \"dolore_fd8\": \"<string>\",\n    \"fugiat_61\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"in8\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"Ad3Rh5NYdo8/,rx7c9gdrI.EFVkp5Po91CZ[3sTZ.b]JissSdoJftAAILWU99KVVMeWzp3DtTK YpkOLA2aX.nk-zW]5nz4OTrkxzl A0e.N9y4/or_ 0.ki7.2az4EoFr\",\n  \"tag1\": \"lmU6_DKs0W-CjgqT-g:GipDNFF7,CkBJ.r.s.czhMt9zEp]6iAjx\",\n  \"tag2\": \"HQ2B76LplOGMv]h]P :3uvYF./2[LDUG-v_KjrC:2.pkXdt2PKczxHtMn/6eQ;95bKWU2EbBjYSUN9i:pTuRDP29/A6riAd[0LS\",\n  \"user\": \"<uri>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/9Lx0fecNR4DbSjeTt/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"dcrZB7XT2xc5OpXkWF4hG5LGJV\",\n      \"lastname\": \"NWlaub1R8_3''eSsFB5rbx2BLoF2kqzUbpQC6PPiRAI'smdwLORbG6c\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uY6Yr1_H7KmvClZyze2nPpkvzSzu47NR2Wo1ubRHt6yJN/\",\n        \"/api/v1/attachment/MkB3-oB8u2/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"SOBThgB71a09o2uy3j50TYHU\",\n      \"lastname\": \"oq31m6 L3N RyBeqhZlaXvmEnOmv6WGgtR7xhwECSSDu\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/Q4Ujg_vAIy9YJFAattzYI2f08sdllzNg/\",\n        \"/api/v1/attachment/K/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/P2r-7Bk7qzGgi-MPcMndC496MIdZ0Q-15Cymk3rIT57J_mppi/\",\n  \"template\": \"/api/v1/template/FLkuvSo/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"7ZHr_JfwIBdI8rGdeUTpGl_JrOC4_HqxzBX__Ws4NFSrD73WjwDTqZixW-zOS3CCbww801as0-tkp\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"exercitation_c9\": \"<string>\",\n    \"incididunt_e02\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"ea3\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"L 4a2yeVhFsg53Ai3Fz4y n5MEl//1INAE5.,4-Nl1Qj1pXeT2dUhY0XLSxY\",\n  \"tag1\": \"]3 /EoA0:J0Cw/y-mMsyiuYxM6-]jsIM;i ZXCy6kFHc6[pbbvKrTRtHjDcx]qpbmLa8iqOhsE[.]l7::gK6q2wFe8XR]G .j52g90vR;9NCWhWDN::u9,jIOUN/KU2Muy[Bbk9,f_yze:QQbMHmhR.HFcp]PVA1ufhiEsJ7kM,v2EjT1/p[l:yr\",\n  \"tag2\": \"FnBQ[\",\n  \"user\": \"<uri>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1352,7 +1388,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/3lompl4WeIZGwOIgp_fg2MOmQ9Lt2QR/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"tAU7lKvOMogYqLw5wTndWmH-E3fnz0mMCwimA9ZpKXwo\",\n      \"lastname\": \"NZO67\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uFo15P3czcM8yGtbBJpUbIJ/\",\n        \"/api/v1/attachment/K0b3ZJT/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"yJCkTX7nC\",\n      \"lastname\": \"ijQI-_D\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/diIw0vrlch4MgIVXs3C3mVtvU78BHhfuX1LkRcW/\",\n        \"/api/v1/attachment/X8US16wnjHurgolG8xORB3PtXs5-diDygVTej/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/tPp2Z2-FSGSdvhIcdSMaOQqJRSDTKP/\",\n  \"template\": \"/api/v1/template/CuTHV0k9XEMTO_MzgNfUMq8K-0228stv6db8foF/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"WDpxXU5zm3BxaWPu8syJiwJuaN2n-v4L2DJTy\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"ea_21\": \"<string>\",\n    \"dolore_fd8\": \"<string>\",\n    \"fugiat_61\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"in8\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"Ad3Rh5NYdo8/,rx7c9gdrI.EFVkp5Po91CZ[3sTZ.b]JissSdoJftAAILWU99KVVMeWzp3DtTK YpkOLA2aX.nk-zW]5nz4OTrkxzl A0e.N9y4/or_ 0.ki7.2az4EoFr\",\n  \"tag1\": \"lmU6_DKs0W-CjgqT-g:GipDNFF7,CkBJ.r.s.czhMt9zEp]6iAjx\",\n  \"tag2\": \"HQ2B76LplOGMv]h]P :3uvYF./2[LDUG-v_KjrC:2.pkXdt2PKczxHtMn/6eQ;95bKWU2EbBjYSUN9i:pTuRDP29/A6riAd[0LS\",\n  \"user\": \"<uri>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/9Lx0fecNR4DbSjeTt/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"dcrZB7XT2xc5OpXkWF4hG5LGJV\",\n      \"lastname\": \"NWlaub1R8_3''eSsFB5rbx2BLoF2kqzUbpQC6PPiRAI'smdwLORbG6c\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uY6Yr1_H7KmvClZyze2nPpkvzSzu47NR2Wo1ubRHt6yJN/\",\n        \"/api/v1/attachment/MkB3-oB8u2/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"SOBThgB71a09o2uy3j50TYHU\",\n      \"lastname\": \"oq31m6 L3N RyBeqhZlaXvmEnOmv6WGgtR7xhwECSSDu\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/Q4Ujg_vAIy9YJFAattzYI2f08sdllzNg/\",\n        \"/api/v1/attachment/K/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/P2r-7Bk7qzGgi-MPcMndC496MIdZ0Q-15Cymk3rIT57J_mppi/\",\n  \"template\": \"/api/v1/template/FLkuvSo/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"7ZHr_JfwIBdI8rGdeUTpGl_JrOC4_HqxzBX__Ws4NFSrD73WjwDTqZixW-zOS3CCbww801as0-tkp\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"exercitation_c9\": \"<string>\",\n    \"incididunt_e02\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"ea3\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"L 4a2yeVhFsg53Ai3Fz4y n5MEl//1INAE5.,4-Nl1Qj1pXeT2dUhY0XLSxY\",\n  \"tag1\": \"]3 /EoA0:J0Cw/y-mMsyiuYxM6-]jsIM;i ZXCy6kFHc6[pbbvKrTRtHjDcx]qpbmLa8iqOhsE[.]l7::gK6q2wFe8XR]G .j52g90vR;9NCWhWDN::u9,jIOUN/KU2Muy[Bbk9,f_yze:QQbMHmhR.HFcp]PVA1ufhiEsJ7kM,v2EjT1/p[l:yr\",\n  \"tag2\": \"FnBQ[\",\n  \"user\": \"<uri>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1395,7 +1431,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/3lompl4WeIZGwOIgp_fg2MOmQ9Lt2QR/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"tAU7lKvOMogYqLw5wTndWmH-E3fnz0mMCwimA9ZpKXwo\",\n      \"lastname\": \"NZO67\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uFo15P3czcM8yGtbBJpUbIJ/\",\n        \"/api/v1/attachment/K0b3ZJT/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"yJCkTX7nC\",\n      \"lastname\": \"ijQI-_D\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/diIw0vrlch4MgIVXs3C3mVtvU78BHhfuX1LkRcW/\",\n        \"/api/v1/attachment/X8US16wnjHurgolG8xORB3PtXs5-diDygVTej/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/tPp2Z2-FSGSdvhIcdSMaOQqJRSDTKP/\",\n  \"template\": \"/api/v1/template/CuTHV0k9XEMTO_MzgNfUMq8K-0228stv6db8foF/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"WDpxXU5zm3BxaWPu8syJiwJuaN2n-v4L2DJTy\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"ea_21\": \"<string>\",\n    \"dolore_fd8\": \"<string>\",\n    \"fugiat_61\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"in8\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"Ad3Rh5NYdo8/,rx7c9gdrI.EFVkp5Po91CZ[3sTZ.b]JissSdoJftAAILWU99KVVMeWzp3DtTK YpkOLA2aX.nk-zW]5nz4OTrkxzl A0e.N9y4/or_ 0.ki7.2az4EoFr\",\n  \"tag1\": \"lmU6_DKs0W-CjgqT-g:GipDNFF7,CkBJ.r.s.czhMt9zEp]6iAjx\",\n  \"tag2\": \"HQ2B76LplOGMv]h]P :3uvYF./2[LDUG-v_KjrC:2.pkXdt2PKczxHtMn/6eQ;95bKWU2EbBjYSUN9i:pTuRDP29/A6riAd[0LS\",\n  \"user\": \"<uri>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/9Lx0fecNR4DbSjeTt/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"dcrZB7XT2xc5OpXkWF4hG5LGJV\",\n      \"lastname\": \"NWlaub1R8_3''eSsFB5rbx2BLoF2kqzUbpQC6PPiRAI'smdwLORbG6c\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uY6Yr1_H7KmvClZyze2nPpkvzSzu47NR2Wo1ubRHt6yJN/\",\n        \"/api/v1/attachment/MkB3-oB8u2/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"SOBThgB71a09o2uy3j50TYHU\",\n      \"lastname\": \"oq31m6 L3N RyBeqhZlaXvmEnOmv6WGgtR7xhwECSSDu\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/Q4Ujg_vAIy9YJFAattzYI2f08sdllzNg/\",\n        \"/api/v1/attachment/K/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/P2r-7Bk7qzGgi-MPcMndC496MIdZ0Q-15Cymk3rIT57J_mppi/\",\n  \"template\": \"/api/v1/template/FLkuvSo/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"7ZHr_JfwIBdI8rGdeUTpGl_JrOC4_HqxzBX__Ws4NFSrD73WjwDTqZixW-zOS3CCbww801as0-tkp\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"exercitation_c9\": \"<string>\",\n    \"incididunt_e02\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"ea3\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"L 4a2yeVhFsg53Ai3Fz4y n5MEl//1INAE5.,4-Nl1Qj1pXeT2dUhY0XLSxY\",\n  \"tag1\": \"]3 /EoA0:J0Cw/y-mMsyiuYxM6-]jsIM;i ZXCy6kFHc6[pbbvKrTRtHjDcx]qpbmLa8iqOhsE[.]l7::gK6q2wFe8XR]G .j52g90vR;9NCWhWDN::u9,jIOUN/KU2Muy[Bbk9,f_yze:QQbMHmhR.HFcp]PVA1ufhiEsJ7kM,v2EjT1/p[l:yr\",\n  \"tag2\": \"FnBQ[\",\n  \"user\": \"<uri>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1438,7 +1474,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/3lompl4WeIZGwOIgp_fg2MOmQ9Lt2QR/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"tAU7lKvOMogYqLw5wTndWmH-E3fnz0mMCwimA9ZpKXwo\",\n      \"lastname\": \"NZO67\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uFo15P3czcM8yGtbBJpUbIJ/\",\n        \"/api/v1/attachment/K0b3ZJT/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"yJCkTX7nC\",\n      \"lastname\": \"ijQI-_D\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/diIw0vrlch4MgIVXs3C3mVtvU78BHhfuX1LkRcW/\",\n        \"/api/v1/attachment/X8US16wnjHurgolG8xORB3PtXs5-diDygVTej/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/tPp2Z2-FSGSdvhIcdSMaOQqJRSDTKP/\",\n  \"template\": \"/api/v1/template/CuTHV0k9XEMTO_MzgNfUMq8K-0228stv6db8foF/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"WDpxXU5zm3BxaWPu8syJiwJuaN2n-v4L2DJTy\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"ea_21\": \"<string>\",\n    \"dolore_fd8\": \"<string>\",\n    \"fugiat_61\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"in8\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"Ad3Rh5NYdo8/,rx7c9gdrI.EFVkp5Po91CZ[3sTZ.b]JissSdoJftAAILWU99KVVMeWzp3DtTK YpkOLA2aX.nk-zW]5nz4OTrkxzl A0e.N9y4/or_ 0.ki7.2az4EoFr\",\n  \"tag1\": \"lmU6_DKs0W-CjgqT-g:GipDNFF7,CkBJ.r.s.czhMt9zEp]6iAjx\",\n  \"tag2\": \"HQ2B76LplOGMv]h]P :3uvYF./2[LDUG-v_KjrC:2.pkXdt2PKczxHtMn/6eQ;95bKWU2EbBjYSUN9i:pTuRDP29/A6riAd[0LS\",\n  \"user\": \"<uri>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/9Lx0fecNR4DbSjeTt/\",\n  \"name\": \"<string>\",\n  \"signers\": [\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"dcrZB7XT2xc5OpXkWF4hG5LGJV\",\n      \"lastname\": \"NWlaub1R8_3''eSsFB5rbx2BLoF2kqzUbpQC6PPiRAI'smdwLORbG6c\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/uY6Yr1_H7KmvClZyze2nPpkvzSzu47NR2Wo1ubRHt6yJN/\",\n        \"/api/v1/attachment/MkB3-oB8u2/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"witness\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"firstname\": \"SOBThgB71a09o2uy3j50TYHU\",\n      \"lastname\": \"oq31m6 L3N RyBeqhZlaXvmEnOmv6WGgtR7xhwECSSDu\",\n      \"order\": \"<integer>\",\n      \"attachments\": [\n        \"/api/v1/attachment/Q4Ujg_vAIy9YJFAattzYI2f08sdllzNg/\",\n        \"/api/v1/attachment/K/\"\n      ],\n      \"behalfof\": \"<string>\",\n      \"decide_later\": \"<boolean>\",\n      \"expires\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"reviewers\": [\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        },\n        {\n          \"email\": \"<email>\",\n          \"firstname\": \"<string>\",\n          \"lastname\": \"<string>\",\n          \"include_link\": false\n        }\n      ],\n      \"role\": \"approver\",\n      \"sms\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"timezone\": \"<string>\"\n    }\n  ],\n  \"text\": \"<string>\",\n  \"templatepdf\": \"/api/v1/templatepdf/P2r-7Bk7qzGgi-MPcMndC496MIdZ0Q-15Cymk3rIT57J_mppi/\",\n  \"template\": \"/api/v1/template/FLkuvSo/\",\n  \"signature_type\": 1,\n  \"append_pdf\": false,\n  \"auto_archive\": true,\n  \"do_email\": false,\n  \"cc_emails\": \"<string>\",\n  \"convert_sender_to_signer\": \"<boolean>\",\n  \"footer\": \"<string>\",\n  \"footer_height\": \"<long>\",\n  \"header\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"pdf_password\": \"7ZHr_JfwIBdI8rGdeUTpGl_JrOC4_HqxzBX__Ws4NFSrD73WjwDTqZixW-zOS3CCbww801as0-tkp\",\n  \"pdf_password_type\": 1,\n  \"pdftext\": {\n    \"exercitation_c9\": \"<string>\",\n    \"incididunt_e02\": \"<string>\"\n  },\n  \"redirect\": \"https://\",\n  \"reminders\": \"\",\n  \"return_signer_links\": \"<boolean>\",\n  \"signers_in_order\": \"<boolean>\",\n  \"signertext\": {\n    \"ea3\": \"<string>\"\n  },\n  \"strict_fields\": \"<boolean>\",\n  \"tag\": \"L 4a2yeVhFsg53Ai3Fz4y n5MEl//1INAE5.,4-Nl1Qj1pXeT2dUhY0XLSxY\",\n  \"tag1\": \"]3 /EoA0:J0Cw/y-mMsyiuYxM6-]jsIM;i ZXCy6kFHc6[pbbvKrTRtHjDcx]qpbmLa8iqOhsE[.]l7::gK6q2wFe8XR]G .j52g90vR;9NCWhWDN::u9,jIOUN/KU2Muy[Bbk9,f_yze:QQbMHmhR.HFcp]PVA1ufhiEsJ7kM,v2EjT1/p[l:yr\",\n  \"tag2\": \"FnBQ[\",\n  \"user\": \"<uri>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1497,7 +1533,8 @@
 									"variable": [
 										{
 											"key": "groupId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) "
 										}
 									]
 								}
@@ -1582,7 +1619,8 @@
 									"variable": [
 										{
 											"key": "groupId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) group id"
 										}
 									]
 								}
@@ -1789,7 +1827,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/PzdxeRFUxFQMZqg9FfYjVI5edCkYaJfqgCbJdKZYXh-L22ydLa-bP/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
+							"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/scSL/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -1826,7 +1864,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/PzdxeRFUxFQMZqg9FfYjVI5edCkYaJfqgCbJdKZYXh-L22ydLa-bP/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/scSL/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1878,7 +1916,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/PzdxeRFUxFQMZqg9FfYjVI5edCkYaJfqgCbJdKZYXh-L22ydLa-bP/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"user\": \"/api/v1/user/scSL/\",\n  \"xframe_allow\": \"<boolean>\",\n  \"approve_all_deletions\": true\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -1932,7 +1970,8 @@
 									"variable": [
 										{
 											"key": "invitedId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) "
 										}
 									]
 								}
@@ -2085,7 +2124,8 @@
 									"variable": [
 										{
 											"key": "memberId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) member of group id"
 										}
 									]
 								}
@@ -2133,7 +2173,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"created\": \"<dateTime>\",\n  \"group\": \"<uri>\",\n  \"modified\": \"<dateTime>\",\n  \"permission\": 5,\n  \"resource_uri\": \"<uri>\",\n  \"user\": \"<uri>\"\n}"
+									"body": "{\n  \"created\": \"<dateTime>\",\n  \"group\": \"<uri>\",\n  \"modified\": \"<dateTime>\",\n  \"permission\": 4,\n  \"resource_uri\": \"<uri>\",\n  \"user\": \"<uri>\"\n}"
 								}
 							]
 						},
@@ -2155,7 +2195,8 @@
 									"variable": [
 										{
 											"key": "memberId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) member of group id"
 										}
 									]
 								}
@@ -2293,7 +2334,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<uri>\",\n      \"modified\": \"<dateTime>\",\n      \"permission\": 3,\n      \"resource_uri\": \"<uri>\",\n      \"user\": \"<uri>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<uri>\",\n      \"modified\": \"<dateTime>\",\n      \"permission\": 5,\n      \"resource_uri\": \"<uri>\",\n      \"user\": \"<uri>\"\n    }\n  ]\n}"
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<uri>\",\n      \"modified\": \"<dateTime>\",\n      \"permission\": 4,\n      \"resource_uri\": \"<uri>\",\n      \"user\": \"<uri>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"group\": \"<uri>\",\n      \"modified\": \"<dateTime>\",\n      \"permission\": 6,\n      \"resource_uri\": \"<uri>\",\n      \"user\": \"<uri>\"\n    }\n  ]\n}"
 						}
 					]
 				},
@@ -2313,7 +2354,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/M0qd_8TStWB6HLt495Gsj4KeVw5h-9mB3CQYC7Kvmdu/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
+							"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/B_dgZwqk23TPPxcM/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -2351,7 +2392,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/M0qd_8TStWB6HLt495Gsj4KeVw5h-9mB3CQYC7Kvmdu/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/B_dgZwqk23TPPxcM/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2398,7 +2439,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/M0qd_8TStWB6HLt495Gsj4KeVw5h-9mB3CQYC7Kvmdu/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"group\": \"/api/v1/group/B_dgZwqk23TPPxcM/\",\n  \"do_email\": false,\n  \"permission\": 5\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2495,7 +2536,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n  {\n    \"active\": \"<boolean>\",\n    \"notify_when\": 1,\n    \"url\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"event_filter\": \"recipient.emailOpened\"\n  },\n  {\n    \"active\": \"<boolean>\",\n    \"notify_when\": 2,\n    \"url\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"event_filter\": \"recipient.bounced\"\n  }\n]"
+							"body": "[\n  {\n    \"active\": \"<boolean>\",\n    \"notify_when\": 4,\n    \"url\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"event_filter\": \"document.*\"\n  },\n  {\n    \"active\": \"<boolean>\",\n    \"notify_when\": 3,\n    \"url\": \"<string>\",\n    \"group_id\": \"<integer>\",\n    \"event_filter\": \"recipient.emailOpened\"\n  }\n]"
 						}
 					]
 				}
@@ -2523,7 +2564,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/65tfrC2lxhgAiVOVDPdvvhJgijb_7zQuQCsVEROivx3MQe/\",\n  \"is_signature_per_page\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signee_count\": \"<integer>\",\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"header\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"footer_height\": \"<long>\",\n  \"pdfheader\": \"<boolean>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/87xZl-YFFjHOS2lgw2THMqGKoR/\",\n  \"is_signature_per_page\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signee_count\": \"<integer>\",\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"header\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"footer_height\": \"<long>\",\n  \"pdfheader\": \"<boolean>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2565,7 +2606,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"group\": \"/api/v1/group/65tfrC2lxhgAiVOVDPdvvhJgijb_7zQuQCsVEROivx3MQe/\",\n  \"is_signature_per_page\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signee_count\": \"<integer>\",\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"header\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"footer_height\": \"<long>\",\n  \"pdfheader\": \"<boolean>\"\n}",
+											"raw": "{\n  \"group\": \"/api/v1/group/87xZl-YFFjHOS2lgw2THMqGKoR/\",\n  \"is_signature_per_page\": \"<integer>\",\n  \"signature_type\": \"<integer>\",\n  \"signee_count\": \"<integer>\",\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"header\": \"<string>\",\n  \"footer\": \"<string>\",\n  \"header_height\": \"<long>\",\n  \"footer_height\": \"<long>\",\n  \"pdfheader\": \"<boolean>\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2627,7 +2668,8 @@
 									"variable": [
 										{
 											"key": "docId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) "
 										}
 									]
 								},
@@ -2796,7 +2838,8 @@
 											"variable": [
 												{
 													"key": "signerId",
-													"value": "<string>"
+													"value": "<string>",
+													"description": "(Required) ID of signer"
 												}
 											]
 										}
@@ -2873,7 +2916,8 @@
 											"variable": [
 												{
 													"key": "signerId",
-													"value": "<string>"
+													"value": "<string>",
+													"description": "(Required) ID of signer"
 												}
 											]
 										},
@@ -2966,7 +3010,8 @@
 											"variable": [
 												{
 													"key": "signerId",
-													"value": "<string>"
+													"value": "<string>",
+													"description": "(Required) "
 												}
 											]
 										},
@@ -3114,7 +3159,8 @@
 											"variable": [
 												{
 													"key": "signerId",
-													"value": "<string>"
+													"value": "<string>",
+													"description": "(Required) "
 												}
 											]
 										}
@@ -3251,7 +3297,8 @@
 											"variable": [
 												{
 													"key": "signerId",
-													"value": "<string>"
+													"value": "<string>",
+													"description": "(Required) "
 												}
 											]
 										},
@@ -3330,7 +3377,8 @@
 									"variable": [
 										{
 											"key": "signerId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) ID of signer"
 										}
 									]
 								},
@@ -3379,7 +3427,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"document\": \"<string>\",\n  \"email\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"order\": \"<integer>\",\n  \"resource_uri\": \"<string>\",\n  \"status\": 35\n}"
+									"body": "{\n  \"document\": \"<string>\",\n  \"email\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"has_fields\": \"<boolean>\",\n  \"order\": \"<integer>\",\n  \"resource_uri\": \"<string>\",\n  \"status\": 10\n}"
 								}
 							]
 						}
@@ -3416,7 +3464,8 @@
 									"variable": [
 										{
 											"key": "docId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) ID of document"
 										}
 									]
 								},
@@ -3465,7 +3514,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"archived\": \"<boolean>\",\n  \"resource_uri\": \"<string>\",\n  \"status\": 30,\n  \"download_final\": \"<boolean>\",\n  \"tag\": \"<string>\",\n  \"tag1\": \"<string>\",\n  \"tag2\": \"<string>\"\n}"
+									"body": "{\n  \"archived\": \"<boolean>\",\n  \"resource_uri\": \"<string>\",\n  \"status\": 35,\n  \"download_final\": \"<boolean>\",\n  \"tag\": \"<string>\",\n  \"tag1\": \"<string>\",\n  \"tag2\": \"<string>\"\n}"
 								}
 							]
 						}
@@ -3564,7 +3613,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archived\": \"<boolean>\",\n      \"resource_uri\": \"<string>\",\n      \"status\": 5,\n      \"download_final\": \"<boolean>\",\n      \"tag\": \"<string>\",\n      \"tag1\": \"<string>\",\n      \"tag2\": \"<string>\"\n    },\n    {\n      \"archived\": \"<boolean>\",\n      \"resource_uri\": \"<string>\",\n      \"status\": 60,\n      \"download_final\": \"<boolean>\",\n      \"tag\": \"<string>\",\n      \"tag1\": \"<string>\",\n      \"tag2\": \"<string>\"\n    }\n  ]\n}"
+							"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"archived\": \"<boolean>\",\n      \"resource_uri\": \"<string>\",\n      \"status\": 4,\n      \"download_final\": \"<boolean>\",\n      \"tag\": \"<string>\",\n      \"tag1\": \"<string>\",\n      \"tag2\": \"<string>\"\n    },\n    {\n      \"archived\": \"<boolean>\",\n      \"resource_uri\": \"<string>\",\n      \"status\": 39,\n      \"download_final\": \"<boolean>\",\n      \"tag\": \"<string>\",\n      \"tag1\": \"<string>\",\n      \"tag2\": \"<string>\"\n    }\n  ]\n}"
 						}
 					]
 				}
@@ -3585,7 +3634,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"notify\": \"rejected\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.completed\",\n  \"group\": \"<string>\"\n}",
+							"raw": "{\n  \"notify\": \"sent\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.emailOpened\",\n  \"group\": \"<string>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -3622,7 +3671,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"notify\": \"rejected\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.completed\",\n  \"group\": \"<string>\"\n}",
+									"raw": "{\n  \"notify\": \"sent\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.emailOpened\",\n  \"group\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3665,7 +3714,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"notify\": \"rejected\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.completed\",\n  \"group\": \"<string>\"\n}",
+									"raw": "{\n  \"notify\": \"sent\",\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.emailOpened\",\n  \"group\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3724,7 +3773,8 @@
 									"variable": [
 										{
 											"key": "templateId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) saved html template id"
 										}
 									]
 								}
@@ -3794,7 +3844,8 @@
 									"variable": [
 										{
 											"key": "templateId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) saved html template id"
 										}
 									]
 								},
@@ -3871,7 +3922,8 @@
 									"variable": [
 										{
 											"key": "templateId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) saved html template id"
 										}
 									]
 								}
@@ -4046,7 +4098,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"4V-HK_hma3Dh5J8zLltwnquJLWY6ltSfsxX BkNSiLD43iFIo\",\n  \"latest_text\": \"<string>\",\n  \"group\": \"/api/v1/group/l1S6dEnJqxUAqoqqA6OhH9VhjWcCNf0/\",\n  \"user\": \"/api/v1/user/A13yjV-rviAPVUVx/\"\n}",
+							"raw": "{\n  \"title\": \"LTlrdnR24cMc3oUwnyh\",\n  \"latest_text\": \"<string>\",\n  \"group\": \"/api/v1/group/hdR-gsNekrWY-A1CWIpmj/\",\n  \"user\": \"/api/v1/user/pnk5k5Q8qYr7aD2qgdLQkCfjtYM/\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -4084,7 +4136,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"title\": \"4V-HK_hma3Dh5J8zLltwnquJLWY6ltSfsxX BkNSiLD43iFIo\",\n  \"latest_text\": \"<string>\",\n  \"group\": \"/api/v1/group/l1S6dEnJqxUAqoqqA6OhH9VhjWcCNf0/\",\n  \"user\": \"/api/v1/user/A13yjV-rviAPVUVx/\"\n}",
+									"raw": "{\n  \"title\": \"LTlrdnR24cMc3oUwnyh\",\n  \"latest_text\": \"<string>\",\n  \"group\": \"/api/v1/group/hdR-gsNekrWY-A1CWIpmj/\",\n  \"user\": \"/api/v1/user/pnk5k5Q8qYr7aD2qgdLQkCfjtYM/\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4130,6 +4182,97 @@
 					"name": "{pdfId}",
 					"item": [
 						{
+							"name": "edit-link",
+							"item": [
+								{
+									"name": "Get PDF embeddable link",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/templatepdf/:pdfId/edit-link/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"templatepdf",
+												":pdfId",
+												"edit-link",
+												""
+											],
+											"variable": [
+												{
+													"key": "pdfId",
+													"value": "<uuid>",
+													"description": "(Required) uploaded PDF id"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "One-use link for embedding the pdf edit page",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/templatepdf/:pdfId/edit-link/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"templatepdf",
+														":pdfId",
+														"edit-link",
+														""
+													],
+													"variable": [
+														{
+															"key": "pdfId"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "location",
+													"value": "<string>",
+													"description": {
+														"content": "One-use link to pdf edit page.",
+														"type": "text/plain"
+													}
+												}
+											],
+											"cookie": [],
+											"body": "<string>"
+										}
+									]
+								}
+							]
+						},
+						{
 							"name": "fields",
 							"item": [
 								{
@@ -4156,7 +4299,8 @@
 											"variable": [
 												{
 													"key": "pdfId",
-													"value": "<uuid>"
+													"value": "<uuid>",
+													"description": "(Required) uploaded PDF id"
 												}
 											]
 										}
@@ -4205,7 +4349,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"ax\": \"<float>\",\n      \"ay\": \"<float>\",\n      \"bx\": \"<float>\",\n      \"by\": \"<float>\",\n      \"element_type\": \"initials\",\n      \"page\": \"<integer>\",\n      \"signer\": \"<integer>\",\n      \"align\": 1,\n      \"fieldorder\": \"<integer>\",\n      \"font_name\": \"\",\n      \"font_size\": \"<integer>\",\n      \"hide_border\": \"<boolean>\",\n      \"label\": \"<string>\",\n      \"label_extra\": \"<string>\",\n      \"logic_action\": 2,\n      \"map_to\": \"K\\\\X>Z9mWM2bRM]d5@1Dyv64>rGdaYtEvS0_gIk\",\n      \"logic_group\": \"=KUj4p>eZ6.3[EDtpXcK_J8]Zp 006g>B0mLK\\\\t4Hc2\",\n      \"optional\": \"<boolean>\",\n      \"options\": false,\n      \"substantive\": false,\n      \"validation\": 79,\n      \"value\": \"<string>\"\n    },\n    {\n      \"ax\": \"<float>\",\n      \"ay\": \"<float>\",\n      \"bx\": \"<float>\",\n      \"by\": \"<float>\",\n      \"element_type\": \"text\",\n      \"page\": \"<integer>\",\n      \"signer\": \"<integer>\",\n      \"align\": 3,\n      \"fieldorder\": \"<integer>\",\n      \"font_name\": \"arial\",\n      \"font_size\": \"<integer>\",\n      \"hide_border\": \"<boolean>\",\n      \"label\": \"<string>\",\n      \"label_extra\": \"<string>\",\n      \"logic_action\": 1,\n      \"map_to\": \"F<h>TYPh g[9/@ r_nv^2.>Ul4Du4RJQkw4JU=k] T04uFJkf]S7<D;Nm\\\\<>_?6D5slsi=z:Qz2UrGsv4LWx_I22W/7iW<Ue2w>93:G\",\n      \"logic_group\": \"nWu:c>ot>j2LE=HmYYpu V[<^Hn:519U2;MfsyS=Vt\",\n      \"optional\": \"<boolean>\",\n      \"options\": false,\n      \"substantive\": false,\n      \"validation\": 14,\n      \"value\": \"<string>\"\n    }\n  ]\n}"
+											"body": "{\n  \"meta\": {\n    \"limit\": \"<integer>\",\n    \"next\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"previous\": \"<string>\",\n    \"total_count\": \"<integer>\"\n  },\n  \"objects\": [\n    {\n      \"ax\": \"<float>\",\n      \"ay\": \"<float>\",\n      \"bx\": \"<float>\",\n      \"by\": \"<float>\",\n      \"element_type\": \"signature\",\n      \"page\": \"<integer>\",\n      \"signer\": \"<integer>\",\n      \"align\": 2,\n      \"fieldorder\": \"<integer>\",\n      \"font_name\": \"liberation\",\n      \"font_size\": \"<integer>\",\n      \"hide_border\": \"<boolean>\",\n      \"label\": \"<string>\",\n      \"label_extra\": \"<string>\",\n      \"logic_action\": 1,\n      \"map_to\": \"DUMDFmwmSG58uws>39gDdybAT5zVwbBY.RRa?ZgiHrK3v>bLi/9\\\\W.u/q_;RcRIXxUJ9Dl[kXxhuK>OI1PNFocYh50XL5ZsQErThM>M>>q448dB\",\n      \"logic_group\": \"v=7^=sm4LgA?FrRoXUYiuC?^>RrU]fGDj1lvqEO<cc\",\n      \"optional\": \"<boolean>\",\n      \"options\": false,\n      \"substantive\": false,\n      \"validation\": 16,\n      \"value\": \"<string>\"\n    },\n    {\n      \"ax\": \"<float>\",\n      \"ay\": \"<float>\",\n      \"bx\": \"<float>\",\n      \"by\": \"<float>\",\n      \"element_type\": \"text\",\n      \"page\": \"<integer>\",\n      \"signer\": \"<integer>\",\n      \"align\": 2,\n      \"fieldorder\": \"<integer>\",\n      \"font_name\": \"\",\n      \"font_size\": \"<integer>\",\n      \"hide_border\": \"<boolean>\",\n      \"label\": \"<string>\",\n      \"label_extra\": \"<string>\",\n      \"logic_action\": 1,\n      \"map_to\": \"a3jAuQ1bQAM?we@EVvrVJNC9RcZPct9?bgkIL//OI5?<y1]GOVs4a2;Mo\\\\/pco/Vm<i_HdQWZAPAQOBDqlL/DXMPAE:UvC229kmIkOO1SdRZ5KGq\",\n      \"logic_group\": \"ZXzr\\\\59.h3v8dH;mLXyUpUJ59Al0^gUIEMGovPLFs\\\\L\",\n      \"optional\": \"<boolean>\",\n      \"options\": false,\n      \"substantive\": false,\n      \"validation\": 31,\n      \"value\": \"<string>\"\n    }\n  ]\n}"
 										}
 									]
 								},
@@ -4221,7 +4365,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "[\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"initials\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"courier\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"IB4DigD6Ph3A VwnIR6L9VrstF0oTHMqKm32_NEHrAcBe uywP2\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 1,\n    \"logic_group\": \"s>71C5CBRrsO:grS?E:=D_3[s>U4Y5]h=mz\",\n    \"map_to\": \"LT579=l\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 55,\n    \"value\": \"<string>\"\n  },\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"signature\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 3,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"_A _UKAt30NmUxjVZ2YqY-cHuSlGg\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 3,\n    \"logic_group\": \"qp:k_=Ig6\",\n    \"map_to\": \"fkUfE38Yi.r1ts;ZL<.2d8p4s7n:9dp>VSbhStfxLfobHZI.<bO@K\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 39,\n    \"value\": \"<string>\"\n  }\n]",
+											"raw": "[\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"signature\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"courier\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"2OVoLy7AfHjp45Sm3OM7eVZZgiyQNonLVengKrxf8OXObuDPGjwGjekEc4TJ\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 3,\n    \"logic_group\": \"Jif4BlLG\\\\uJMgdrUeEK\",\n    \"map_to\": \"vdSg4/g6ZYueVt]CZF1vJy[2Fm.xwINV<4?>cp3Ulzi]]Z\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 73,\n    \"value\": \"<string>\"\n  },\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"admin\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"arial\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"yT1F-tSGmGkeP5Xc5IBv820T\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 3,\n    \"logic_group\": \"z;f486wcdgxa1YMY4:V _4_\",\n    \"map_to\": \"J5a<6KGf=30xevD6HLV[[\\\\B]kh@DV=pWhSD^N]Qde6:C7u.\\\\v@00TD@31_AfK>X4pOLT6ari?Dm6w/8wzXKv^ULzq87bhMm;^]@E Q\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 37,\n    \"value\": \"<string>\"\n  }\n]",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4243,7 +4387,8 @@
 											"variable": [
 												{
 													"key": "pdfId",
-													"value": "<uuid>"
+													"value": "<uuid>",
+													"description": "(Required) uploaded PDF id"
 												}
 											]
 										},
@@ -4267,7 +4412,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "[\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"initials\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"courier\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"IB4DigD6Ph3A VwnIR6L9VrstF0oTHMqKm32_NEHrAcBe uywP2\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 1,\n    \"logic_group\": \"s>71C5CBRrsO:grS?E:=D_3[s>U4Y5]h=mz\",\n    \"map_to\": \"LT579=l\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 55,\n    \"value\": \"<string>\"\n  },\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"signature\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 3,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"_A _UKAt30NmUxjVZ2YqY-cHuSlGg\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 3,\n    \"logic_group\": \"qp:k_=Ig6\",\n    \"map_to\": \"fkUfE38Yi.r1ts;ZL<.2d8p4s7n:9dp>VSbhStfxLfobHZI.<bO@K\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 39,\n    \"value\": \"<string>\"\n  }\n]",
+													"raw": "[\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"signature\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"courier\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"2OVoLy7AfHjp45Sm3OM7eVZZgiyQNonLVengKrxf8OXObuDPGjwGjekEc4TJ\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 3,\n    \"logic_group\": \"Jif4BlLG\\\\uJMgdrUeEK\",\n    \"map_to\": \"vdSg4/g6ZYueVt]CZF1vJy[2Fm.xwINV<4?>cp3Ulzi]]Z\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 73,\n    \"value\": \"<string>\"\n  },\n  {\n    \"ax\": \"<float>\",\n    \"ay\": \"<float>\",\n    \"bx\": \"<float>\",\n    \"by\": \"<float>\",\n    \"element_type\": \"admin\",\n    \"page\": \"<integer>\",\n    \"signer\": \"<integer>\",\n    \"align\": 2,\n    \"fieldorder\": \"<integer>\",\n    \"font_name\": \"arial\",\n    \"font_size\": \"<integer>\",\n    \"hide_border\": \"<boolean>\",\n    \"label\": \"yT1F-tSGmGkeP5Xc5IBv820T\",\n    \"label_extra\": \"<string>\",\n    \"logic_action\": 3,\n    \"logic_group\": \"z;f486wcdgxa1YMY4:V _4_\",\n    \"map_to\": \"J5a<6KGf=30xevD6HLV[[\\\\B]kh@DV=pWhSD^N]Qde6:C7u.\\\\v@00TD@31_AfK>X4pOLT6ari?Dm6w/8wzXKv^ULzq87bhMm;^]@E Q\",\n    \"optional\": false,\n    \"options\": \"<string>\",\n    \"substantive\": false,\n    \"validation\": 37,\n    \"value\": \"<string>\"\n  }\n]",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -4326,7 +4471,8 @@
 											"variable": [
 												{
 													"key": "pdfId",
-													"value": "<string>"
+													"value": "<string>",
+													"description": "(Required) "
 												}
 											]
 										},
@@ -4432,7 +4578,8 @@
 									"variable": [
 										{
 											"key": "pdfId",
-											"value": "<uuid>"
+											"value": "<uuid>",
+											"description": "(Required) uploaded PDF id"
 										}
 									]
 								}
@@ -4602,7 +4749,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"group\": \"/api/v1/group/yb9w9MgKS7B1tDKMfQ00rpQ6f/\",\n  \"pdf_file\": \"<string>\",\n  \"archive_upon_send\": \"<boolean>\",\n  \"process_tags\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\"\n}",
+							"raw": "{\n  \"group\": \"/api/v1/group/ryhD59TtA4tqZtm97umsdgQwcQou5wg4vR485hBKPd0roAF2e/\",\n  \"pdf_file\": \"<string>\",\n  \"archive_upon_send\": \"<boolean>\",\n  \"process_tags\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -4640,7 +4787,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"group\": \"/api/v1/group/yb9w9MgKS7B1tDKMfQ00rpQ6f/\",\n  \"pdf_file\": \"<string>\",\n  \"archive_upon_send\": \"<boolean>\",\n  \"process_tags\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\"\n}",
+									"raw": "{\n  \"group\": \"/api/v1/group/ryhD59TtA4tqZtm97umsdgQwcQou5wg4vR485hBKPd0roAF2e/\",\n  \"pdf_file\": \"<string>\",\n  \"archive_upon_send\": \"<boolean>\",\n  \"process_tags\": \"<boolean>\",\n  \"title\": \"<string>\",\n  \"user\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4694,7 +4841,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.rejected\",\n  \"group\": \"<integer>\"\n}",
+							"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.visiting\",\n  \"group\": \"<integer>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -4731,7 +4878,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.rejected\",\n  \"group\": \"<integer>\"\n}",
+									"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.visiting\",\n  \"group\": \"<integer>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4774,7 +4921,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"document.rejected\",\n  \"group\": \"<integer>\"\n}",
+									"raw": "{\n  \"url\": \"https://\",\n  \"eventFilter\": \"recipient.visiting\",\n  \"group\": \"<integer>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -4833,7 +4980,8 @@
 									"variable": [
 										{
 											"key": "userId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) "
 										}
 									]
 								}
@@ -4918,7 +5066,8 @@
 									"variable": [
 										{
 											"key": "userId",
-											"value": "<string>"
+											"value": "<string>",
+											"description": "(Required) "
 										}
 									]
 								},
@@ -4994,7 +5143,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"_H3L\",\n  \"last_name\": \"RDlFZMbdx9_s\",\n  \"timezone\": \"UTC\",\n  \"password\": \"0gqCwPn1tmY3{qIr|fW:1\",\n  \"groups\": \"/api/v1/group/MxdBKV2R76F2mtQ1nlybj1NGG91W/\",\n  \"permission\": \"3\"\n}",
+							"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"XSl2fRE_wMOhSKeeWSNo-Frtzn-2yl\",\n  \"last_name\": \"ETcBNtloFk31iKsojNpSHXpU2XIq6p\",\n  \"timezone\": \"UTC\",\n  \"password\": \".ZzH#dWNh]L?*mlC|B3J^nwI5EN0!SJ\",\n  \"groups\": \"/api/v1/group/T0YqwZMhKuuAoWPrQJAHt6wP/\",\n  \"permission\": \"6\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -5031,7 +5180,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"_H3L\",\n  \"last_name\": \"RDlFZMbdx9_s\",\n  \"timezone\": \"UTC\",\n  \"password\": \"0gqCwPn1tmY3{qIr|fW:1\",\n  \"groups\": \"/api/v1/group/MxdBKV2R76F2mtQ1nlybj1NGG91W/\",\n  \"permission\": \"3\"\n}",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"XSl2fRE_wMOhSKeeWSNo-Frtzn-2yl\",\n  \"last_name\": \"ETcBNtloFk31iKsojNpSHXpU2XIq6p\",\n  \"timezone\": \"UTC\",\n  \"password\": \".ZzH#dWNh]L?*mlC|B3J^nwI5EN0!SJ\",\n  \"groups\": \"/api/v1/group/T0YqwZMhKuuAoWPrQJAHt6wP/\",\n  \"permission\": \"6\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -5087,7 +5236,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"_H3L\",\n  \"last_name\": \"RDlFZMbdx9_s\",\n  \"timezone\": \"UTC\",\n  \"password\": \"0gqCwPn1tmY3{qIr|fW:1\",\n  \"groups\": \"/api/v1/group/MxdBKV2R76F2mtQ1nlybj1NGG91W/\",\n  \"permission\": \"3\"\n}",
+									"raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"XSl2fRE_wMOhSKeeWSNo-Frtzn-2yl\",\n  \"last_name\": \"ETcBNtloFk31iKsojNpSHXpU2XIq6p\",\n  \"timezone\": \"UTC\",\n  \"password\": \".ZzH#dWNh]L?*mlC|B3J^nwI5EN0!SJ\",\n  \"groups\": \"/api/v1/group/T0YqwZMhKuuAoWPrQJAHt6wP/\",\n  \"permission\": \"6\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
