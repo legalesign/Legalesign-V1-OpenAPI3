@@ -401,7 +401,7 @@ paths:
           '204':
             description: Successful operation
           '200':
-            description: Something went wrong, probably you need to allow automated deleetions.
+            description: Something went wrong, probably you need to allow automated deletions.
   /group/:
     get:
       tags:
