@@ -447,7 +447,7 @@ paths:
               schema:
                 type: string
         '400':
-          description: groups allowance exceeded
+          description: groups allowance exceeded or api permissions upgrade required  
       requestBody:
         content:
           application/json:
@@ -2118,23 +2118,15 @@ components:
       type: object
       required:
         - name
-        - user
-        - xframe_allow
       properties:
         name:
           type: string
           minLength: 4
           maxLength: 60
-        user:
-          type: string
-          pattern: ^/api/v1/user/[-\w]{1,60}/$
         xframe_allow:
           type: boolean
-          description: Set to true if you want to embed your signing page. We recommend avoiding iframe.
-        approve_all_deletions:
-          type: boolean
-          description: Set to false to disable secondary approval on deletions (if you wish to use permanent delete)
-          default: true
+          description: Set to true if you want to embed your signing page.
+          default: false
     AttachmentResponse:
       type: object
       properties:
