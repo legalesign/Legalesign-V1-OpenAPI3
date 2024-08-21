@@ -372,7 +372,7 @@ paths:
                     label_extra:
                       type: string
                       nullable: true
-                    signers:
+                    signer:
                       type: integer
                     state:
                       type: boolean
@@ -1427,7 +1427,7 @@ components:
             Comma delimited string of email addresses that are notified of signing or rejection.
         convert_sender_to_signer:
           type: boolean
-          description: If any sender fields are left blank, convert them to signer fields.
+          description: If any sender fields are left blank, convert them to fields for the first recipient.
         footer:
           type: string
           description: >-
@@ -1675,8 +1675,9 @@ components:
         signer:
           type: integer
           format: int32
-          description: 1-Index number for signer (witness+100) (approver+200)
+          description: 1-Index number for signer (witness+100) (approver+200). Null  if sender field.
           minimum: 1
+          nullable: true
         substantive:
           type: boolean
           deprecated: true
@@ -1903,6 +1904,7 @@ components:
               tag:
                 type: string
                 pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+                
               tag1:
                 type: string
                 pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
@@ -1919,6 +1921,7 @@ components:
                 nullable: true
               text:
                 type: string
+                nullable: true
               user:
                 type: string
                 pattern: ^/api/v1/user/[-\w]{1,60}/$
