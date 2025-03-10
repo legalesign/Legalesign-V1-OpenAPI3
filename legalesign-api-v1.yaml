@@ -381,6 +381,28 @@ paths:
                       $ref: '#/components/schemas/PdfFieldValidationEnum'
                     value:
                       type: string
+  '/document/{docId}/auditlog/':
+      parameters:
+      - name: docId
+        in: path
+        description: document id
+        required: true
+        schema:
+          type: string
+          format: uuid
+      get:
+        tags:
+          - document
+        summary: Download pdf of audit log
+        operationId: auditLog
+        responses:
+          '200':
+            description: A PDF file
+            content:
+              application/pdf:
+                schema:
+                  type: string
+                  format: binary
   '/document/{docId}/delete/':  
       parameters:
       - name: docId
