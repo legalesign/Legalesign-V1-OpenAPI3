@@ -1212,6 +1212,24 @@ paths:
       externalDocs:
         description: text tags in pdfs
         url: 'https://legalesign.com/articles/pdf-documents/text-tags-on-legalesign/'
+  '/templatepdf/{pdfId}/archive/':
+    post:
+      tags:
+        - templatepdf
+      summary: Archive PDF template
+      description: Delists the PDF
+      operationId: postPdfTemplateArchive
+      parameters:
+        - name: pdfId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: operation successful
+        '400':
+          description: bad request
   '/template/{templateId}/':
     parameters:
       - name: templateId
