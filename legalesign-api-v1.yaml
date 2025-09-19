@@ -100,12 +100,22 @@ paths:
         '400':
           description: 'Bad Request, read response for error information'
           content:
-            example error report:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
               examples:
-                response:
+                long_name:
                   value:
-                    document:
-                      name: Filename must be not more than 250 characters
+                    text: Filename must be not more than 250 characters
+                long_description:
+                  value:
+                    text: "Description must be not more than 250 characters"
+                bad_characters:
+                  value:
+                    text: "Use simple ascii letters and numbers for filename"
         '401':
           description: Unauthorized
         '429':
@@ -250,11 +260,12 @@ paths:
                 properties:
                   signer_1:
                     type: string
-                    example: https://app1.legalesign.com/esign/...
+              example:
+                signer_1: "https://app1.legalesign.com/esign/..."                
         '400':
           description: 'Bad Request, read response for error information'
           content:
-            example error report:
+            application/json:
               examples:
                 response:
                   value:
@@ -1315,7 +1326,7 @@ paths:
         '400':
           description: bad request
           content:
-            poor password:
+            application/json:
               examples:
                 response:
                   value:
@@ -2366,7 +2377,6 @@ components:
           type: string
           description: >-
             If not set a verification email is sent. Password must be at least 8 chars, include upper and lower case, with a number and a special character
-          minLength: 8
           pattern: ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[=+\-^$*.\[\]{}()?"!@#%&/\\,><':;|_~`])\S{8,99}$
         groups:
           type: string
