@@ -4,7 +4,7 @@ info:
     Legalesign.com is an electronic signature software. 
     This is the documentation for its REST API. 
     
-    Start by creating a trial account at https://legalesign.com/landing/free-trial/. Upon account activation, select the API dev option.  Get an API key by emailing support@legalesign with background on your use-case and skills. You will be in sandbox mode that will limit you to 5 signers. Set up 2FA on your account and then login to https://logs.legalesign.com to access the API Dashboard, where you can manage you api key, webhooks, and sandbox signers. Contact support to move to production mode when you are ready.
+    Start by creating a trial account at https://access.legalesign.com/?q=signUp. Upon account activation, select the API dev option.  Get an API key by creating a ticket at https://support.legalesign.com with background on your use-case and skills. You will be in sandbox mode that will limit you to 5 signers. Set up 2FA on your account and then login to https://logs.legalesign.com to access the API Dashboard, where you can manage you api key, webhooks, and sandbox signers. Contact support to move to production mode when you are ready.
     
     For any queries contact us at support@legalesign.com.
   version: "1.0.0"
@@ -1521,7 +1521,7 @@ components:
         pdftext:
           type: object
           description: >-
-            Assign values to PDF sender fields, use field label or uuid as keys (note labels may not be unique). See also strict_fields. See templatepdf/:id/fields/ for uuid.
+            Assign values to PDF sender fields, use the template's field label or its uuid as object keys. See templatepdf/:id/fields/ and filter for element_type="admin", to get relevant fields with their label or uuid. See also strict_fields. 
           additionalProperties:
             type: string
         redirect:
@@ -1546,7 +1546,7 @@ components:
             simulataneously.
         signertext:
           type: object
-          description: Add custom placeholders to signer fields, using labels or uuid as keys in an object (as for pdftext). See templatepdf/:id/fields/ for uuid.
+          description: Add custom placeholders to signer fields. Use field labels or uuid as keys in the object (as for pdftext). See templatepdf/:id/fields/ and filter for element_type = "text" to get relevant fields with their labels or uuid.
           additionalProperties:
             type: string
         strict_fields:
