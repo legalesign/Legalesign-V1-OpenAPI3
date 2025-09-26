@@ -1158,6 +1158,19 @@ paths:
         - templatepdf
       summary: Get PDF embeddable link
       operationId: getPdfTemplateEditLink
+      parameters:
+        - name: hide_sender_fields
+          in: query
+          description: hide sender fields from rendered page
+          required: false
+          schema:
+            type: boolean
+        - name: css_body_backgroundcolor
+          in: query
+          description: use hex code excluding hash symbol to change background color
+          required: false
+          schema:
+            type: string
       responses:
         '201':
           description: One-use link for embedding the pdf edit page
