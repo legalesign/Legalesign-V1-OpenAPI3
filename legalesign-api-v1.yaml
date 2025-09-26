@@ -336,9 +336,16 @@ paths:
                 $ref: '#/components/schemas/DocumentResponseDetail'
     delete:
       tags:
-        - document
+        - document        
       summary: Void/archive signing document
       operationId: archiveDocument
+      parameters:
+        - name: email
+          in: query
+          description: If set to true or 1 the recipients are notified the document is voided.
+          required: false
+          schema:
+            type: string      
       description: >-
         Delete does not remove permanently but sets it with status 40 (removed)  and archives it.
       responses:
@@ -1514,7 +1521,7 @@ components:
         pdftext:
           type: object
           description: >-
-            Assign values to PDF sender fields, use field labels as keys. Requires unique fields labels. See also strict_fields.
+            Assign values to PDF sender fields, use field label or uuid as keys (note labels may not be unique). See also strict_fields. See templatepdf/:id/fields/ for uuid.
           additionalProperties:
             type: string
         redirect:
@@ -1539,7 +1546,7 @@ components:
             simulataneously.
         signertext:
           type: object
-          description: Add custom placeholders to signer fields, using labels as keys in an object (as for pdftext). Relies on unique labelling.
+          description: Add custom placeholders to signer fields, using labels or uuid as keys in an object (as for pdftext). See templatepdf/:id/fields/ for uuid.
           additionalProperties:
             type: string
         strict_fields:
@@ -1585,6 +1592,7 @@ components:
               ay: 0.367795045508885
               bx: 0.446891191709845
               by: 0.425434569754081
+              uuid: 249590ba-9b25-41cc-a94f-bec7e6a3be21
               element_type: signature
               fieldorder: null,
               font_name': ''
@@ -1733,13 +1741,17 @@ components:
           type: boolean
           deprecated: true
           description: >-
-            Set if field substantive to contract terms, if so will not let others
+            Not in use. Set if field substantive to contract terms, if so will not let others
             sign till this field completed
           default: false
         validation:
           $ref: '#/components/schemas/PdfFieldValidationEnum'
         value:
           type: string
+        uuid:
+          description: Unique reference for this field
+          type: string
+          format: uuid 
     PdfFieldsPost:
       type: object
       required:
