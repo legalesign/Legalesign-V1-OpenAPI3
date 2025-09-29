@@ -1,0 +1,3944 @@
+swagger: '2.0'
+info:
+  description: >
+    Legalesign.com is an electronic signature software.  This is the
+    documentation for its REST API. 
+
+    Start by creating a trial account at
+    https://access.legalesign.com/?q=signUp. Upon account activation, select the
+    API dev option.  Get an API key by creating a ticket at
+    https://support.legalesign.com with background on your use-case and skills.
+    You will be in sandbox mode that will limit you to 5 signers. Set up 2FA on
+    your account and then login to https://logs.legalesign.com to access the API
+    Dashboard, where you can manage you api key, webhooks, and sandbox signers.
+    Contact support to move to production mode when you are ready.
+
+    For any queries contact us at support@legalesign.com.
+  version: 1.0.0
+  title: Legalesign API
+  termsOfService: https://legalesign.com/opn/terms/
+  contact:
+    email: support@legalesign.com
+    name: API support
+    url: https://legalesign.com/contact/
+consumes:
+  - application/json
+produces:
+  - application/json
+x-ms-connector-metadata:
+  categories:
+    - eSignature
+  visibility: important
+host: eu-api.legalesign.com
+basePath: /api/v1
+schemes:
+  - https
+tags:
+  - name: attachment
+    description: Static email attachments
+  - name: document
+    description: Signing documents
+  - name: signer
+    description: Document signers
+  - name: templatetext
+    description: Text/html based templates
+    externalDocs:
+      description: Information about html/text templates
+      url: >-
+        https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/
+  - name: templatepdf
+    description: PDF based templates
+  - name: group
+    description: Groups (aka teams) contain everything
+  - name: member
+    description: A member is a user assigned to a group
+  - name: user
+    description: A user provides login access
+  - name: webhook
+    description: Event notifications/webhooks
+    externalDocs:
+      description: Information about callbacks
+      url: https://apidocs.legalesign.com/docs/webhooks
+externalDocs:
+  description: Find out more about Legalesign API
+  url: https://apidocs.legalesign.com/
+security:
+  - api_key: []
+definitions:
+  MemberResponse:
+    type: object
+    properties:
+      created:
+        type: string
+        format: date-time
+      group:
+        type: string
+        format: uri
+      modified:
+        type: string
+        format: date-time
+      permission:
+        $ref: '#/definitions/PermissionsEnum'
+      resource_uri:
+        type: string
+        format: uri
+      user:
+        type: string
+        format: uri
+    example:
+      created: 2020-05-20T:15:10
+      modified: 2020-05-20T:15:10
+      permission: 1
+      resource_uri: /api/v1/member/m0m0m0m0-m0m0-m0m0-m0m0-m0m0m0m0m0m0/
+      user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+  DocumentPost:
+    type: object
+    required:
+      - group
+      - name
+      - signers
+    description: >-
+      Send a document to be signed. In addition to the required fields, the POST
+      must also  contain either text (raw html) or a reference to a saved
+      template (html) or a  templatepdf (uploaded pdf). Also recommended -
+      do_email, auto_archive and pdftext (if using pdf).
+    properties:
+      group:
+        type: string
+        format: uri
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+      name:
+        type: string
+        minLength: 1
+        maxLength: 60
+      text:
+        type: string
+        description: >-
+          Raw html. This API call must contain either one of the attributes
+          text, templatepdf, template.
+      templatepdf:
+        type: string
+        format: uri
+        pattern: ^/api/v1/templatepdf/[-\w]{1,60}/$
+        description: >-
+          Resource URI of templatepdf object. This API call must contain either
+          one of the attributes text, templatepdf, template.
+      template:
+        type: string
+        pattern: ^/api/v1/template/[-\w]{1,60}/$
+        format: uri
+        description: >-
+          Resource URI of text template object. This call must contain either
+          one of the attributes text, templatepdf, template.
+      signers:
+        type: array
+        items:
+          $ref: '#/definitions/DocumentSignerPost'
+      signature_type:
+        type: integer
+        description: >-
+          Use 4 to get your executed PDF Certified. Recommended. Defaults to 1
+          (uses a sha256 hash for document integrity).
+        default: 1
+      append_pdf:
+        type: boolean
+        description: >-
+          Append Legalesign validation info to final PDF. If not included uses
+          the group default.
+        default: false
+      auto_archive:
+        type: boolean
+        description: Send to archive soon after signing. Keeps web app clutter free
+        default: true
+      do_email:
+        type: boolean
+        description: >-
+          Use Legalesign email to send notification emails. If false suppresses
+          all emails.
+        default: false
+      cc_emails:
+        type: string
+        description: >-
+          Comma delimited string of email addresses that are notified of signing
+          or rejection.
+      convert_sender_to_signer:
+        type: boolean
+        description: >-
+          If any sender fields are left blank, convert them to fields for the
+          first recipient.
+      footer:
+        type: string
+        description: >-
+          Text doc only. The footer for the final pdf. Use keyword \"default\"
+          to use group default footer.
+      footer_height:
+        type: integer
+        format: int64
+        description: >-
+          Text based doc only. Pixel height of PDF footer, if used. 1px =
+          0.025cm
+      header:
+        type: string
+        description: >-
+          Text based doc only. The header for the final pdf. Use keyword
+          \"default\" to use group header footer.
+      header_height:
+        type: integer
+        format: int64
+        description: >-
+          Text based doc only. Pixel height of final PDF footer, if used. 1px =
+          0.025cm
+      pdf_password:
+        type: string
+        pattern: ^[-\w ]{0,150}$
+        description: >-
+          Set a password. Must be ascii encode-able, you must also set
+          signature_type to 4 and choose a pdf_password_type.
+      pdf_password_type:
+        type: integer
+        x-enum-varnames:
+          - passtype1
+          - passtype2
+        enum:
+          - 1
+          - 2
+        description: >-
+          1 to store password, 2 for to delete from our records upon final
+          signing.
+      pdftext:
+        type: object
+        description: >-
+          Assign values to PDF sender fields, use the template's field label or
+          its uuid as object keys. See templatepdf/:id/fields/ and filter for
+          element_type="admin", to get relevant fields with their label or uuid.
+          See also strict_fields. 
+        additionalProperties:
+          type: string
+      redirect:
+        type: string
+        maxLength: 250
+        pattern: ^https://
+        description: >-
+          URL to send the signer to after signing (instead of download page). 
+          Your URL will include query parameters with ID and state information
+          as follows:
+          YOUR-URL?signer=[signer_uid]&doc=[doc_id]&group=[group_id]&signer_state=[signer_status]&doc_state=[doc_status]
+      reminders:
+        type: string
+        pattern: ^(default|)$
+        description: >-
+          Put 'default' if you wish to use the default reminder schedule in the
+          group (go to web app to set default schedule)
+      return_signer_links:
+        type: boolean
+        description: Return document links for signers in the response BODY.
+      signers_in_order:
+        type: boolean
+        description: >-
+          Notify signers in their order sequence. If false all are notified
+          simulataneously.
+      signertext:
+        type: object
+        description: >-
+          Add custom placeholders to signer fields. Use field labels or uuid as
+          keys in the object (as for pdftext). See templatepdf/:id/fields/ and
+          filter for element_type = "text" to get relevant fields with their
+          labels or uuid.
+        additionalProperties:
+          type: string
+      strict_fields:
+        type: boolean
+        description: >-
+          pdftext fails silently for invalid field value, set to true to return
+          an error
+      tag:
+        type: string
+        pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+        maxLength: 250
+      tag1:
+        type: string
+        pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+        maxLength: 250
+      tag2:
+        type: string
+        pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+        maxLength: 250
+      user:
+        type: string
+        format: uri
+        description: Assign document another user in the group. Defaults to API
+  TemplateDetailPatch:
+    type: string
+    description: json with any fields to update
+  TemplateListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/TemplateResponse'
+  TemplatePdfFieldsList:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/TemplatePdfFieldDetail'
+        example:
+          - ax: 0.215025906735751
+            ay: 0.367795045508885
+            bx: 0.446891191709845
+            by: 0.425434569754081
+            uuid: 249590ba-9b25-41cc-a94f-bec7e6a3be21
+            element_type: signature
+            fieldorder: null,
+            font_name': ''
+            font_size: 12
+            hide_border: false
+            label: Sign here,
+            label_extra: ''
+            logic_action: null
+            logic_group: ''
+            map_to: ''
+            optional: false
+            options: ''
+            page: 1,
+            signer: 1
+            substantive: false
+            validation: None
+            value': ''
+          - ax: 0.20207253886010362
+            ay: 0.23421773535334944
+            bx: 0.47797927461139894
+            by: 0.24702651851894872
+            element_type: text
+            font_name: liberation
+            font_size: 11
+            hide_border: false
+            label: ''
+            label_extra: ''
+            logic_action: null
+            logic_group: ''
+            map_to: ''
+            optional: false
+            options: ''
+            page: 1
+            signer: 1
+            substantive: false
+            validation: None
+            value: ''
+  TemplatePdfFieldDetail:
+    type: object
+    required:
+      - ax
+      - ay
+      - bx
+      - by
+      - element_type
+      - page
+      - signer
+    properties:
+      align:
+        type: integer
+        description: |
+          one of the following: 
+            * 1 - left 
+            * 2 - middle 
+            * 3 - right
+        enum:
+          - 1
+          - 2
+          - 3
+        x-nullable: true
+      ax:
+        type: number
+        format: float
+        description: left vertical, 0 = left page edge, 1 = right page edge
+      ay:
+        type: number
+        format: float
+        description: upper horizontal, 0 = top page edge, 1 = bottom page edge
+      bx:
+        type: number
+        format: float
+        description: right vertical, 0 = left page edge, 1 = right page edge
+      by:
+        type: number
+        format: float
+        description: lower horizontal. 0 = top page edge, 1 = bottom page edge
+      element_type:
+        type: string
+        description: >-
+          Must be one of the following: * signature - signature field  *
+          initials - initials field  * text - signer field (field for signer to
+          complete) * admin - sender field (field to complete by admin user when
+          sending)
+        enum:
+          - signature
+          - initials
+          - text
+          - admin
+      fieldorder:
+        type: integer
+        format: int32
+        description: order signer progresses through fields, top-down if blank
+      font_name:
+        type: string
+        enum:
+          - ''
+          - arial
+          - courier
+          - helvetica
+          - liberation
+          - verdana
+      font_size:
+        type: integer
+      hide_border:
+        type: boolean
+      label:
+        type: string
+        description: help signer/sender understand what to do
+      label_extra:
+        type: string
+        description: not in use
+        x-deprecated: true
+      logic_action:
+        type: integer
+        x-enum-varnames:
+          - one-of-a-group
+          - sum
+          - conditional
+        enum:
+          - 1
+          - 2
+          - 3
+        description: >-
+          offers options for more advanced forms 1 = One of a set of field
+          (radio group), 2 = Sum a set of fields,  3 = Conditional upon another
+          field
+      map_to:
+        type: string
+        pattern: ^[\.-_  \w:]{0,120}$
+        maxLength: 120
+        description: custom data for form integrations
+      logic_group:
+        type: string
+        pattern: ^[\.-_  \w:]{0,60}$
+        maxLength: 60
+        description: values to enable a given logic_action in the form
+      optional:
+        type: boolean
+      options:
+        type: string
+        description: user for certain validation types
+      page:
+        type: integer
+        format: int32
+        description: which page to place field on
+      signer:
+        type: integer
+        format: int32
+        description: >-
+          1-Index number for signer (witness+100) (approver+200). Null  if
+          sender field.
+        minimum: 1
+        x-nullable: true
+      substantive:
+        type: boolean
+        x-deprecated: true
+        description: >-
+          Not in use. Set if field substantive to contract terms, if so will not
+          let others sign till this field completed
+        default: false
+      validation:
+        $ref: '#/definitions/PdfFieldValidationEnum'
+      value:
+        type: string
+      uuid:
+        description: Unique reference for this field
+        type: string
+        format: uuid
+  PdfFieldsPost:
+    type: object
+    required:
+      - ax
+      - ay
+      - bx
+      - by
+      - element_type
+      - page
+      - signer
+    properties:
+      align:
+        type: integer
+        description: |
+          one of the following: 
+            * 1 - left 
+            * 2 - middle 
+            * 3 - right
+        enum:
+          - 1
+          - 2
+          - 3
+        x-nullable: true
+        x-enum-varnames:
+          - left
+          - center
+          - right
+      ax:
+        type: number
+        format: float
+        description: >-
+          % of page width - left vertical: 0 = left page edge, 1 = right page
+          edge
+      ay:
+        type: number
+        format: float
+        description: >-
+          % of page height - upper horizontal: 0 = top page edge, 1 = bottom
+          page edge
+      bx:
+        type: number
+        format: float
+        description: >-
+          % of page width - right vertical, 0 = left page edge, 1 = right page
+          edge
+      by:
+        type: number
+        format: float
+        description: >-
+          % of page height lower horizontal. 0 = top page edge, 1 = bottom page
+          edge
+      element_type:
+        type: string
+        description: >
+          Must be one of the following: * signature - signature field * initials
+          - initials field  * text - signer field (field for signer to
+          complete)  * admin - sender field (field to complete by admin user
+          when sending, use pdftext)
+        enum:
+          - signature
+          - initials
+          - text
+          - admin
+      fieldorder:
+        type: integer
+        format: int32
+        x-nullable: true
+        description: >-
+          Ordering of fields as the signer progresses (top-down by if left
+          blank)
+      font_name:
+        type: string
+        enum:
+          - ''
+          - arial
+          - courier
+          - helvetica
+          - liberation
+          - verdana
+      font_size:
+        type: integer
+        format: int32
+        minimum: 6
+        maximum: 20
+      hide_border:
+        type: boolean
+      label:
+        type: string
+        pattern: ^[-\w ]{0,60}$
+        description: Help a signer/sender understand what to do with the form field
+      label_extra:
+        type: string
+        maxLength: 250
+        description: unused. more label if required
+        x-deprecated: true
+      logic_action:
+        type: integer
+        x-enum-varnames:
+          - one-of-a-group
+          - sum
+          - conditional
+        enum:
+          - 1
+          - 2
+          - 3
+        description: |
+          offers options for more advanced forms
+            1 = One of a set of field - radio group
+            2 = Sum a set of fields
+            3 = Conditional upon another field
+      logic_group:
+        type: string
+        pattern: ^[\.-_  \w:]{0,60}$
+        maxLength: 60
+        description: values to enable a given logic_action in the form
+      map_to:
+        type: string
+        pattern: ^[\.-_  \w:]{0,120}$
+        maxLength: 120
+        description: custom data for form integrations
+      optional:
+        type: boolean
+        description: Set true to allow field to be ignored
+        default: false
+      options:
+        type: string
+        description: Additional values for certain validation types.
+      page:
+        type: integer
+        format: int32
+        description: which page to place field on
+      signer:
+        type: integer
+        format: int32
+        description: 1-indexed number of signer (witness+100) (approver+200)
+        minimum: 1
+      substantive:
+        type: boolean
+        description: >-
+          Set if field substantive to contract terms, if so will not let other
+          sign till this field completed
+        default: false
+      validation:
+        $ref: '#/definitions/PdfFieldValidationEnum'
+      value:
+        type: string
+  SignerResponse:
+    type: object
+    properties:
+      document:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      has_fields:
+        type: boolean
+      order:
+        type: integer
+        format: int32
+      resource_uri:
+        type: string
+      status:
+        $ref: '#/definitions/SignerStatusEnum'
+    example:
+      document: /api/v1/document/d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0/
+      email: joe.biggins@widgets.com
+      first_name: Joe
+      has_fields: true
+      last_name: Biggins
+      order: 0
+      resource_uri: /api/v1/signers/s0s0s0s0-s0s0-s0s0-s0s0-s0s0s0s0s0s0/
+      status: 20
+  DocumentListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          type: object
+          properties:
+            archived:
+              type: boolean
+            auto_archive:
+              type: boolean
+            cc_emails:
+              type: string
+            created:
+              type: string
+              format: date-time
+            do_email:
+              type: boolean
+            download_final:
+              type: boolean
+            group:
+              type: string
+              pattern: ^/api/v1/group/[-\w]{1,50}/$
+            modified:
+              type: string
+              format: date-time
+            name:
+              type: string
+            pdftext:
+              type: string
+            redirect:
+              type: string
+            resource_uri:
+              type: string
+            return_signer_links:
+              type: boolean
+            signers:
+              type: array
+              description: nested arrays with signer details
+              items:
+                type: array
+                minItems: 8
+                maxItems: 8
+                items:
+                  type: string
+                description: >-
+                  Always contains [signer URI, first name, last name, email, sms
+                  number, has_fields, status, signer order (0-indexed)]
+            signers_in_order:
+              type: integer
+              format: int32
+              enum:
+                - 0
+                - 1
+              minLength: 1
+            status:
+              $ref: '#/definitions/DocumentStatusEnum'
+            tag:
+              type: string
+              pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+            tag1:
+              type: string
+              pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+            tag2:
+              type: string
+              pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
+            template:
+              type: string
+              pattern: ^/api/v1/template/[-\w]{1,60}/$
+              x-nullable: true
+            templatepdf:
+              type: string
+              pattern: ^/api/v1/templatepdf/[-\w]{1,60}/$
+              x-nullable: true
+            text:
+              type: string
+              x-nullable: true
+            user:
+              type: string
+              pattern: ^/api/v1/user/[-\w]{1,60}/$
+            uuid:
+              type: string
+              format: uuid
+        example:
+          - archived: false
+            auto_archive: true
+            cc_emails: None
+            created: 2020-05-20T:15:10
+            do_email: false
+            download_final: false
+            group: /api/v1/group/my-group/
+            modified: 2020-05-20T:15:10
+            name: test cs_agreement
+            pdftext: None
+            redirect: https://example.com/redirect-receive/
+            resource_uri: /api/v1/document/d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0/
+            signers:
+              - >-
+                /api/v1/signers/s0s0s0s0-s0s0-s0s0-s0s0-s0s0s0s0s0s0/, Joe,
+                Biggins, joe.biggins@widgets.com, '', true, 20, 0
+              - >-
+                /api/v1/signers/s1s1s1s1-s1s1-s1s1-s1s1-s1s1s1s1s1s1/, Betty,
+                MacLean, betty.maclean@widgets.comma, '', true, 10, 1
+            signer_in_order: true
+            status: 10
+            tag: contract2020myref
+            tag1: my_other_ref
+            tag2: andFinalRef
+            template: None
+            templatepdf: /api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
+            text: ''
+            user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+            uuid: d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0
+  HTMLSigningPreviewPost:
+    type: object
+    properties:
+      text:
+        type: string
+      title:
+        type: string
+      group:
+        type: string
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+      signee_count:
+        type: integer
+        format: int32
+  DocumentPdfPreview:
+    type: object
+    required:
+      - group
+      - is_signature_per_page
+      - signature_type
+      - signee_count
+      - text
+    properties:
+      text:
+        type: string
+        description: raw html
+      signee_count:
+        type: integer
+        format: int32
+        description: number of signers
+      signature_type:
+        type: integer
+      is_signature_per_page:
+        type: integer
+      group:
+        type: string
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+      title:
+        type: string
+      header:
+        type: string
+      footer:
+        type: string
+      header_height:
+        type: integer
+        format: int64
+      footer_height:
+        type: integer
+        format: int64
+      pdfheader:
+        type: boolean
+        format: int64
+        description: Set to true to use group default
+  CallbackDeletePost:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        pattern: ^(http|https)://
+        description: URL to remove, it must match any registered callback exactly
+      eventFilter:
+        $ref: '#/definitions/WebhookEventFilterEnum'
+      group:
+        description: if a group filter is applied refer to it with slug or resource_uri
+        type: integer
+  SendReminderPost:
+    type: object
+    properties:
+      text:
+        type: string
+        maxLength: 10000
+        description: custom message text, html will be stripped
+  MemberPost:
+    type: object
+    required:
+      - email
+      - group
+    properties:
+      group:
+        type: string
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+      email:
+        type: string
+        format: email
+        maxLength: 75
+      do_email:
+        type: boolean
+        description: use legalesign to send email notification to new user
+        default: false
+      permission:
+        $ref: '#/definitions/PermissionsEnum'
+  GroupPatch:
+    type: object
+    properties:
+      public_name:
+        type: string
+        maxLength: 60
+  GroupResponse:
+    type: object
+    properties:
+      created:
+        type: string
+        format: date-time
+      default_email:
+        type: string
+      default_extraemail:
+        type: string
+      footer:
+        type: string
+        description: html of content
+      footer_height:
+        type: integer
+      header:
+        type: string
+      is_active:
+        type: boolean
+      members:
+        type: array
+        description: list of members uris
+        items:
+          type: string
+          format: uri
+      modified:
+        type: string
+        format: date-time
+      name:
+        type: string
+      pagesize:
+        type: integer
+        format: int32
+      public_name:
+        type: string
+      resource_uri:
+        type: string
+        format: uri
+      slug:
+        type: string
+      user:
+        type: string
+      xframe_allow:
+        type: boolean
+      xframe_allow_pdf_edit:
+        type: boolean
+    example:
+      created: 2020-05-20T:15:10
+      default_email: None
+      default_extraemail: None
+      footer: None
+      footer_height: None
+      header: None
+      is_active: true
+      members:
+        - >-
+          /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/, 
+          /api/v1/user/u1u1u1u1-u1u1-u1u1-u1u1-u1u1u1u1u1u1/
+      modified: 2020-05-20T:15:10
+      name: my group
+      pagesize: 1
+      public_name: global exports
+      resource_uri: /api/v1/group/my-group/
+      slug: my-group
+      user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+      xframe_allow: false
+      xframe_allow_pdf_edit: false
+  GroupPost:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        minLength: 4
+        maxLength: 60
+      xframe_allow:
+        type: boolean
+        description: Set to true if you want to embed your signing page.
+        default: false
+  AttachmentResponse:
+    type: object
+    properties:
+      created:
+        type: string
+        format: date-time
+      description:
+        type: string
+      filename:
+        type: string
+      group:
+        type: string
+      resource_uri:
+        type: string
+      user:
+        type: string
+        description: resource_uri for user
+      uuid:
+        type: string
+        format: uuid
+        description: id for attachment object
+    example:
+      created: 2020-05-20T:15:10
+      description: Attachment for supplier contract
+      filename: attach1.pdf
+      resource_uri: /api/v1/attachment/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
+      uuid: f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0
+  TemplateResponseDetail:
+    type: object
+    properties:
+      archive:
+        type: boolean
+      created:
+        type: string
+        format: date-time
+      group:
+        type: string
+      has_fields:
+        type: boolean
+      latest_text:
+        type: string
+      modified:
+        type: string
+        format: date-time
+      resource_uri:
+        type: string
+      signee_count:
+        type: integer
+        format: int32
+      title:
+        type: string
+      user:
+        type: string
+      uuid:
+        type: string
+        format: uuid
+    example:
+      archive: false
+      created: 2020-05-20T:15:10
+      group: /api/v1/group/my-group/
+      has_fields: false
+      latest_text: text/html content
+      modified: 2020-05-20T:15:10
+      resource_uri: /api/v1/template/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
+      signee_count: 1
+      title: Test text template
+      user: /api/v1/user/34034334ab34334333rh33434334f9/
+      uuid: t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0
+  TemplatePost:
+    type: object
+    required:
+      - title
+      - latest_text
+      - group
+    properties:
+      title:
+        type: string
+        pattern: ^[-\w ]{1,60}$
+      group:
+        type: string
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+      latest_text:
+        type: string
+        description: text/html for template
+      user:
+        type: string
+        pattern: ^/api/v1/user/[-\w]{1,60}/$
+        description: assign to a user if not api user
+  TemplateResponse:
+    type: object
+    properties:
+      archive:
+        type: boolean
+      created:
+        type: string
+        format: date-time
+      group:
+        type: string
+      has_fields:
+        type: boolean
+      modified:
+        type: string
+        format: date-time
+      resource_uri:
+        type: string
+      signee_count:
+        type: integer
+        format: int32
+      title:
+        type: string
+      user:
+        type: string
+      uuid:
+        type: string
+    example:
+      archive: false
+      created: 2020-05-20T:15:10
+      group: /api/v1/group/my-group/
+      has_fields: false
+      modified: 2020-05-20T:15:10
+      resource_uri: /api/v1/template/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
+      signee_count: 1
+      title: Test text template
+      user: /api/v1/user/34034334ab34334333rh33434334f9/
+      uuid: t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0
+  TemplatePdfListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/TemplatePdfResponse'
+  UserDetailResponse:
+    type: object
+    properties:
+      date_joined:
+        type: string
+        format: date-time
+      email:
+        type: string
+        format: email
+      first_name:
+        type: string
+      groups:
+        type: array
+        items:
+          type: string
+      last_login:
+        type: string
+        format: date-time
+      last_name:
+        type: string
+      resource_uri:
+        type: string
+      timezone:
+        $ref: '#/definitions/TimezoneEnum'
+      username:
+        type: string
+    example:
+      date_joined: 2020-05-20T:15:10
+      email: joe.biggins@widgets.com
+      first_name: Joe
+      groups:
+        - /api/v1/group/my-group1/, api/v1/group/my-group2/
+      last_login: 2020-05-20T:15:10
+      last_name: Biggins
+      resource_uri: /api/v1/user/34034334ab34334333rh33434334f9/
+      timezone: Europe/Chisinau
+      username: 34034334ab34334333rh33434334f9
+  UserPost:
+    type: object
+    required:
+      - email
+      - first_name
+      - last_name
+    properties:
+      first_name:
+        type: string
+        pattern: ^[-\w' ]{1,75}
+        maxLength: 30
+      last_name:
+        type: string
+        pattern: ^[-\w' ]{1,75}
+        maxLength: 30
+      email:
+        type: string
+        format: email
+        maxLength: 75
+      timezone:
+        $ref: '#/definitions/TimezoneEnum'
+      password:
+        type: string
+        description: >-
+          If not set a verification email is sent. Password must be at least 8
+          chars, include upper and lower case, with a number and a special
+          character
+        pattern: >-
+          ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[=+\-^$*.\[\]{}()?"!@#%&/\\,><':;|_~`])\S{8,99}$
+      groups:
+        type: string
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+        description: >-
+          comma delimited list of groups to add user to, can be full group
+          resource_uri or groupId
+      permission:
+        type: string
+        description: >-
+          set user permissions * 1 - admin * 2 - create and send docs, team user
+          * 3 - readonly, team user * 4 - send only, team user * 5 - send only,
+          individual user * 6 - create and send docs, invidual user
+        enum:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          - '6'
+    description: >
+      Create a new user who can gain access to your groups. You should specify
+      the groups the user should be able to access. Only the groups the API user
+      can access are valid. If you do not set a password then a verification
+      link will be emailed to the user. This will allow the user to set their
+      password and activate their account. In this case you can also add a
+      redirect_to url to redirect the user back to your website after they have
+      activated their account. N.B. Make sure you add the user to at least one
+      of your groups, otherwise you will not have API access to the user
+      information.
+  DocumentSignerPost:
+    type: object
+    required:
+      - email
+      - firstname
+      - lastname
+    properties:
+      order:
+        type: integer
+        format: int32
+        description: >-
+          Zero-indexed signer ordering, deprecated. Ordering of
+          signers/witnesses/approvers is now the natural order of your signers
+          list.
+        x-deprecated: true
+      email:
+        type: string
+        maxLength: 75
+        format: email
+      firstname:
+        type: string
+        maxLength: 60
+        pattern: ^[-\w' ]{1,60}
+      lastname:
+        type: string
+        maxLength: 60
+        pattern: ^[-\w' ]{1,60}
+      attachments:
+        type: array
+        description: List of attachment resource URIs
+        items:
+          type: string
+          pattern: ^/api/v1/attachment/[-\w]{1,60}/$
+      behalfof:
+        type: string
+        maxLength: 120
+        description: deprecated, do not use
+        x-deprecated: true
+      decide_later:
+        type: boolean
+        description: >-
+          Add this you want the previous signer or approver to decide who the
+          next person should be.  Commonly used for witnesses (see \"role\"). If
+          you use this leave all other attributes blank. First signer cannot use
+          this attribute.
+      expires:
+        type: string
+        format: date-time
+        description: ISO8601 formed datetime, set to TZ of sender or timezone if used
+        x-nullable: true
+      message:
+        type: string
+        description: >-
+          Your personal message for the party, entered in the centre of the
+          group email template. Use the name of a saved email template preceeded
+          by a hash symbol to use that template.  If there is more than one
+          template of the same name it will select the one last modified.
+      reviewers:
+        type: array
+        items:
+          $ref: '#/definitions/ReviewersPost'
+      role:
+        type: string
+        enum:
+          - witness
+          - approver
+        x-deprecated: true
+        description: >-
+          If this person is a witness use \"witness\". Required where a witness
+          is defined in your PDF. If this person is a normal signer, use
+          \"approver\" to switch to an approver role.  Witnesses and witnessed
+          signers also require \"sms\" (see also \"decide_later\").
+      sms:
+        type: string
+        description: >-
+          Use international format number to add SMS verification. Required if a
+          witness or a witnessed signer.
+      subject:
+        type: string
+        maxLength: 150
+        description: Subject line for outbound email
+      timezone:
+        type: string
+        description: >-
+          TZ of the signer, must be valid TZ as per timezoneenum (see User for
+          timezoneenum details).  If blank uses tz of the sender.
+  ReviewersPost:
+    type: object
+    description: >-
+      Create a reviewer. A reviewer is linked to a signer and  receives emailed
+      copies of draft and signed documents. N.B. they only receive them if their
+      associated signer does. Therefore make sure your admin/experience settings
+      are set to attach PDFs to your signer emails. You can set to include the
+      signing link to a reviewer, and thereby hit the use case to send a
+      document to a group of people where the first who signs, signs.
+    required:
+      - email
+    properties:
+      firstname:
+        type: string
+        maxLength: 60
+      lastname:
+        type: string
+        maxLength: 60
+      email:
+        type: string
+        format: email
+      include_link:
+        type: boolean
+        default: false
+        description: include a link to the signing pages enabling a reviewer to signer
+  TimezoneEnum:
+    type: string
+    description: List of available timezones
+    enum:
+      - Africa/Abidjan
+      - Africa/Accra
+      - Africa/Addis_Ababa
+      - Africa/Algiers
+      - Africa/Asmara
+      - Africa/Bamako
+      - Africa/Bangui
+      - Africa/Banjul
+      - Africa/Bissau
+      - Africa/Blantyre
+      - Africa/Brazzaville
+      - Africa/Bujumbura
+      - Africa/Cairo
+      - Africa/Casablanca
+      - Africa/Ceuta
+      - Africa/Conakry
+      - Africa/Dakar
+      - Africa/Dar_es_Salaam
+      - Africa/Djibouti
+      - Africa/Douala
+      - Africa/El_Aaiun
+      - Africa/Freetown
+      - Africa/Gaborone
+      - Africa/Harare
+      - Africa/Johannesburg
+      - Africa/Juba
+      - Africa/Kampala
+      - Africa/Khartoum
+      - Africa/Kigali
+      - Africa/Kinshasa
+      - Africa/Lagos
+      - Africa/Libreville
+      - Africa/Lome
+      - Africa/Luanda
+      - Africa/Lubumbashi
+      - Africa/Lusaka
+      - Africa/Malabo
+      - Africa/Maputo
+      - Africa/Maseru
+      - Africa/Mbabane
+      - Africa/Mogadishu
+      - Africa/Monrovia
+      - Africa/Nairobi
+      - Africa/Ndjamena
+      - Africa/Niamey
+      - Africa/Nouakchott
+      - Africa/Ouagadougou
+      - Africa/Porto-Novo
+      - Africa/Sao_Tome
+      - Africa/Tripoli
+      - Africa/Tunis
+      - Africa/Windhoek
+      - America/Adak
+      - America/Anchorage
+      - America/Anguilla
+      - America/Antigua
+      - America/Araguaina
+      - America/Argentina/Buenos_Aires
+      - America/Argentina/Catamarca
+      - America/Argentina/Cordoba
+      - America/Argentina/Jujuy
+      - America/Argentina/La_Rioja
+      - America/Argentina/Mendoza
+      - America/Argentina/Rio_Gallegos
+      - America/Argentina/Salta
+      - America/Argentina/San_Juan
+      - America/Argentina/San_Luis
+      - America/Argentina/Tucuman
+      - America/Argentina/Ushuaia
+      - America/Aruba
+      - America/Asuncion
+      - America/Atikokan
+      - America/Bahia
+      - America/Bahia_Banderas
+      - America/Barbados
+      - America/Belem
+      - America/Belize
+      - America/Blanc-Sablon
+      - America/Boa_Vista
+      - America/Bogota
+      - America/Boise
+      - America/Cambridge_Bay
+      - America/Campo_Grande
+      - America/Cancun
+      - America/Caracas
+      - America/Cayenne
+      - America/Cayman
+      - America/Chicago
+      - America/Chihuahua
+      - America/Costa_Rica
+      - America/Creston
+      - America/Cuiaba
+      - America/Curacao
+      - America/Danmarkshavn
+      - America/Dawson
+      - America/Dawson_Creek
+      - America/Denver
+      - America/Detroit
+      - America/Dominica
+      - America/Edmonton
+      - America/Eirunepe
+      - America/El_Salvador
+      - America/Fortaleza
+      - America/Glace_Bay
+      - America/Godthab
+      - America/Goose_Bay
+      - America/Grand_Turk
+      - America/Grenada
+      - America/Guadeloupe
+      - America/Guatemala
+      - America/Guayaquil
+      - America/Guyana
+      - America/Halifax
+      - America/Havana
+      - America/Hermosillo
+      - America/Indiana/Indianapolis
+      - America/Indiana/Knox
+      - America/Indiana/Marengo
+      - America/Indiana/Petersburg
+      - America/Indiana/Tell_City
+      - America/Indiana/Vevay
+      - America/Indiana/Vincennes
+      - America/Indiana/Winamac
+      - America/Inuvik
+      - America/Iqaluit
+      - America/Jamaica
+      - America/Juneau
+      - America/Kentucky/Louisville
+      - America/Kentucky/Monticello
+      - America/Kralendijk
+      - America/La_Paz
+      - America/Lima
+      - America/Los_Angeles
+      - America/Lower_Princes
+      - America/Maceio
+      - America/Managua
+      - America/Manaus
+      - America/Marigot
+      - America/Martinique
+      - America/Matamoros
+      - America/Mazatlan
+      - America/Menominee
+      - America/Merida
+      - America/Metlakatla
+      - America/Mexico_City
+      - America/Miquelon
+      - America/Moncton
+      - America/Monterrey
+      - America/Montevideo
+      - America/Montreal
+      - America/Montserrat
+      - America/Nassau
+      - America/New_York
+      - America/Nipigon
+      - America/Nome
+      - America/Noronha
+      - America/North_Dakota/Beulah
+      - America/North_Dakota/Center
+      - America/North_Dakota/New_Salem
+      - America/Ojinaga
+      - America/Panama
+      - America/Pangnirtung
+      - America/Paramaribo
+      - America/Phoenix
+      - America/Port-au-Prince
+      - America/Port_of_Spain
+      - America/Porto_Velho
+      - America/Puerto_Rico
+      - America/Rainy_River
+      - America/Rankin_Inlet
+      - America/Recife
+      - America/Regina
+      - America/Resolute
+      - America/Rio_Branco
+      - America/Santa_Isabel
+      - America/Santarem
+      - America/Santiago
+      - America/Santo_Domingo
+      - America/Sao_Paulo
+      - America/Scoresbysund
+      - America/Shiprock
+      - America/Sitka
+      - America/St_Barthelemy
+      - America/St_Johns
+      - America/St_Kitts
+      - America/St_Lucia
+      - America/St_Thomas
+      - America/St_Vincent
+      - America/Swift_Current
+      - America/Tegucigalpa
+      - America/Thule
+      - America/Thunder_Bay
+      - America/Tijuana
+      - America/Toronto
+      - America/Tortola
+      - America/Vancouver
+      - America/Whitehorse
+      - America/Winnipeg
+      - America/Yakutat
+      - America/Yellowknife
+      - Antarctica/Casey
+      - Antarctica/Davis
+      - Antarctica/DumontDUrville
+      - Antarctica/Macquarie
+      - Antarctica/Mawson
+      - Antarctica/McMurdo
+      - Antarctica/Palmer
+      - Antarctica/Rothera
+      - Antarctica/South_Pole
+      - Antarctica/Syowa
+      - Antarctica/Vostok
+      - Arctic/Longyearbyen
+      - Asia/Aden
+      - Asia/Almaty
+      - Asia/Amman
+      - Asia/Anadyr
+      - Asia/Aqtau
+      - Asia/Aqtobe
+      - Asia/Ashgabat
+      - Asia/Baghdad
+      - Asia/Bahrain
+      - Asia/Baku
+      - Asia/Bangkok
+      - Asia/Beirut
+      - Asia/Bishkek
+      - Asia/Brunei
+      - Asia/Choibalsan
+      - Asia/Chongqing
+      - Asia/Colombo
+      - Asia/Damascus
+      - Asia/Dhaka
+      - Asia/Dili
+      - Asia/Dubai
+      - Asia/Dushanbe
+      - Asia/Gaza
+      - Asia/Harbin
+      - Asia/Hebron
+      - Asia/Ho_Chi_Minh
+      - Asia/Hong_Kong
+      - Asia/Hovd
+      - Asia/Irkutsk
+      - Asia/Jakarta
+      - Asia/Jayapura
+      - Asia/Jerusalem
+      - Asia/Kabul
+      - Asia/Kamchatka
+      - Asia/Karachi
+      - Asia/Kashgar
+      - Asia/Kathmandu
+      - Asia/Kolkata
+      - Asia/Krasnoyarsk
+      - Asia/Kuala_Lumpur
+      - Asia/Kuching
+      - Asia/Kuwait
+      - Asia/Macau
+      - Asia/Magadan
+      - Asia/Makassar
+      - Asia/Manila
+      - Asia/Muscat
+      - Asia/Nicosia
+      - Asia/Novokuznetsk
+      - Asia/Novosibirsk
+      - Asia/Omsk
+      - Asia/Oral
+      - Asia/Phnom_Penh
+      - Asia/Pontianak
+      - Asia/Pyongyang
+      - Asia/Qatar
+      - Asia/Qyzylorda
+      - Asia/Rangoon
+      - Asia/Riyadh
+      - Asia/Sakhalin
+      - Asia/Samarkand
+      - Asia/Seoul
+      - Asia/Shanghai
+      - Asia/Singapore
+      - Asia/Taipei
+      - Asia/Tashkent
+      - Asia/Tbilisi
+      - Asia/Tehran
+      - Asia/Thimphu
+      - Asia/Tokyo
+      - Asia/Ulaanbaatar
+      - Asia/Urumqi
+      - Asia/Vientiane
+      - Asia/Vladivostok
+      - Asia/Yakutsk
+      - Asia/Yekaterinburg
+      - Asia/Yerevan
+      - Atlantic/Azores
+      - Atlantic/Bermuda
+      - Atlantic/Canary
+      - Atlantic/Cape_Verde
+      - Atlantic/Faroe
+      - Atlantic/Madeira
+      - Atlantic/Reykjavik
+      - Atlantic/South_Georgia
+      - Atlantic/St_Helena
+      - Atlantic/Stanley
+      - Australia/Adelaide
+      - Australia/Brisbane
+      - Australia/Broken_Hill
+      - Australia/Currie
+      - Australia/Darwin
+      - Australia/Eucla
+      - Australia/Hobart
+      - Australia/Lindeman
+      - Australia/Lord_Howe
+      - Australia/Melbourne
+      - Australia/Perth
+      - Australia/Sydney
+      - Canada/Atlantic
+      - Canada/Central
+      - Canada/Eastern
+      - Canada/Mountain
+      - Canada/Newfoundland
+      - Canada/Pacific
+      - Europe/Amsterdam
+      - Europe/Andorra
+      - Europe/Athens
+      - Europe/Belgrade
+      - Europe/Berlin
+      - Europe/Bratislava
+      - Europe/Brussels
+      - Europe/Bucharest
+      - Europe/Budapest
+      - Europe/Chisinau
+      - Europe/Copenhagen
+      - Europe/Dublin
+      - Europe/Gibraltar
+      - Europe/Guernsey
+      - Europe/Helsinki
+      - Europe/Isle_of_Man
+      - Europe/Istanbul
+      - Europe/Jersey
+      - Europe/Kaliningrad
+      - Europe/Kiev
+      - Europe/Lisbon
+      - Europe/Ljubljana
+      - Europe/London
+      - Europe/Luxembourg
+      - Europe/Madrid
+      - Europe/Malta
+      - Europe/Mariehamn
+      - Europe/Minsk
+      - Europe/Monaco
+      - Europe/Moscow
+      - Europe/Oslo
+      - Europe/Paris
+      - Europe/Podgorica
+      - Europe/Prague
+      - Europe/Riga
+      - Europe/Rome
+      - Europe/Samara
+      - Europe/San_Marino
+      - Europe/Sarajevo
+      - Europe/Simferopol
+      - Europe/Skopje
+      - Europe/Sofia
+      - Europe/Stockholm
+      - Europe/Tallinn
+      - Europe/Tirane
+      - Europe/Uzhgorod
+      - Europe/Vaduz
+      - Europe/Vatican
+      - Europe/Vienna
+      - Europe/Vilnius
+      - Europe/Volgograd
+      - Europe/Warsaw
+      - Europe/Zagreb
+      - Europe/Zaporozhye
+      - Europe/Zurich
+      - GMT
+      - Indian/Antananarivo
+      - Indian/Chagos
+      - Indian/Christmas
+      - Indian/Cocos
+      - Indian/Comoro
+      - Indian/Kerguelen
+      - Indian/Mahe
+      - Indian/Maldives
+      - Indian/Mauritius
+      - Indian/Mayotte
+      - Indian/Reunion
+      - Pacific/Apia
+      - Pacific/Auckland
+      - Pacific/Chatham
+      - Pacific/Chuuk
+      - Pacific/Easter
+      - Pacific/Efate
+      - Pacific/Enderbury
+      - Pacific/Fakaofo
+      - Pacific/Fiji
+      - Pacific/Funafuti
+      - Pacific/Galapagos
+      - Pacific/Gambier
+      - Pacific/Guadalcanal
+      - Pacific/Guam
+      - Pacific/Honolulu
+      - Pacific/Johnston
+      - Pacific/Kiritimati
+      - Pacific/Kosrae
+      - Pacific/Kwajalein
+      - Pacific/Majuro
+      - Pacific/Marquesas
+      - Pacific/Midway
+      - Pacific/Nauru
+      - Pacific/Niue
+      - Pacific/Norfolk
+      - Pacific/Noumea
+      - Pacific/Pago_Pago
+      - Pacific/Palau
+      - Pacific/Pitcairn
+      - Pacific/Pohnpei
+      - Pacific/Port_Moresby
+      - Pacific/Rarotonga
+      - Pacific/Saipan
+      - Pacific/Tahiti
+      - Pacific/Tarawa
+      - Pacific/Tongatapu
+      - Pacific/Wake
+      - Pacific/Wallis
+      - US/Alaska
+      - US/Arizona
+      - US/Central
+      - US/Eastern
+      - US/Hawaii
+      - US/Mountain
+      - US/Pacific
+      - UTC
+    default: UTC
+  InvitedListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            email:
+              type: string
+              format: email
+            group:
+              type: string
+              format: uri
+            resource_uri:
+              type: string
+              format: uri
+          example:
+            created: 2020-05-20T:15:10
+            email: job.biggins@widgets.comma
+            group: /api/v1/group/my-group/
+            resource_uri: /api/v1/invites/i0i0i0i0-i0i0-i0i0-i0i0-i0i0i0i0i0i0/
+  DocumentResponseDetail:
+    type: object
+    properties:
+      archived:
+        type: boolean
+      auto_archive:
+        type: boolean
+        description: Send document archive very soon after signing.
+        default: true
+      cc_emails:
+        type: string
+        description: who will be cc'd  with sender on email notification when signed
+      created:
+        type: string
+        format: date-time
+      do_email:
+        type: boolean
+      download_final:
+        type: boolean
+        description: Final PDF is available to download
+      footer:
+        type: string
+        description: HTML docs - text for footer if used
+      footer_height:
+        type: integer
+        description: HTMl docs - px height of footer if used
+      group:
+        type: string
+        description: Resource URI of group
+      has_fields:
+        type: boolean
+      hash_value:
+        type: string
+        description: >-
+          SHA256 checksum of final doc, use this to validate your final PDF
+          download
+      header:
+        type: string
+        description: HTML docs - text for header if used
+      header_height:
+        type: integer
+        description: HTMl docs - px height of header if used
+      modified:
+        type: string
+        format: date-time
+      name:
+        type: string
+      pdf_password:
+        type: string
+        description: PDF password if used and if save-able
+      pdf_password_type:
+        type: string
+        description: how pdf password is retained
+      pdftext:
+        type: string
+        description: ignore this
+      redirect:
+        type: string
+        description: url for signer redirect after signing
+      resource_uri:
+        type: string
+      return_signer_links:
+        type: boolean
+        description: ignore
+      sign_mouse:
+        type: boolean
+        description: legacy
+      sign_time:
+        type: string
+        format: date-time
+      sign_type:
+        type: boolean
+        description: legacy
+      sign_upload:
+        type: boolean
+        description: legacy
+      signature_placement:
+        type: integer
+        description: legacy
+      signature_type:
+        type: integer
+        description: legacy - always 4
+      signers:
+        type: array
+        description: nested arrays with signer details
+        items:
+          type: array
+          items:
+            type: string
+            description: >-
+              Always contains [signer URI, first name, last name, email, sms
+              number, has_fields, status, signer order (0-indexed)]
+      signers_in_order:
+        type: boolean
+      status:
+        $ref: '#/definitions/DocumentStatusEnum'
+      tag:
+        type: string
+        description: your reference
+      tag1:
+        type: string
+        description: your reference
+      tag2:
+        type: string
+        description: your reference
+      template:
+        type: string
+      templatepdf:
+        type: string
+      text:
+        type: string
+      user:
+        type: string
+        description: Resource URI of user
+      uuid:
+        type: string
+        format: uuid
+        description: Object ID alone
+    example:
+      - archived: false
+        auto_archive: true
+        cc_emails: None
+        created: 2020-05-20T:15:10
+        do_email: false
+        download_final: false
+        footer: ''
+        footer_height: null
+        group: /api/v1/group/my-group/
+        has_fields: true
+        hash_value: None
+        header: ''
+        header_height: None
+        modified: 2020-05-20T:15:10
+        name: test cs_agreement
+        pdf_password: None
+        pdf_password_type: None
+        pdftext: None
+        redirect: https://example.com/redirect-receive/
+        resource_uri: /api/v1/document/d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0/
+        return_signer_links: false
+        sign_mouse: true
+        sign_time: None
+        sign_type: true
+        sign_upload: true
+        signature_placement: 2
+        signature_type: 4
+        signers:
+          - >-
+            /api/v1/signers/s0s0s0s0-s0s0-s0s0-s0s0-s0s0s0s0s0s0/, John, Smith,
+            john.smith@example.comma, '', true, 20, 0
+          - >-
+            /api/v1/signers/s1s1s1s1-s1s1-s1s1-s1s1-s1s1s1s1s1s1/, Betty,
+            MacLean, betty.maclean@example.comma, '', true, 10, 1
+        signer_in_order: true
+        status: 10
+        tag: contract2020myref
+        tag1: my_other_ref
+        tag2: andFinalRef
+        template: None
+        templatepdf: /api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
+        text: ''
+        user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+        uuid: d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0
+  CallbackCreatePost:
+    type: object
+    required:
+      - notify
+      - url
+    properties:
+      url:
+        type: string
+        description: The URL where you wish to get notified
+        pattern: ^(http|https)://
+      notify:
+        type: string
+        description: >-
+          The type of callback to receive, value must be all, signed, sent,
+          rejected or realtime
+        pattern: ^(all|signed|sent|rejected|realtime)$
+      eventFilter:
+        $ref: '#/definitions/WebhookEventFilterEnum'
+      group:
+        type: string
+  AttachmentListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/AttachmentResponse'
+    example:
+      meta:
+        limit: 20
+        next: /api/v1/attachment/?offset=20&limit=20
+        previous: None
+        total_count: 26
+      objects:
+        - created: 2020-05-20T:15:10
+          description: Attachment for supplier contract
+          filename: attach1.pdf
+          resource_uri: /api/v1/attachment/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
+          uuid: f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0
+  StatusResponse:
+    type: object
+    properties:
+      archived:
+        type: boolean
+      resource_uri:
+        type: string
+      status:
+        $ref: '#/definitions/SignerStatusEnum'
+      download_final:
+        type: boolean
+      tag:
+        type: string
+      tag1:
+        type: string
+      tag2:
+        type: string
+    example:
+      archived: false
+      download_final: false
+      resource_uri: /api/v1/status/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
+      status: 10
+      tag: contract2020
+      tag1: userRef
+      tag2: otherRef
+  MemberListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/MemberResponse'
+  TemplatePdfFieldPost:
+    type: object
+    required:
+      - group
+      - pdf_file
+    properties:
+      archive_upon_send:
+        type: boolean
+        description: archive PDF when sent
+      group:
+        type: string
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+      pdf_file:
+        type: string
+        format: byte
+        description: base64 encoded PDF file data
+      process_tags:
+        type: boolean
+      title:
+        type: string
+        maxLength: 120
+      user:
+        type: string
+        description: assign to group member if not api user
+  SignerStatusEnum:
+    type: integer
+    description: |
+      Signer status options:
+       * 4 - unsent
+       * 5 - scheduled to be sent
+       * 10 - sent
+       * 15 - email opened
+       * 20 - visited
+       * 30 - fields complete 
+       * 35 - fields complete ex signature
+       * 39 - waiting for witness to complete
+       * 40 - signed 
+       * 50 - downloaded 
+       * 60 - rejected
+    x-enum-varnames:
+      - N4
+      - N5
+      - N10
+      - N15
+      - N20
+      - N30
+      - N35
+      - N39
+      - N40
+      - N50
+      - N60
+    x-enum-descriptions:
+      - Unsent
+      - Schedule to send
+      - Sent
+      - Email opened
+      - Visited
+      - Fields completed
+      - Fields complete except signature
+      - Witness to sign
+      - Signed
+      - Downloaded
+      - Rejected
+    enum:
+      - 4
+      - 5
+      - 10
+      - 15
+      - 20
+      - 30
+      - 35
+      - 39
+      - 40
+      - 50
+      - 60
+  DocumentStatusEnum:
+    type: integer
+    description: |
+      Document status options:
+        * 10 - Initial state, check signer status for sent/unsent 
+        * 20 - Fields completed 
+        * 30 - Signed 
+        * 40 - Removed (before signing) 
+        * 50 - Rejected
+    x-enum-varnames:
+      - docCreated
+      - docFieldsComplete
+      - docSigned
+      - docRemoved
+      - docRejected
+    x-enum-descriptions:
+      - Created
+      - Fields completed
+      - Signed
+      - Removed
+      - Rejected
+    enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+  WebhookEventFilterEnum:
+    type: string
+    enum:
+      - ''
+      - document.*
+      - document.created
+      - document.rejected
+      - document.finalPdfCreated
+      - recipient.*
+      - recipient.completed
+      - recipient.rejected
+      - recipient.emailOpened
+      - recipient.visiting
+      - recipient.bounced
+  PermissionsEnum:
+    type: integer
+    description: |
+      Permissions options:
+         * 1 - administrator
+         * 2 - team docs visible, create & send
+         * 3 - team docs visible, send only
+         * 4 - no team sent docs visible, send only
+         * 5 - no team docs visible, create & send
+         * 6 - team docs visible, read only
+    x-enum-varnames:
+      - permissionAdmin
+      - permissionTeamCreateSend
+      - permissionTeamSend
+      - permissionSoloSend
+      - permissionSoloCreateSend
+      - permissionReadOnly
+    x-enum-descriptions:
+      - Admin
+      - Team visible, create and send
+      - Team visible, send only
+      - Team not visible, send only
+      - Team not visible, create and send
+      - Team visible, read only
+    enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+  UserPatch:
+    type: object
+    properties:
+      first_name:
+        type: string
+        maxLength: 30
+      last_name:
+        type: string
+        maxLength: 30
+  SignerResetResponse:
+    type: object
+    required:
+      - email
+    properties:
+      email:
+        type: string
+        description: Email of signer to revert to.
+      notify:
+        type: boolean
+        description: Email notify current signer access is being withdrawn
+  PdfFieldValidationEnum:
+    type: integer
+    x-nullable: true
+    description: |
+      fields types and validations:
+        * 1 - Email 
+        * 2 - yyyy/mm/dd 
+        * 3 - yy/mm/dd 
+        * 4 - dd/mm/yyyy 
+        * 5 - dd/mm/yy 
+        * 6 - mm/dd/yy 
+        * 7 - mm/dd/yy 
+        * 8 - yyyy.mm.dd 
+        * 9 - yy.mm.dd 
+        * 10 - dd.mm.yyyy 
+        * 11 - dd.mm.yy 
+        * 12 - mm.dd.yyyy 
+        * 13 - mm.dd.yy 
+        * 14 - yyyy-mm-dd 
+        * 15 - yy-mm-dd 
+        * 16 - dd-mm-yyyy 
+        * 17 - dd-mm-yy 
+        * 18 - mm-dd-yyyy 
+        * 19 - mm-dd-yy 
+        * 20 - Dropdown list,  use options attribute for items
+        * 24 - Checkbox tick/cross 
+        * 25 - Checkbox tick/blank 
+        * 26 - Checkbox cross/blank 
+        * 30 - yyyy/mm/dd (automatic) 
+        * 31 - yy/mm/dd (automatic) 
+        * 32 - dd/yy/yyyy (automatic) 
+        * 33 - dd/mm/yy (automatic) 
+        * 34 - mm/dd/yyyy (automatic) 
+        * 35 - mm/dd/yy (automatic) 
+        * 36 - yyyy.mm.dd (automatic) 
+        * 37 - yy.mm.dd (automatic) 
+        * 38 - dd.mm.yyyy (automatic) 
+        * 39 - dd.mm.yy (automatic) 
+        * 40 - mm.dd.yyyy (automatic) 
+        * 41 - mm.dd.yy (automatic) 
+        * 42 - yyyy-mm-dd (automatic) 
+        * 43 - yy-mm-dd (automatic) 
+        * 44 - dd-mm-yyyy (automatic) 
+        * 45 - dd-mm-yy (automatic) 
+        * 46 - mm-dd-yyyy (automatic) 
+        * 47 - mm-dd-yy (automatic) 
+        * 48 - d mmmmm yyyy (automatic) 
+        * 50 - Whole number 
+        * 51 - Number 
+        * 52 - Currency (2 decimals) 
+        * 53 - 1 number 
+        * 54 - 2 numbers 
+        * 55 - 3 numbers 
+        * 56 - 4 numbers 
+        * 57 - 5 numbers 
+        * 58 - 6 numbers 
+        * 59 - 7 numbers 
+        * 60 - 8 numbers 
+        * 61 - 9 numbers 
+        * 62 - 10 numbers 
+        * 63 - 11 numbers 
+        * 64 - 12 numbers 
+        * 65 - 1 characters (any text) 
+        * 66 - 2 characters (any text)
+        * 67 - 3 characters (any text) 
+        * 68 - 4 characters (any text) 
+        * 69 - 5 characters (any text) 
+        * 70 - 6 characters (any text) 
+        * 71 - 7 characters (any text) 
+        * 72 - 8 characters (any text) 
+        * 73 - secret code, add code in options 
+        * 74 - file attach, append to email to signer 
+        * 75 - file attach, append to final PDF
+        * 76 - file attach, zip with final PDF for internal use, but not signer
+        * 77 - force to title caps
+        * 78 - force to uppercase
+        * 79 - force to lowercase
+        * 80 - mm/yy
+        * 81 - mm/yyyy 
+        * 82 - mm.yy
+        * 83 - mm.yyyy
+        * 84 - mm-yy 
+        * 85 - mm-yyyy
+        * 90 - drawn field
+        * 91 - countries list
+        * 92 - honorifics list
+    x-enum-varnames:
+      - f1
+      - f2
+      - f3
+      - f4
+      - f5
+      - f6
+      - f7
+      - f8
+      - f9
+      - f10
+      - f11
+      - f12
+      - f13
+      - f14
+      - f15
+      - f16
+      - f17
+      - f18
+      - f19
+      - f20
+      - f24
+      - f25
+      - f26
+      - f30
+      - f31
+      - f32
+      - f33
+      - f34
+      - f35
+      - f36
+      - f37
+      - f38
+      - f39
+      - f40
+      - f41
+      - f42
+      - f43
+      - f44
+      - f45
+      - f46
+      - f47
+      - f48
+      - f50
+      - f51
+      - f52
+      - f53
+      - f54
+      - f55
+      - f56
+      - f57
+      - f58
+      - f59
+      - f60
+      - f61
+      - f62
+      - f63
+      - f64
+      - f65
+      - f66
+      - f67
+      - f68
+      - f69
+      - f70
+      - f71
+      - f72
+      - f73
+      - f74
+      - f75
+      - f76
+      - f77
+      - f78
+      - f79
+      - f80
+      - f81
+      - f82
+      - f83
+      - f84
+      - f85
+      - f90
+      - f91
+      - f92
+    enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 24
+      - 25
+      - 26
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
+      - 36
+      - 37
+      - 38
+      - 39
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+      - 45
+      - 46
+      - 47
+      - 48
+      - 50
+      - 51
+      - 52
+      - 53
+      - 54
+      - 55
+      - 56
+      - 57
+      - 58
+      - 59
+      - 60
+      - 61
+      - 62
+      - 63
+      - 64
+      - 65
+      - 66
+      - 67
+      - 68
+      - 69
+      - 70
+      - 71
+      - 72
+      - 73
+      - 74
+      - 75
+      - 76
+      - 77
+      - 78
+      - 79
+      - 80
+      - 81
+      - 82
+      - 83
+      - 84
+      - 85
+      - 90
+      - 91
+      - 92
+  TemplatePdfResponse:
+    type: object
+    properties:
+      created:
+        type: string
+        format: date-time
+      group:
+        type: string
+      modified:
+        type: string
+        format: date-time
+      parties:
+        type: string
+        description: JSON stringified array of document parties
+      page_count:
+        type: integer
+      resource_uri:
+        type: string
+        format: uri
+      signer_count:
+        type: integer
+      title:
+        type: string
+      user:
+        type: string
+        description: resource_uri for user
+        format: uri
+      uuid:
+        type: string
+        description: id for pdf object
+      valid:
+        type: boolean
+        description: Is able to be sent (if fields do not validate)
+    example:
+      created: 2020-05-20T:15:10
+      group: /api/v1/group/my-group/
+      modified: 2020-05-20T:15:10
+      page_count: 10
+      parties: '["Signer", "Witness", "Approvers"]'
+      resource_uri: api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
+      title: Template Supplier Agreement
+      user: /api/v1/user/34034334ab34334333rh33434334f9/
+      uuid: p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0
+      valid: true
+  StatusListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/StatusResponse'
+  ListMeta:
+    type: object
+    properties:
+      limit:
+        type: integer
+        format: int32
+      next:
+        type: string
+        x-nullable: true
+      offset:
+        type: integer
+        format: int32
+      previous:
+        type: string
+        x-nullable: true
+      total_count:
+        type: integer
+        format: int32
+        description: total number of objects
+  GroupListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            is_active:
+              type: boolean
+            modified:
+              type: string
+              format: date-time
+            name:
+              type: string
+            public_name:
+              type: string
+            resource_uri:
+              type: string
+              format: uri
+            slug:
+              type: string
+            user:
+              type: string
+            xframe_allow:
+              type: boolean
+            xframe_allow_pdf_edit:
+              type: boolean
+        example:
+          created: 2020-05-20T:15:10
+          is_active: true
+          modified: 2020-05-20T:15:10
+          name: my group
+          public_name: global exports
+          resource_uri: /api/v1/group/my-group/
+          slug: my-group
+          user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+          xframe_allow: false
+          xframe_allow_pdf_edit: false
+  AttachmentPost:
+    type: object
+    required:
+      - filename
+      - group
+      - pdf_file
+    properties:
+      group:
+        type: string
+        description: URI of the group name
+        pattern: ^/api/v1/group/[-\w]{1,50}/$
+        maxLength: 90
+      pdf_file:
+        type: string
+        format: byte
+        description: >-
+          Base64 encoded PDF file data, max size is a group setting, 5MB by
+          default
+      filename:
+        type: string
+        pattern: ^[-\w]{1,250}.pdf$
+        description: Simple alphanumeric name ending .pdf
+        maxLength: 250
+      user:
+        type: string
+        description: Assign to group member if not the api user
+        pattern: ^/api/v1/user/[-\w]{1,75}/$
+      description:
+        type: string
+        maxLength: 250
+securityDefinitions:
+  api_key:
+    type: apiKey
+    in: header
+    name: Authorization
+paths:
+  /attachment/:
+    get:
+      tags:
+        - attachment
+      summary: Get attachments
+      description: List attachments in your groups
+      operationId: GetAttachments
+      parameters:
+        - name: group
+          in: query
+          description: Filter by a specific group
+          required: false
+          type: string
+          x-example: my-group
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+          default: 20
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: successful operation, list of attachment objects
+          schema:
+            $ref: '#/definitions/AttachmentListResponse'
+        '400':
+          description: Invalid status value
+      produces:
+        - application/json
+    post:
+      tags:
+        - attachment
+      summary: Upload PDF attachment
+      operationId: PostAttachment
+      parameters:
+        - name: body
+          in: body
+          description: Upload a pdf to be an email attachment
+          required: true
+          schema:
+            $ref: '#/definitions/AttachmentPost'
+      responses:
+        '201':
+          description: Success. Attachment URI will be in Location header.
+        '400':
+          description: Bad Request, read response for error information
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+          examples:
+            application/json:
+              text: Use simple ascii letters and numbers for filename
+        '401':
+          description: Unauthorized
+        '429':
+          description: Throttled
+        '500':
+          description: Usually unparseable JSON
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      description: Upload a static attachment to attach to emails that go to recipients
+  /attachment/{attachId}/:
+    parameters:
+      - name: attachId
+        in: path
+        description: attachment id
+        required: true
+        type: string
+        format: uuid
+    delete:
+      parameters:
+        - name: attachId
+          in: path
+          description: attachment id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - attachment
+      summary: Delete attachment
+      operationId: DeleteAttachment
+      responses:
+        '204':
+          description: successful operation
+      description: Delete an attachment
+    get:
+      parameters:
+        - name: attachId
+          in: path
+          description: attachment id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - attachment
+      summary: Get attachment
+      operationId: GetAttachment
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/AttachmentResponse'
+      produces:
+        - application/json
+      description: Get an attachment
+  /document/:
+    get:
+      tags:
+        - document
+      summary: Get signing documents
+      description: >-
+        List (unarchived) signing documents. Use /status/ if you need high-level
+        information.
+      operationId: GetDocuments
+      parameters:
+        - name: group
+          in: query
+          description: Filter by a specific group, required.
+          required: true
+          type: string
+        - name: archived
+          in: query
+          description: >-
+            Filter on archived status, default is unarchived, use value all in
+            this parameter to query all documents
+          required: false
+          type: string
+        - name: email
+          in: query
+          description: Filter by signer email
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+          default: 20
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+        - name: status
+          in: query
+          description: Filter on document status
+          required: false
+          type: integer
+        - name: nosigners
+          in: query
+          description: Add value '1' to remove signers information for a faster query
+          required: false
+          type: string
+        - name: created_gt
+          in: query
+          description: Filter for those documents created after a certain time
+          required: false
+          type: string
+          format: date-time
+        - name: modified_gt
+          in: query
+          description: Filter for those documents modified after a certain time
+          required: false
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: successful operation, list of document objects
+          schema:
+            $ref: '#/definitions/DocumentListResponse'
+        '400':
+          description: Invalid status value
+      produces:
+        - application/json
+    post:
+      tags:
+        - document
+      summary: Create signing document
+      operationId: PostDocument
+      parameters:
+        - name: body
+          in: body
+          description: Send a document to be signed
+          required: true
+          schema:
+            $ref: '#/definitions/DocumentPost'
+      responses:
+        '201':
+          description: >-
+            Success. Document URI will be in Location header. If
+            return_signer_links was set to true, the body will contain a JSON
+            dict containing the signing links.
+          headers:
+            Location:
+              description: new document resource uri
+              type: string
+              format: uri
+          schema:
+            type: object
+            properties:
+              signer_1:
+                type: string
+          examples:
+            application/json:
+              signer_1: https://app1.legalesign.com/esign/...
+        '400':
+          description: Bad Request, read response for error information
+          examples:
+            application/json:
+              document:
+                name:
+                  - This field is required.
+        '401':
+          description: Unauthorized
+        '429':
+          description: Throttled
+        '500':
+          description: Usually unparseable JSON, or mis-referenced object
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      description: Send a document for signature or approval
+  /document/preview/:
+    post:
+      tags:
+        - document
+      summary: Preview text document signing page
+      description: >-
+        Returns a redirect response (302) with link in the Location header to a
+        one-use temporary URL you can redirect to, to see a preview of the
+        signing page. Follow the redirect immediately since it expires after a
+        few seconds.
+      operationId: PreviewDocumentSigning
+      parameters:
+        - name: body
+          in: body
+          description: Preview signing page for HTML document
+          required: true
+          schema:
+            $ref: '#/definitions/HTMLSigningPreviewPost'
+      responses:
+        '302':
+          description: >-
+            Short-lived link (a few seconds) to signing page preview returned in
+            Location header
+          headers:
+            location:
+              description: contains link to preview page
+              type: string
+      consumes:
+        - application/json
+  /document/{docId}/:
+    delete:
+      tags:
+        - document
+      summary: Void/archive signing document
+      description: >-
+        Delete does not remove permanently but sets it with status 40 (removed) 
+        and archives it.
+      operationId: ArchiveDocument
+      parameters:
+        - name: docId
+          in: path
+          description: document id
+          required: true
+          type: string
+          format: uuid
+        - name: email
+          in: query
+          description: >-
+            If set to true or 1 the recipients are notified the document is
+            voided.
+          required: false
+          type: string
+      responses:
+        '204':
+          description: successful operation
+    get:
+      parameters:
+        - name: docId
+          in: path
+          description: document id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - document
+      summary: Get document
+      operationId: GetDocument
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/DocumentResponseDetail'
+      produces:
+        - application/json
+      description: Return a specific document
+  /document/{docId}/fields/:
+    get:
+      parameters:
+        - name: docId
+          in: path
+          description: document id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - document
+      summary: Get document fields
+      operationId: GetDocumentFields
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                element_type:
+                  type: string
+                  enum:
+                    - signature
+                    - initials
+                    - admin
+                    - text
+                fieldorder:
+                  type: integer
+                  x-nullable: true
+                label:
+                  type: string
+                label_extra:
+                  type: string
+                  x-nullable: true
+                signer:
+                  type: integer
+                state:
+                  type: boolean
+                  description: if saved by signer
+                validation:
+                  $ref: '#/definitions/PdfFieldValidationEnum'
+                value:
+                  type: string
+      produces:
+        - application/json
+      description: Return all the sender fields associated with the document
+  /document/{docId}/auditlog/:
+    get:
+      parameters:
+        - name: docId
+          in: path
+          description: document id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - document
+      summary: Download pdf of audit log
+      operationId: AuditLog
+      responses:
+        '200':
+          description: A PDF file
+          schema:
+            type: file
+      produces:
+        - application/pdf
+      description: PDF of only the document audit log
+  /document/{docId}/delete/:
+    delete:
+      parameters:
+        - name: docId
+          in: path
+          description: document id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - document
+      summary: Permanently delete signing document
+      description: >-
+        Permanently deletes data and files. You must enable group automated
+        deletion. We recommend archiveDocument.
+      operationId: DeleteDocument
+      responses:
+        '200':
+          description: >-
+            Something went wrong, probably you need to allow automated
+            deletions.
+        '204':
+          description: Successful operation
+  /group/:
+    get:
+      tags:
+        - group
+      summary: Get groups
+      description: List groups the api user belongs to
+      operationId: GetGroups
+      parameters:
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/GroupListResponse'
+      produces:
+        - application/json
+    post:
+      tags:
+        - group
+      summary: Create group
+      operationId: PostGroup
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GroupPost'
+      responses:
+        '201':
+          description: operation successful
+          headers:
+            location:
+              description: resource_uri for new group
+              type: string
+        '400':
+          description: groups allowance exceeded or api permissions upgrade required
+      consumes:
+        - application/json
+      description: Create a new group
+  /group/{groupId}/:
+    get:
+      tags:
+        - group
+      summary: Get group
+      operationId: GetGroup
+      parameters:
+        - name: groupId
+          in: path
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: ok
+          schema:
+            $ref: '#/definitions/GroupResponse'
+      produces:
+        - application/json
+      description: Get the details of a group
+    patch:
+      tags:
+        - group
+      summary: Update group
+      operationId: UpdateGroup
+      parameters:
+        - name: groupId
+          in: path
+          description: group id
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GroupPatch'
+      responses:
+        '202':
+          description: operation successful
+        '400':
+          description: bad request
+      consumes:
+        - application/json
+      description: Update some details on a group
+  /invited/:
+    get:
+      tags:
+        - member
+      summary: Get group invitations
+      description: Invitations to people to join the group are listed by email
+      operationId: GetInvites
+      parameters:
+        - name: group
+          in: query
+          description: filter list by a given group
+          required: false
+          type: string
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/InvitedListResponse'
+      produces:
+        - application/json
+  /invited/{invitedId}/:
+    delete:
+      tags:
+        - member
+      summary: Delete invitation
+      operationId: DeleteInvite
+      parameters:
+        - name: invitedId
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: operation successful
+      description: Remove an invitation
+  /member/:
+    get:
+      tags:
+        - member
+      summary: Get group members
+      description: List members of groups, one user may be in one or more groups
+      operationId: GetMembers
+      parameters:
+        - name: group
+          in: query
+          description: filter list by a given group
+          required: false
+          type: string
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/MemberListResponse'
+      produces:
+        - application/json
+    post:
+      tags:
+        - member
+      summary: Create group member
+      description: >-
+        If the email is a registered user then access to group will be
+        immediate, otherise an invitation will be created and emailed.
+      operationId: PostMember
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MemberPost'
+      responses:
+        '201':
+          description: operation successful
+        '400':
+          description: >-
+            operation not successful, e.g. person is already a member or not yet
+            joined
+          examples:
+            application/json:
+              response:
+                value:
+                  member:
+                    exists: User is already a member of the group
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /member/{memberId}/:
+    delete:
+      parameters:
+        - name: memberId
+          in: path
+          description: member of group id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - member
+      summary: Remove member from group
+      operationId: DeleteMember
+      responses:
+        '204':
+          description: operation successful
+      description: Remove a member from the group
+    get:
+      parameters:
+        - name: memberId
+          in: path
+          description: member of group id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - member
+      summary: Get group member
+      operationId: GetMember
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/MemberResponse'
+      produces:
+        - application/json
+      description: Return details of a group member
+  /notifications/:
+    get:
+      tags:
+        - webhook
+      summary: Get webhooks
+      description: Callbacks sent to URL of your choice
+      operationId: GetWebhooks
+      externalDocs:
+        description: Information about webhooks
+        url: https://apidocs.legalesign.com/docs/webhooks
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                active:
+                  type: boolean
+                  example: true
+                notify_when:
+                  description: >-
+                    1 =  every 6 minutes, 2 =  upon signing, 3 = sent, 4 =
+                    rejected, 10 = realtime
+                  type: integer
+                  'x-enum-varnames:':
+                    - callback1
+                    - callback2
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 10
+                  example: 1
+                url:
+                  type: string
+                  example: https://mywebsite.com/callback/
+                group_id:
+                  type: integer
+                event_filter:
+                  $ref: '#/definitions/WebhookEventFilterEnum'
+      produces:
+        - application/json
+  /pdf/preview/:
+    post:
+      tags:
+        - document
+      summary: text/html document as pdf preview
+      operationId: PostPdfPreview
+      parameters:
+        - name: body
+          in: body
+          description: Data to generate pdf
+          required: true
+          schema:
+            $ref: '#/definitions/DocumentPdfPreview'
+      responses:
+        '200':
+          description: A PDF file
+          schema:
+            type: file
+      consumes:
+        - application/json
+      produces:
+        - application/pdf
+      description: Generate a PDF preview of a html/text document
+  /pdf/{docId}/:
+    get:
+      tags:
+        - document
+      summary: Location to download PDF
+      description: Get the PDF for a signing document
+      operationId: GetDocumentPdf
+      parameters:
+        - name: docId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: A PDF file
+          schema:
+            type: file
+        '201':
+          description: Being de-archived, available in 4 hours
+        '302':
+          description: Redirect to the download location
+          headers:
+            location:
+              description: >-
+                A short lived location for download, do not use Legalesign
+                authentication
+              type: string
+      produces:
+        - application/pdf
+  /signer/{signerId}/:
+    get:
+      tags:
+        - signer
+      summary: Get signer
+      description: Get status and details of an individual signer
+      operationId: GetSigner
+      parameters:
+        - name: signerId
+          in: path
+          description: ID of signer
+          required: true
+          type: string
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/SignerResponse'
+      produces:
+        - application/json
+  /signer/{signerId}/fields1/:
+    get:
+      tags:
+        - signer
+      summary: Get signer form fields
+      operationId: GetSignerFields
+      parameters:
+        - name: signerId
+          in: path
+          description: ID of signer
+          required: true
+          type: string
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                label:
+                  type: string
+                label_extra:
+                  type: string
+                state:
+                  type: boolean
+                fieldorder:
+                  type: integer
+                  x-nullable: true
+                value:
+                  type: string
+                  x-nullable: true
+                  description: >-
+                    If the field is a signer file this value will be a short
+                    lived download URL
+      produces:
+        - application/json
+      description: Return the form fields from a specific recipient
+  /signer/{signerId}/new-link/:
+    get:
+      tags:
+        - signer
+      summary: Get signer access link
+      description: 'Returns 1-use link for signer in Location header. '
+      operationId: GetSignerLink
+      parameters:
+        - name: signerId
+          in: path
+          description: ID of signer
+          required: true
+          type: string
+      responses:
+        '201':
+          description: operation sucessful
+          headers:
+            Location:
+              description: Contains new link
+              type: string
+  /signer/{signerId}/reset/:
+    post:
+      tags:
+        - signer
+      summary: Reset to earlier signer
+      description: Reset to an earlier signer if forwarded
+      operationId: PostSignerReset
+      parameters:
+        - name: signerId
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Email of the earlier signer, notify current signer by email of event
+          required: true
+          schema:
+            $ref: '#/definitions/SignerResetResponse'
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: >-
+            error - document either signed, or email is same as existing, or if
+            previous email not found. Read response body for error information.
+      consumes:
+        - application/json
+  /signer/{signerId}/send-reminder/:
+    post:
+      tags:
+        - signer
+      summary: Send signer reminder email
+      operationId: PostSignerReminder
+      parameters:
+        - name: signerId
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Message text
+          required: true
+          schema:
+            $ref: '#/definitions/SendReminderPost'
+      responses:
+        '200':
+          description: operation successful
+        '401':
+          description: failed to send
+      consumes:
+        - application/json
+      description: Send a recipient a reminder email
+  /signer/{signerId}/rejection/:
+    get:
+      tags:
+        - signer
+      summary: Get signer rejection reason
+      description: Returns reason signer gave for rejecting a document, if given
+      operationId: GetSignerRejection
+      parameters:
+        - name: signerId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+              reason:
+                type: string
+      produces:
+        - application/json
+  /status/:
+    get:
+      tags:
+        - document
+      summary: Get signing documents status
+      description: Shortened faster query for status of signing documents
+      operationId: GetStatuses
+      parameters:
+        - name: filter
+          in: query
+          description: Filter on archived status, default is false
+          required: false
+          type: string
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/StatusListResponse'
+      produces:
+        - application/json
+  /status/{docId}/:
+    get:
+      tags:
+        - document
+      summary: Get signing document status
+      description: Faster short query for a document status
+      operationId: GetStatus
+      parameters:
+        - name: docId
+          in: path
+          description: ID of document
+          required: true
+          type: string
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/StatusResponse'
+      produces:
+        - application/json
+  /subscribe/:
+    post:
+      tags:
+        - webhook
+      summary: Create webhook
+      operationId: PostWebhook
+      externalDocs:
+        description: Information about webhooks
+        url: https://apidocs.legalesign.com/docs/webhooks
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CallbackCreatePost'
+      responses:
+        '201':
+          description: operation successful
+        '400':
+          description: bad request
+      consumes:
+        - application/json
+      description: Create a new webhook
+  /template/:
+    get:
+      tags:
+        - templatetext
+      summary: Get text templates
+      operationId: GetTextTemplates
+      externalDocs:
+        description: Read me about text templates
+        url: >-
+          https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/
+      parameters:
+        - name: group
+          in: query
+          description: can be full resource_uri or only id
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+          default: 20
+        - name: archive
+          in: query
+          required: false
+          type: string
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: list of text templates
+          schema:
+            $ref: '#/definitions/TemplateListResponse'
+      produces:
+        - application/json
+      description: List all group text templates
+    post:
+      tags:
+        - templatetext
+      summary: Create text template
+      description: >-
+        Create a new html/text template. This probably isn't the method you are
+        looking for. You can use the 'text' attribute in /document/ to create
+        and send your HTML as a signing document in one call.
+      operationId: PostTextTemplate
+      parameters:
+        - name: body
+          in: body
+          description: data for template creation
+          required: true
+          schema:
+            $ref: '#/definitions/TemplatePost'
+      responses:
+        '201':
+          description: operation successful
+          headers:
+            Location:
+              description: resource_uri for new template
+              type: string
+      consumes:
+        - application/json
+  /templatepdf/:
+    get:
+      tags:
+        - templatepdf
+      summary: Get PDF templates
+      operationId: GetPdfTemplates
+      parameters:
+        - name: group
+          in: query
+          description: can be full resource_uri or only id
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: >-
+            Length of dataset to return. Use with offset query to iterate
+            through results.
+          required: false
+          type: integer
+          default: 20
+        - name: offset
+          in: query
+          description: >-
+            Offset from start of dataset. Use with the limit query to iterate
+            through dataset.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/TemplatePdfListResponse'
+      produces:
+        - application/json
+      description: List PDF templates
+    post:
+      tags:
+        - templatepdf
+      summary: Create PDF template
+      description: Upload a PDF document you want to send to be signed
+      operationId: PostPdfTemplate
+      parameters:
+        - name: body
+          in: body
+          description: Data for PDF upload
+          required: true
+          schema:
+            $ref: '#/definitions/TemplatePdfFieldPost'
+      responses:
+        '201':
+          description: operation successful
+          headers:
+            location:
+              description: resource_uri for new pdf template
+              type: string
+      consumes:
+        - application/json
+  /templatepdf/{pdfId}/:
+    get:
+      parameters:
+        - name: pdfId
+          in: path
+          description: uploaded PDF id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - templatepdf
+      summary: Get PDF template
+      operationId: GetPdfTemplate
+      responses:
+        '200':
+          description: PDF template details
+          schema:
+            $ref: '#/definitions/TemplatePdfResponse'
+      produces:
+        - application/json
+      description: Details of a specific PDF template
+  /templatepdf/{pdfId}/edit-link/:
+    get:
+      tags:
+        - templatepdf
+      summary: Get PDF embeddable link
+      operationId: GetPdfTemplateEditLink
+      parameters:
+        - name: pdfId
+          in: path
+          description: uploaded PDF id
+          required: true
+          type: string
+          format: uuid
+        - name: hide_sender_fields
+          in: query
+          description: hide sender fields from rendered page
+          required: false
+          type: boolean
+        - name: css_body_backgroundcolor
+          in: query
+          description: use hex code excluding hash symbol to change background color
+          required: false
+          type: string
+      responses:
+        '201':
+          description: One-use link for embedding the pdf edit page
+          headers:
+            location:
+              description: One-use link to pdf edit page.
+              type: string
+          schema:
+            type: string
+      produces:
+        - application/json
+      description: Return a one-use link to embed PDF editor
+  /templatepdf/{pdfId}/fields/:
+    get:
+      parameters:
+        - name: pdfId
+          in: path
+          description: uploaded PDF id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - templatepdf
+      summary: Get PDF template fields
+      operationId: getPdfTemplateFields
+      responses:
+        '200':
+          description: list of a pdf template fields
+          schema:
+            $ref: '#/definitions/TemplatePdfFieldsList'
+      produces:
+        - application/json
+    post:
+      tags:
+        - templatepdf
+      summary: Create PDF template fields
+      description: Replace existing pdf fields with new ones
+      operationId: PostPdfTemplateFields
+      parameters:
+        - name: pdfId
+          in: path
+          description: uploaded PDF id
+          required: true
+          type: string
+          format: uuid
+        - name: body
+          in: body
+          description: Replace PDF fields on a PDF template.
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PdfFieldsPost'
+      responses:
+        '201':
+          description: operation successful
+      consumes:
+        - application/json
+  /templatepdf/{pdfId}/tags/:
+    post:
+      tags:
+        - templatepdf
+      summary: Convert text tags
+      description: Convert any text tags in the PDF into fields
+      operationId: PostPdfTemplateTags
+      externalDocs:
+        description: text tags in pdfs
+        url: https://legalesign.com/articles/pdf-documents/text-tags-on-legalesign/
+      parameters:
+        - name: pdfId
+          in: path
+          required: true
+          type: string
+      responses:
+        '201':
+          description: operation successful
+        '400':
+          description: bad request
+  /templatepdf/{pdfId}/archive/:
+    post:
+      tags:
+        - templatepdf
+      summary: Archive PDF template
+      description: Delists the PDF
+      operationId: PostPdfTemplateArchive
+      parameters:
+        - name: pdfId
+          in: path
+          required: true
+          type: string
+      responses:
+        '201':
+          description: operation successful
+        '400':
+          description: bad request
+  /template/{templateId}/:
+    delete:
+      parameters:
+        - name: templateId
+          in: path
+          description: saved html template id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - templatetext
+      summary: Archive text template
+      description: >-
+        Archives a template (is recoverable, i.e. not fully deleted, if you need
+        true data deletion contact us).
+      operationId: ArchiveTextTemplate
+      responses:
+        '204':
+          description: operation successful
+    get:
+      parameters:
+        - name: templateId
+          in: path
+          description: saved html template id
+          required: true
+          type: string
+          format: uuid
+      tags:
+        - templatetext
+      summary: Get text template
+      operationId: GetTextTemplate
+      externalDocs:
+        description: Read-me about text templates
+        url: >-
+          https://legalesign.com/articles/esignature-api/using-htmltext-in-the-api/
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/TemplateResponseDetail'
+      produces:
+        - application/json
+      description: Return details of a html/text based template
+    patch:
+      tags:
+        - templatetext
+      summary: Update text template
+      operationId: PatchTextTemplate
+      parameters:
+        - name: templateId
+          in: path
+          description: saved html template id
+          required: true
+          type: string
+          format: uuid
+        - name: body
+          in: body
+          description: Updated text template object
+          required: true
+          schema:
+            $ref: '#/definitions/TemplateDetailPatch'
+      responses:
+        '202':
+          description: operation successful
+      consumes:
+        - application/json
+      description: Alter existing text template
+  /unsubscribe/:
+    post:
+      tags:
+        - webhook
+      summary: Delete webhook
+      operationId: DeleteWebhook
+      externalDocs:
+        description: Information about callbacks
+        url: >-
+          https://legalesign.com/articles/esignature-api/callbacks-on-the-api-v1/
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CallbackDeletePost'
+      responses:
+        '200':
+          description: >-
+            operation successful, will return 200 whether url is subscribed or
+            not
+        '400':
+          description: bad request - not json data or not a valid url
+      consumes:
+        - application/json
+      description: Delete a webhook permanently
+  /user/:
+    post:
+      tags:
+        - user
+      summary: Create user
+      operationId: PostUser
+      externalDocs:
+        description: Read more about selecting the right permission
+        url: >-
+          https://legalesign.com/articles/users-and-user-permissions/user-permissions-explained/
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserPost'
+      responses:
+        '201':
+          description: operation succesful
+          headers:
+            location:
+              description: resource_uri for new user (if password set)
+              type: string
+        '400':
+          description: bad request
+          examples:
+            application/json:
+              user:
+                password:
+                  - Ensure this value has at least 8 characters
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      description: Create a new user
+  /user/{userId}/:
+    get:
+      tags:
+        - user
+      summary: Get user
+      operationId: GetUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: operation successful
+          schema:
+            $ref: '#/definitions/UserDetailResponse'
+      produces:
+        - application/json
+      description: Return details of a user
+    patch:
+      tags:
+        - user
+      summary: Update user
+      description: Update a user first name or last name
+      operationId: PatchUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserPatch'
+      responses:
+        '202':
+          description: operation successful
+      consumes:
+        - application/json
