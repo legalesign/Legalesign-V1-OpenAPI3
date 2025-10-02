@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: This is a connector to the Legalesign eSignature Platform REST API. 
+  description: This is a Microsoft connector to the Legalesign eSignature Platform REST API.
   version: 1.0.0
   title: Legalesign API
   termsOfService: https://legalesign.com/opn/terms/
@@ -1712,11 +1712,10 @@ definitions:
         description: nested arrays with signer details
         items:
           type: array
-          items:
-            type: string
-            description: >-
-              Always contains [signer URI, first name, last name, email, sms
-              number, has_fields, status, signer order (0-indexed)]
+          items: {}
+          description: >-
+            Always contains [signer URI, first name, last name, email, sms
+            number, has_fields, status, signer order (0-indexed)]
       signers_in_order:
         type: boolean
       status:
@@ -3399,28 +3398,163 @@ paths:
       produces:
         - application/json
   /subscribe/:
+    x-ms-notification-content:
+      description: Document event occurs
+      schema:
+        type: object
+        properties:
+          version:
+            type: string
+            description: version
+          object:
+            type: string
+            description: object
+          data:
+            type: object
+            properties:
+              tag1:
+                type: string
+                description: tag1
+              recipients:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      description: recipient uuid
+                    email:
+                      type: string
+                      description: recipient email
+                    order:
+                      type: integer
+                      format: int32
+                      description: recipient order
+                    status:
+                      type: integer
+                      format: int32
+                      description: recipient status
+                    lastname:
+                      type: string
+                      description: recipient lastname
+                    roleText:
+                      type: string
+                      description: recipient roleText
+                    firstname:
+                      type: string
+                      description: recipient firstname
+                    statusText:
+                      type: string
+                      description: recipient statusText
+                    resourceUri:
+                      type: string
+                      description: recipient resourceUri
+                    rejectReason:
+                      type: string
+                      description: rejectReason
+                description: recipients
+              groupResourceUri:
+                type: string
+                description: groupResourceUri
+              statusText:
+                type: string
+                description: document statusText
+              name:
+                type: string
+                description: document name
+              tag:
+                type: string
+                description: tag
+              resourceUri:
+                type: string
+                description: resourceUri
+              uuid:
+                type: string
+                description: document uuid
+              tag2:
+                type: string
+                description: tag2
+              group:
+                type: string
+                description: group
+              status:
+                type: integer
+                format: int32
+                description: document status
+            description: data
+          created:
+            type: integer
+            format: int32
+            description: created
+          id:
+            type: string
+            description: id
+          event:
+            type: string
+            description: event
+      headers:
+        Content-Type:
+          description: Content-Type
+          type: string
+        X-Hmac-Sha256:
+          description: X-Hmac-Sha256
+          type: string
+        X-Signed-Sha256:
+          description: X-Signed-Sha256
+          type: string
     post:
-      tags:
-        - webhook
-      summary: Create webhook
-      operationId: PostWebhook
-      externalDocs:
-        description: Information about webhooks
-        url: https://apidocs.legalesign.com/docs/webhooks
+      responses:
+        '201':
+          description: Webhook created
+          headers:
+            Location:
+              description: URL to delete this webhook
+              type: string
+              format: uri
+      summary: Document Event
+      description: When a document event occurs
+      operationId: DocumentTrigger
+      x-ms-trigger: single
       parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          default: application/json
+          x-ms-visibility: internal
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/CallbackCreatePost'
-      responses:
-        '201':
-          description: operation successful
-        '400':
-          description: bad request
-      consumes:
-        - application/json
-      description: Create a new webhook
+            type: object
+            properties:
+              url:
+                type: string
+                description: url
+                x-ms-notification-url: true
+                x-ms-visibility: internal
+                title: ''
+              notify:
+                type: string
+                description: notify
+                title: ''
+                default: realtime
+                x-ms-visibility: internal
+              eventFilter:
+                type: string
+                description: eventFilter
+                title: ''
+                x-ms-visibility: important
+                enum:
+                  - document.*
+                  - document.created
+                  - document.rejected
+                  - document.finalPdfCreated
+                default: document.*
+            required:
+              - url
+              - notify
+              - eventFilter
   /template/:
     get:
       tags:
@@ -3778,3 +3912,174 @@ paths:
       consumes:
         - application/json
       description: Delete a webhook permanently
+      x-ms-visibility: internal
+  /subscribe/recipient/:
+    x-ms-notification-content:
+      description: Recipient event occurs
+      schema:
+        type: object
+        properties:
+          version:
+            type: string
+            description: version
+          object:
+            type: string
+            description: object
+          data:
+            type: object
+            properties:
+              tag:
+                type: string
+                description: tag
+              tag1:
+                type: string
+                description: tag1
+              tag2:
+                type: string
+                description: tag2
+              uuid:
+                type: string
+                description: recipient uuid
+              email:
+                type: string
+                description: email
+              group:
+                type: string
+                description: group
+              order:
+                type: integer
+                format: int32
+                description: order
+              status:
+                type: integer
+                format: int32
+                description: status
+              document:
+                type: string
+                description: document
+              lastname:
+                type: string
+                description: lastname
+              roleText:
+                type: string
+                description: roleText
+              firstname:
+                type: string
+                description: firstname
+              statusText:
+                type: string
+                description: statusText
+              emailBounce:
+                type: integer
+                format: int32
+                description: emailBounce
+              resourceUri:
+                type: string
+                description: recipient resourceUri
+              documentName:
+                type: string
+                description: documentName
+              rejectReason:
+                type: string
+                description: rejectReason
+              groupResourceUri:
+                type: string
+                description: groupResourceUri
+              emailBounceMessage:
+                type: string
+                description: emailBounceMessage
+              documentResourceUri:
+                type: string
+                description: documentResourceUri
+            description: data
+          created:
+            type: integer
+            format: int32
+            description: created
+          id:
+            type: string
+            description: id
+          event:
+            type: string
+            description: event
+      headers:
+        Content-Type:
+          description: Content-Type
+          type: string
+        X-Hmac-Sha256:
+          description: X-Hmac-Sha256
+          type: string
+        X-Signed-Sha256:
+          description: X-Signed-Sha256
+          type: string
+    post:
+      responses:
+        '201':
+          description: Webhook created
+          headers:
+            Location:
+              description: URL to delete this webhook
+              type: string
+              format: uri
+      summary: Recipient trigger
+      operationId: RecipientTrigger
+      description: Get notified when a recipient event occurs
+      x-ms-trigger: single
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          default: application/json
+          x-ms-visibility: internal
+        - name: body
+          in: body
+          required: false
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                description: url
+                title: ''
+                x-ms-notification-url: true
+                x-ms-visibility: internal
+              notify:
+                type: string
+                description: notify
+                title: ''
+                x-ms-visibility: internal
+                default: realtime
+              eventFilter:
+                type: string
+                description: eventFilter
+                title: ''
+                enum:
+                  - recipient.*
+                  - recipient.completed
+                  - recipient.rejected
+                  - recipient.emailOpened
+                  - recipient.visiting
+                  - recipient.bounced
+                x-ms-visibility: important
+            required:
+              - eventFilter
+              - url
+              - notify
+  /unsubscribe/{webhookId}/:
+    delete:
+      responses:
+        '200':
+          description: Webhook removed
+      summary: Delete Webhook By Id
+      description: Delete a webhook
+      operationId: DeleteWebhookById
+      x-ms-visibility: internal
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          type: integer
+          default: 0
+          x-ms-visibility: internal
+          format: int64
