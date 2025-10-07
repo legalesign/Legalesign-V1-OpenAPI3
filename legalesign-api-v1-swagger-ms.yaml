@@ -156,13 +156,13 @@ definitions:
               description: Public name
             resource_uri:
               type: string
-              description: URI
+              description: Resource uri
             slug:
               type: string
               description: Unique name
             user:
               type: string
-              description: Creator URI
+              description: Creator resource uri
             xframe_allow:
               type: boolean
               description: Allow embed signing
@@ -180,102 +180,6 @@ definitions:
           user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
           xframe_allow: false
           xframe_allow_pdf_edit: false
-  GroupPost:
-    type: object
-    description: Create a group input
-    required:
-      - name
-    properties:
-      name:
-        type: string
-        minLength: 4
-        maxLength: 60
-        description: Group name
-      xframe_allow:
-        type: boolean
-        description: Set to true if you want to embed your signing page.
-        default: false
-  GroupResponse:
-    type: object
-    properties:
-      created:
-        type: string
-        format: date-time
-        description: Created
-      default_email:
-        type: string
-        description: Default email
-      default_extraemail:
-        type: string
-        description: Default extra email
-      footer:
-        type: string
-        description: Html of text footer
-      footer_height:
-        type: integer
-        description: Footer height
-      header:
-        type: string
-        description: Html of text header
-      is_active:
-        type: boolean
-        description: Active
-      members:
-        type: array
-        description: List of members uris
-        items:
-          type: string
-          description: Members uri
-      modified:
-        type: string
-        format: date-time
-        description: Modified
-      name:
-        type: string
-        description: Name
-      pagesize:
-        type: integer
-        format: int32
-        description: Page-size
-      public_name:
-        type: string
-        description: Public name
-      resource_uri:
-        type: string
-        description: Resource URI
-      slug:
-        type: string
-        description: Unique name
-      user:
-        type: string
-        description: Creator URI
-      xframe_allow:
-        type: boolean
-        description: Allow embed signing
-      xframe_allow_pdf_edit:
-        type: boolean
-        description: Allow embed edit
-    example:
-      created: 2020-05-20T:15:10
-      default_email: None
-      default_extraemail: None
-      footer: None
-      footer_height: None
-      header: None
-      is_active: true
-      members:
-        - >-
-          /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/, 
-          /api/v1/user/u1u1u1u1-u1u1-u1u1-u1u1-u1u1u1u1u1u1/
-      modified: 2020-05-20T:15:10
-      name: my group
-      pagesize: 1
-      public_name: global exports
-      resource_uri: /api/v1/group/my-group/
-      slug: my-group
-      user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
-      xframe_allow: false
-      xframe_allow_pdf_edit: false
   TemplatePdfListResponse:
     type: object
     description: Template listings
@@ -296,7 +200,7 @@ definitions:
         description: Created
       group:
         type: string
-        description: Group URI
+        description: Group uri
       modified:
         type: string
         format: date-time
@@ -309,7 +213,7 @@ definitions:
         description: Page count
       resource_uri:
         type: string
-        description: Resource URI
+        description: Resource uri
       signer_count:
         type: integer
         description: Signer count
@@ -318,7 +222,7 @@ definitions:
         description: Title
       user:
         type: string
-        description: Resource URI of creator
+        description: Resource uri of creator
       uuid:
         type: string
         description: Id
@@ -346,10 +250,12 @@ definitions:
       archive_upon_send:
         type: boolean
         description: Archive PDF when sent
+        title: ''
+        x-ms-visibility: advanced
       group:
         type: string
         pattern: ^/api/v1/group/[-\w]{1,50}/$
-        description: Resource URI for group
+        description: Group resource uri
       pdf_file:
         type: string
         format: byte
@@ -357,6 +263,12 @@ definitions:
       process_tags:
         type: boolean
         description: Process any file tags
+        title: ''
+        default: false
+        enum:
+          - true
+          - false
+        x-ms-visibility: advanced
       title:
         type: string
         maxLength: 120
@@ -364,6 +276,8 @@ definitions:
       user:
         type: string
         description: Assign to group member if not api user
+        title: ''
+        x-ms-visibility: advanced
   DocumentListResponse:
     type: object
     description: Document listings
@@ -398,7 +312,7 @@ definitions:
             group:
               type: string
               pattern: ^/api/v1/group/[-\w]{1,50}/$
-              description: Resource URI of group
+              description: Resource uri of group
             modified:
               type: string
               format: date-time
@@ -414,7 +328,7 @@ definitions:
               description: URL to redirect recipient after signing
             resource_uri:
               type: string
-              description: Resource URI
+              description: Resource uri
             return_signer_links:
               type: boolean
               description: Add recipient links to response
@@ -425,7 +339,7 @@ definitions:
                 type: array
                 items: {}
                 description: >-
-                  Always contains [signer URI, first name, last name, email, sms
+                  Always contains [signer uri, first name, last name, email, sms
                   number, has_fields, status, signer order (0-indexed)]
             signers_in_order:
               type: integer
@@ -466,7 +380,7 @@ definitions:
             user:
               type: string
               pattern: ^/api/v1/user/[-\w]{1,60}/$
-              description: Creator URI
+              description: Creator uri
             uuid:
               type: string
               format: uuid
@@ -542,7 +456,14 @@ definitions:
       group:
         type: string
         pattern: ^/api/v1/group/[-\w]{1,50}/$
-        description: Group URI
+        description: Group uri
+        title: Group
+        x-ms-dynamic-values:
+          operationId: GetGroups
+          value-path: slug
+          value-collection: objects
+          value-title: name
+        x-ms-visibility: important
       name:
         type: string
         minLength: 1
@@ -551,9 +472,14 @@ definitions:
       templatepdf:
         type: string
         pattern: ^/api/v1/templatepdf/[-\w]{1,60}/$
-        description: >-
-          Resource URI of templatepdf. This API call must contain either one of
-          the attributes text, templatepdf, template.
+        description: Resource uri of templatepdf.
+        title: PDF template
+        x-ms-dynamic-values:
+          operationId: GetPdfTemplates
+          value-path: resource_uri
+          value-collection: objects
+          value-title: title
+        x-ms-visibility: important
       signers:
         type: array
         items:
@@ -563,13 +489,18 @@ definitions:
         description: >-
           Use 4 to get your executed PDF Certified. Recommended. Defaults to 1
           (uses a sha256 hash for document integrity).
-        default: 1
+        default: 4
+        title: Signature type
+        x-ms-visibility: advanced
       append_pdf:
         type: boolean
-        description: >-
-          Append Legalesign validation info to final PDF. If not included uses
-          the group default.
+        description: Append Legalesign validation info to final PDF.
+        title: Append PDF
         default: false
+        enum:
+          - true
+          - false
+        x-ms-visibility: advanced
       auto_archive:
         type: boolean
         description: Send to archive soon after signing. Keeps web app clutter free
@@ -579,23 +510,35 @@ definitions:
         description: >-
           Use Legalesign email to send notification emails. If false suppresses
           all emails.
-        default: false
+        title: Use Legalesign emails
+        x-ms-visibility: advanced
+        default: true
       cc_emails:
         type: string
         description: >-
           Comma delimited string of email addresses that are notified of signing
           or rejection.
+        title: CC upon completion
+        x-ms-visibility: advanced
       convert_sender_to_signer:
         type: boolean
         description: >-
           If any sender fields are left blank, convert them to fields for the
           first recipient.
+        title: Convert empty sender fields to first recipient fields
+        default: false
+        enum:
+          - true
+          - false
+        x-ms-visibility: advanced
       pdf_password:
         type: string
         pattern: ^[-\w ]{0,150}$
         description: >-
           Set a password. Must be ascii encode-able, you must also set
           signature_type to 4 and choose a pdf_password_type.
+        title: PDF Password
+        x-ms-visibility: advanced
       pdf_password_type:
         type: integer
         x-enum-varnames:
@@ -607,6 +550,8 @@ definitions:
         description: >-
           1 to store password, 2 for to delete from our records upon final
           signing.
+        title: PDF password settings
+        x-ms-visibility: advanced
       pdftext:
         type: object
         description: >-
@@ -625,20 +570,34 @@ definitions:
           Your URL will include query parameters with ID and state information
           as follows:
           YOUR-URL?signer=[signer_uid]&doc=[doc_id]&group=[group_id]&signer_state=[signer_status]&doc_state=[doc_status]
+        title: Redirect URL
+        x-ms-visibility: advanced
       reminders:
         type: string
         pattern: ^(default|)$
         description: >-
           Put 'default' if you wish to use the default reminder schedule in the
           group (go to web app to set default schedule)
+        title: Reminder schedule
+        x-ms-visibility: advanced
       return_signer_links:
         type: boolean
         description: Return document links for signers in the response BODY.
+        title: Return signer links
+        default: false
+        enum:
+          - true
+          - false
+        x-ms-visibility: advanced
       signers_in_order:
         type: boolean
         description: >-
           Notify signers in their order sequence. If false all are notified
           simulataneously.
+        title: Send sequencing
+        enum:
+          - true
+          - false
       signertext:
         type: object
         description: >-
@@ -650,24 +609,34 @@ definitions:
           type: string
       strict_fields:
         type: boolean
-        description: >-
-          pdftext fails silently for invalid field value, set to true to return
-          an error
+        description: Pdftext fails validation checks silently, set true to validate.
+        title: Enforce field validation
+        default: false
+        enum:
+          - true
+          - false
+        x-ms-visibility: advanced
       tag:
         type: string
         pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
         maxLength: 250
         description: Tag
+        title: Your reference
+        x-ms-visibility: advanced
       tag1:
         type: string
         pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
         maxLength: 250
         description: Tag
+        title: Your reference
+        x-ms-visibility: advanced
       tag2:
         type: string
         pattern: ^[-\w\[\]\:\;\/\.\, _]{0,250}$
         maxLength: 250
         description: Tag
+        title: Your reference
+        x-ms-visibility: advanced
       user:
         type: string
         description: Assign document another user in the group.
@@ -696,7 +665,7 @@ definitions:
         description: Last name
       attachments:
         type: array
-        description: List of attachment resource URIs
+        description: List of attachment resource uris.
         items:
           type: string
           pattern: ^/api/v1/attachment/[-\w]{1,60}/$
@@ -707,11 +676,19 @@ definitions:
           next person should be.  Commonly used for witnesses (see \"role\"). If
           you use this leave all other attributes blank. First signer cannot use
           this attribute.
+        title: ''
+        default: false
+        enum:
+          - true
+          - false
+        x-ms-visibility: internal
       expires:
         type: string
         format: date-time
         description: ISO8601 formed datetime, set to TZ of sender or timezone if used
         x-nullable: true
+        title: ''
+        x-ms-visibility: advanced
       message:
         type: string
         description: >-
@@ -728,6 +705,8 @@ definitions:
         description: >-
           Use international format number to add SMS verification. Required if a
           witness or a witnessed signer.
+        title: ''
+        x-ms-visibility: advanced
       subject:
         type: string
         maxLength: 150
@@ -737,6 +716,8 @@ definitions:
         description: >-
           TZ of the signer, must be valid TZ as per timezoneenum (see User for
           timezoneenum details).  If blank uses tz of the sender.
+        title: ''
+        x-ms-visibility: advanced
   ReviewersPost:
     type: object
     description: >-
@@ -790,7 +771,7 @@ definitions:
         description: Recipient order
       resource_uri:
         type: string
-        description: Resource URI for recipient
+        description: Recipient resource uri
       status:
         $ref: '#/definitions/SignerStatusEnum'
     example:
@@ -905,7 +886,7 @@ definitions:
         description: HTMl docs - px height of footer if used
       group:
         type: string
-        description: Resource URI of group
+        description: Resource uri of group
       has_fields:
         type: boolean
         description: Document has fields
@@ -941,7 +922,7 @@ definitions:
         description: URL for recipient redirect after signing
       resource_uri:
         type: string
-        description: Resource URI
+        description: Resource uri
       return_signer_links:
         type: boolean
         description: Ignore
@@ -971,7 +952,7 @@ definitions:
           type: array
           items: {}
           description: >-
-            Always contains [signer URI, first name, last name, email, sms
+            Always contains [signer uri, first name, last name, email, sms
             number, has_fields, status, signer order (0-indexed)]
       signers_in_order:
         type: boolean
@@ -989,16 +970,16 @@ definitions:
         description: Your reference
       template:
         type: string
-        description: Resource URI for text template if used
+        description: Resource uri for text template if used
       templatepdf:
         type: string
-        description: Resource URI for pdf template if used
+        description: Resource uri for pdf template if used
       text:
         type: string
         description: Text for document if used
       user:
         type: string
-        description: Resource URI of useraccount
+        description: Resource uri of useraccount
       uuid:
         type: string
         format: uuid
@@ -1048,6 +1029,15 @@ definitions:
         text: ''
         user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
         uuid: d0d0d0d0-d0fd0-d0d0-d0d0-d0d0d0d0d0d0
+  MemberListResponse:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/ListMeta'
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/MemberResponse'
   MemberResponse:
     type: object
     properties:
@@ -1057,7 +1047,7 @@ definitions:
         description: Created
       group:
         type: string
-        description: Group resource URI
+        description: Group resource uri
       modified:
         type: string
         format: date-time
@@ -1066,16 +1056,10 @@ definitions:
         $ref: '#/definitions/PermissionsEnum'
       resource_uri:
         type: string
-        description: Resource URI
+        description: Resource uri
       user:
         type: string
-        description: User resource uri
-    example:
-      created: 2020-05-20T:15:10
-      modified: 2020-05-20T:15:10
-      permission: 1
-      resource_uri: /api/v1/member/m0m0m0m0-m0m0-m0m0-m0m0-m0m0m0m0m0m0/
-      user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
+        description: Useraccount resource uri
   AttachmentResponse:
     type: object
     description: Attach item
@@ -1098,7 +1082,7 @@ definitions:
         description: Attach resource uri
       user:
         type: string
-        description: Resource uri for useraccount
+        description: Useraccount resource uri
       uuid:
         type: string
         format: uuid
@@ -1136,10 +1120,10 @@ definitions:
               description: Group
             resource_uri:
               type: string
-              description: Resource URI
+              description: Resource uri
             user:
               type: string
-              description: Useraccount resource URI
+              description: Useraccount resource uri
             uuid:
               type: string
               format: uuid
@@ -1166,9 +1150,15 @@ definitions:
     properties:
       group:
         type: string
-        description: URI of the group name
+        description: Group resource uri
         pattern: ^/api/v1/group/[-\w]{1,50}/$
         maxLength: 90
+        title: group
+        x-ms-dynamic-values:
+          operationId: GetGroups
+          value-path: slug
+          value-collection: objects
+          value-title: name
       pdf_file:
         type: string
         format: byte
@@ -1216,7 +1206,7 @@ definitions:
         description: Last name
       resource_uri:
         type: string
-        description: Resource URI
+        description: Resource uri
       timezone:
         type: string
         description: Timezone
@@ -1250,6 +1240,20 @@ paths:
       produces:
         - application/json
       description: Get useraccount details
+  /member/:
+    get:
+      tags:
+        - member
+      summary: Accountsusers in groups
+      operationId: GetMembers
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/MemberListResponse'
+      produces:
+        - application/json
+      description: All the accountusers in groups
   /member/{memberId}/:
     get:
       tags:
@@ -1257,7 +1261,7 @@ paths:
       parameters:
         - name: memberId
           in: path
-          description: Member id
+          description: Member Id
           required: true
           type: string
           format: uuid
@@ -1265,7 +1269,7 @@ paths:
       operationId: GetMember
       responses:
         '200':
-          description: success
+          description: Success
           schema:
             $ref: '#/definitions/MemberResponse'
       produces:
@@ -1322,6 +1326,11 @@ paths:
           required: false
           type: string
           x-example: my-group
+          x-ms-dynamic-values:
+            operationId: GetGroups
+            value-path: slug
+            value-collection: objects
+            value-title: name
         - name: limit
           in: query
           description: Use with offset to iterate through results.
@@ -1335,7 +1344,7 @@ paths:
           type: integer
       responses:
         '200':
-          description: Success, result in response.
+          description: Success.
           schema:
             $ref: '#/definitions/AttachmentListResponse'
         '400':
@@ -1356,7 +1365,7 @@ paths:
             $ref: '#/definitions/AttachmentPost'
       responses:
         '201':
-          description: xxxxx
+          description: Success
       consumes:
         - application/json
       produces:
@@ -1425,7 +1434,7 @@ paths:
       tags:
         - document
       summary: Download the document auditlog
-      operationId: AuditLog
+      operationId: GetDocumentAuditLog
       responses:
         '200':
           description: A PDF binary of the auditlog
@@ -1512,7 +1521,7 @@ paths:
       description: >-
         Delete does not remove permanently but sets it with status 40 (removed) 
         and archives it.
-      operationId: ArchiveDocument
+      operationId: UpdateArchiveDocument
       parameters:
         - name: docId
           in: path
@@ -1712,6 +1721,11 @@ paths:
           description: Filter by a specific group, required.
           required: true
           type: string
+          x-ms-dynamic-values:
+            operationId: GetGroups
+            value-path: slug
+            value-collection: objects
+            value-title: name
         - name: archived
           in: query
           description: >-
@@ -1785,7 +1799,7 @@ paths:
       responses:
         '201':
           description: >-
-            Success. Document URI will be in Location header. If
+            Success. Document uri will be in Location header. If
             return_signer_links was set to true, the body will contain a JSON
             dict containing the signing links.
           headers:
@@ -1887,6 +1901,11 @@ paths:
           description: can be full resource_uri or only id
           required: false
           type: string
+          x-ms-dynamic-values:
+            operationId: GetGroups
+            value-path: slug
+            value-collection: objects
+            value-title: name
         - name: limit
           in: query
           description: >-
@@ -1961,49 +1980,6 @@ paths:
             $ref: '#/definitions/GroupListResponse'
       produces:
         - application/json
-    post:
-      tags:
-        - group
-      summary: Create group
-      operationId: PostGroup
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/GroupPost'
-      responses:
-        '201':
-          description: Success
-          headers:
-            location:
-              description: resource_uri for new group
-              type: string
-        '400':
-          description: Groups allowance exceeded or api permissions upgrade required
-      consumes:
-        - application/json
-      description: Create a new group
-  /group/{groupId}/:
-    get:
-      tags:
-        - group
-      summary: Get group
-      operationId: GetGroup
-      parameters:
-        - name: groupId
-          in: path
-          description: Group ID
-          required: true
-          type: string
-      responses:
-        '200':
-          description: ok
-          schema:
-            $ref: '#/definitions/GroupResponse'
-      produces:
-        - application/json
-      description: Get the details of a group
   /unsubscribe/:
     post:
       tags:
