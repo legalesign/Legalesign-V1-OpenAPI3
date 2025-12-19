@@ -2511,6 +2511,12 @@ components:
           description: >-
            TZ of the signer, must be valid TZ as per timezoneenum (see User for timezoneenum details). 
            If blank uses tz of the sender.
+        skip:
+          type: boolean
+          description: >-
+            Skip this recipient. Leave all other attributes blank. Will not work if using (deprecated) 
+            role and order attributes.
+          default: false
     ReviewersPost:
       type: object
       description: >-
