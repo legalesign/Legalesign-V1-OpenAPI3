@@ -1482,7 +1482,11 @@ components:
           description: >-
             Append Legalesign validation info to final PDF. If not included uses
             the group default.
-          default: false
+        append_history:
+          type: boolean
+          description: >-
+            Append Legalesign audit log to final PDF. If not included uses
+            the group default.
         auto_archive:
           type: boolean
           description: Send to archive soon after signing. Keeps web app clutter free
@@ -3012,8 +3016,13 @@ components:
           type: boolean
         auto_archive:
           type: boolean
-          description: Send document archive very soon after signing.
-          default: true
+          description: Send document archive very soon after completion.
+        append_pdf:
+          type: boolean
+          description: Append validation information to final PDF
+        append_history:
+          type: boolean
+          description: Append audit log to final PDF
         cc_emails:
           type: string
           description: who will be cc'd  with sender on email notification when signed
@@ -3022,6 +3031,7 @@ components:
           format: date-time
         do_email:
           type: boolean
+          description: Use the Legalesign email system
         download_final:
           type: boolean
           description: Final PDF is available to download
@@ -3069,19 +3079,23 @@ components:
           description: ignore
         sign_mouse:
           type: boolean
-          description: legacy
+          description: legacy attribute
+          deprecated: true
         sign_time:
           type: string
           format: date-time
         sign_type:
           type: boolean
-          description: legacy
+          description: legacy attribute
+          deprecated: true
         sign_upload:
           type: boolean
-          description: legacy
+          description: legacy attribute
+          deprecated: true
         signature_placement:
           type: integer
-          description: legacy
+          description: legacy attribute
+          deprecated: true
         signature_type:
           type: integer
           description: legacy - always 4
@@ -3094,6 +3108,35 @@ components:
               type: string
               description: >-
                 Always contains [signer URI, first name, last name, email, sms number, has_fields, status, signer order (0-indexed)]
+        signer_objects:
+          type: array
+          items:
+            type: object
+            properties:
+              firstname:
+                type: string
+              lastname:
+                type: string
+              email:
+                type: string
+              order:
+                type: integer
+                description: 0-indexed
+              role:
+                $ref: '#/components/schemas/SignerRoleEnum'
+              tel:
+                type: string
+              status:
+                $ref: '#/components/schemas/SignerStatusEnum'
+              uuid:
+                type: string
+                format: uuid
+                description: Object ID alone
+              resource_uri:
+                type: string
+                format: uri
+                description: Resource URI of signer
+          description: nested objects with signer details
         signers_in_order:
           type: boolean
         status:
@@ -3123,6 +3166,8 @@ components:
       example: 
         - archived: false
           auto_archive: true
+          append_pdf: true
+          append_history: true
           cc_emails: None
           created: 2020-05-20T:15:10
           do_email: false
@@ -3258,6 +3303,25 @@ components:
         user:
           type: string
           description: assign to group member if not api user
+    SignerRoleEnum:
+      type: string
+      description: >
+        Signer role options:
+         * signer
+         * approver
+         * witness
+      x-enum-varnames:
+        - signer
+        - approver
+        - witness
+      x-enum-descriptions:
+        - "Signer"
+        - "Approver"
+        - "Witness"
+      enum:
+        - signer
+        - approver
+        - witness  
     SignerStatusEnum:
       type: integer
       description: >
