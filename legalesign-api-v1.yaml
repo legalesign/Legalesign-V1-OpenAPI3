@@ -1440,11 +1440,12 @@ components:
       required:
         - group
         - name
+        - templatepdf
         - signers
       description: >-
          Send a document to be signed. In addition to the required fields, the POST must also 
-         contain either text (raw html) or a reference to a saved template (html) or a 
-         templatepdf (uploaded pdf). Also recommended - do_email, auto_archive and pdftext (if using pdf).
+         a reference to a templatepdf (uploaded pdf). 
+         Also recommended - do_email, auto_archive and pdftext (if using pdf).
       properties:
         group:
           type: string
@@ -1454,21 +1455,12 @@ components:
           type: string
           minLength: 1
           maxLength: 60
-        text:
-          type: string
-          description: Raw html. This API call must contain either one of the attributes text, templatepdf, template.
         templatepdf:
           type: string
           format: uri
           pattern: ^/api/v1/templatepdf/[-\w]{1,60}/$
           description: >-
-            Resource URI of templatepdf object. This API call must contain either one of the attributes text, templatepdf, template.
-        template:
-          type: string
-          pattern: ^/api/v1/template/[-\w]{1,60}/$
-          format: uri
-          description: >-
-            Resource URI of text template object. This call must contain either one of the attributes text, templatepdf, template.
+            Resource URI of templatepdf object.
         signers:
           type: array
           items:
@@ -1585,6 +1577,13 @@ components:
           type: string
           format: uri
           description: Assign document another user in the group. Defaults to API
+        template:
+          type: string
+          pattern: ^/api/v1/template/[-\w]{1,60}/$
+          format: uri
+          description: >-
+            Resource URI of text template object. This call must contain either one of the attributes text, templatepdf, template.
+          deprecated: true
     TemplateDetailPatch:
       type: string
       description: json with any fields to update
