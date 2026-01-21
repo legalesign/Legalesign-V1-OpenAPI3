@@ -1243,6 +1243,27 @@ paths:
       externalDocs:
         description: text tags in pdfs
         url: 'https://legalesign.com/articles/pdf-documents/text-tags-on-legalesign/'
+  '/templatepdf/{pdfId}/delete/':  
+      parameters:
+      - name: templatepdf
+        in: path
+        description: pdf id
+        required: true
+        schema:
+          type: string
+          format: uuid
+      delete:
+        tags:
+           - templatepdf
+        summary: Permanently delete pdf document
+        operationId: deletePdf
+        description: >-
+         Permanently deletes data and files. See also archiveDocument.
+        responses:
+          '204':
+            description: Successful operation
+          '200':
+            description: Something went wrong, probably may need to allow automated deletions.
   '/templatepdf/{pdfId}/archive/':
     post:
       tags:
