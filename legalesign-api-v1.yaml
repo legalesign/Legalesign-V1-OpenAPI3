@@ -2503,6 +2503,9 @@ components:
           format: date-time
           description: ISO8601 formed datetime, set to TZ of sender or timezone if used
           nullable: true
+        experiene:
+          type: string
+          description: The name of your experience. If unused defaults to your group Base experience.
         message:
           type: string
           description: >-
