@@ -886,6 +886,26 @@ paths:
               $ref: '#/components/schemas/SendReminderPost'
         description: Message text
         required: true
+  '/signer/{signerId}/component-token/':
+    get:
+      tags:
+        - signer
+      summary: Get signer component token
+      operationId: getSignerComponentToken
+      parameters:
+        - name: signerId
+          in: path
+          description: ID of signer
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignerComponentTokenResponse'
   '/signer/{signerId}/rejection/':
     get:
       tags:
@@ -3477,6 +3497,28 @@ components:
         last_name:
           type: string
           maxLength: 30
+    SignerComponentTokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          format: uuid
+        tokenType:
+          type: string
+        expiresIn:
+          type: integer
+          description: Seconds until token expiry
+        expiresAt:
+          type: string
+          format: date-time
+        sessionId:
+          type: string
+      example:
+        token: t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0
+        tokenType: Bearer
+        expiresIn: 3600
+        expiresAt: '2020-05-20T15:10:00.000Z'
+        sessionId: c2Vzc2lvbklkRXhhbXBsZVN0cmluZ0ZvcklsbHVzdHJhdGlvbg==
     SignerResetResponse:
       type: object
       required:
