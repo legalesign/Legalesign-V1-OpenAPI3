@@ -4,7 +4,7 @@ info:
     Legalesign.com is an electronic signature software. 
     This is the documentation for its REST API. 
     
-    Start by creating a trial account at https://access.legalesign.com/?q=signUp. Upon account activation, select the API dev option.  Get an API key by creating a ticket at https://support.legalesign.com with background on your use-case and skills. You will be in sandbox mode that will limit you to 5 signers. Set up 2FA on your account and then login to https://logs.legalesign.com to access the API Dashboard, where you can manage you api key, webhooks, and sandbox signers. Contact support to move to production mode when you are ready.
+    Start by creating a trial account at https://access.legalesign.com/?q=signUp. Upon account activation, select the API dev option.  Go to https://developer.legalesign.com to acquire your API Key. Contact support to move to production mode when you are ready.
     
     For any queries contact us at support@legalesign.com.
   version: "1.0.0"
@@ -1178,6 +1178,8 @@ paths:
         - templatepdf
       summary: Get PDF embeddable link
       operationId: getPdfTemplateEditLink
+      deprecated: true
+      description: Deprecated. Use `/templatepdf/{pdfId}/component-token/` instead.
       parameters:
         - name: hide_sender_fields
           in: query
@@ -1203,6 +1205,27 @@ paths:
             application/json:
               schema:
                 type: string          
+  '/templatepdf/{pdfId}/component-token/':
+    parameters:
+      - name: pdfId
+        in: path
+        description: uploaded PDF id
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags:
+        - templatepdf
+      summary: Get PDF template component token
+      operationId: getPdfTemplateComponentToken
+      responses:
+        '200':
+          description: operation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignerComponentTokenResponse'
   '/templatepdf/{pdfId}/fields/':
     parameters:
       - name: pdfId
