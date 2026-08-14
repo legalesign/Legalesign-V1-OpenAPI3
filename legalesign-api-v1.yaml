@@ -365,6 +365,15 @@ paths:
         - document
       summary: Get document fields
       operationId: getDocumentFields
+      parameters:
+        - name: element_type
+          in: query
+          description: Filter fields by type. Use 'admin' to return only sender fields.
+          required: false
+          schema:
+            type: string
+            enum:
+              - admin
       responses:
         '200':
           description: operation successful
