@@ -1274,6 +1274,44 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PdfFieldsPost'
+  '/templatepdf/{pdfId}/preview/':
+    parameters:
+      - name: pdfId
+        in: path
+        description: uploaded PDF id
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags:
+        - templatepdf
+      summary: Preview PDF template
+      operationId: getPdfTemplatePreview
+      description: >-
+        Returns a PDF with all sender fields populated. By default, fields are filled with lorem ipsum values.
+        Pass custom field values as query parameters using the field label or field UUID as the key.
+      parameters:
+        - name: fields
+          in: query
+          required: false
+          description: >-
+            Key-value pairs to populate sender fields. Use the field label or field UUID as the key
+            and the desired value as the value. If omitted, fields are filled with lorem ipsum values.
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          style: deepObject
+          explode: true
+      responses:
+        '200':
+          description: A PDF file with sender fields populated
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
   '/templatepdf/{pdfId}/tags/':
     post:
       tags:
@@ -1503,8 +1541,8 @@ components:
           type: string
           format: uri
       example:
-        created: 2020-05-20T:15:10
-        modified: 2020-05-20T:15:10
+        created: 2020-05-20T15:10:00Z
+        modified: 2020-05-20T15:10:00Z
         permission: 1
         resource_uri: /api/v1/member/m0m0m0m0-m0m0-m0m0-m0m0-m0m0m0m0m0m0/
         user: /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/
@@ -2084,11 +2122,11 @@ components:
             - archived: false
               auto_archive: true
               cc_emails: None
-              created: 2020-05-20T:15:10
+              created: 2020-05-20T15:10:00Z
               do_email: false
               download_final: false
               group: /api/v1/group/my-group/
-              modified: 2020-05-20T:15:10
+              modified: 2020-05-20T15:10:00Z
               name: test cs_agreement
               pdftext: None
               redirect: https://example.com/redirect-receive/
@@ -2251,7 +2289,7 @@ components:
         xframe_allow_pdf_edit:
           type: boolean
       example:
-        created: 2020-05-20T:15:10
+        created: 2020-05-20T15:10:00Z
         default_email: None
         default_extraemail: None
         footer: None
@@ -2260,7 +2298,7 @@ components:
         is_active: true
         members:
           - /api/v1/user/u0u0u0u0-u0u0-u0u0-u0u0-u0u0u0u0u0u0/,  /api/v1/user/u1u1u1u1-u1u1-u1u1-u1u1-u1u1u1u1u1u1/
-        modified: 2020-05-20T:15:10
+        modified: 2020-05-20T15:10:00Z
         name: my group
         pagesize: 1
         public_name: global exports
@@ -2304,7 +2342,7 @@ components:
           format: uuid
           description: id for attachment object
       example:
-        created: 2020-05-20T:15:10
+        created: 2020-05-20T15:10:00Z
         description: "Attachment for supplier contract"
         filename: attach1.pdf
         resource_uri: /api/v1/attachment/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
@@ -2340,11 +2378,11 @@ components:
           format: uuid
       example:
         archive: false
-        created: 2020-05-20T:15:10
+        created: 2020-05-20T15:10:00Z
         group: /api/v1/group/my-group/
         has_fields: false
         latest_text: text/html content
-        modified: 2020-05-20T:15:10
+        modified: 2020-05-20T15:10:00Z
         resource_uri: /api/v1/template/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
         signee_count: 1
         title: Test text template
@@ -2398,10 +2436,10 @@ components:
           type: string
       example:
         archive: false
-        created: 2020-05-20T:15:10
+        created: 2020-05-20T15:10:00Z
         group: /api/v1/group/my-group/
         has_fields: false
-        modified: 2020-05-20T:15:10
+        modified: 2020-05-20T15:10:00Z
         resource_uri: /api/v1/template/t0t0t0t0-t0t0-t0t0-t0t0-t0t0t0t0t0t0/
         signee_count: 1
         title: Test text template
@@ -2443,12 +2481,12 @@ components:
         username:
           type: string
       example:
-        date_joined: 2020-05-20T:15:10
+        date_joined: 2020-05-20T15:10:00Z
         email: joe.biggins@widgets.com
         first_name: Joe
         groups: 
           - /api/v1/group/my-group1/, api/v1/group/my-group2/
-        last_login: 2020-05-20T:15:10
+        last_login: 2020-05-20T15:10:00Z
         last_name: Biggins
         resource_uri: /api/v1/user/34034334ab34334333rh33434334f9/
         timezone: Europe/Chisinau
@@ -3081,7 +3119,7 @@ components:
                 type: string
                 format: uri
             example:
-              created: 2020-05-20T:15:10
+              created: 2020-05-20T15:10:00Z
               email: job.biggins@widgets.comma
               group: /api/v1/group/my-group/
               resource_uri: /api/v1/invites/i0i0i0i0-i0i0-i0i0-i0i0-i0i0i0i0i0i0/
@@ -3244,7 +3282,7 @@ components:
           append_pdf: true
           append_history: true
           cc_emails: None
-          created: 2020-05-20T:15:10
+          created: 2020-05-20T15:10:00Z
           do_email: false
           download_final: false
           footer: ''
@@ -3254,7 +3292,7 @@ components:
           hash_value: None
           header: ''
           header_height: None
-          modified: 2020-05-20T:15:10
+          modified: 2020-05-20T15:10:00Z
           name: test cs_agreement
           pdf_password: None
           pdf_password_type: None
@@ -3315,7 +3353,7 @@ components:
           previous: None
           total_count: 26
         objects:
-          - created: 2020-05-20T:15:10
+          - created: 2020-05-20T15:10:00Z
             description: "Attachment for supplier contract"
             filename: attach1.pdf
             resource_uri: /api/v1/attachment/f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0/
@@ -3846,9 +3884,9 @@ components:
           type: boolean
           description: Is able to be sent (if fields do not validate)
       example:
-        created: 2020-05-20T:15:10
+        created: 2020-05-20T15:10:00Z
         group: /api/v1/group/my-group/
-        modified: 2020-05-20T:15:10
+        modified: 2020-05-20T15:10:00Z
         page_count: 10
         parties: '["Signer", "Witness", "Approvers"]'
         resource_uri: api/v1/templatepdf/p0p0p0p0-p0p0-p0p0-p0p0-p0p0p0p0p0p0/
@@ -3917,9 +3955,9 @@ components:
               xframe_allow_pdf_edit:
                 type: boolean
           example:
-            created: 2020-05-20T:15:10
+            created: 2020-05-20T15:10:00Z
             is_active: true
-            modified: 2020-05-20T:15:10
+            modified: 2020-05-20T15:10:00Z
             name: my group
             public_name: global exports
             resource_uri: /api/v1/group/my-group/
