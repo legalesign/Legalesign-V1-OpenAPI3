@@ -1283,30 +1283,33 @@ paths:
         schema:
           type: string
           format: uuid
-    get:
+    post:
       tags:
         - templatepdf
       summary: Preview PDF template
-      operationId: getPdfTemplatePreview
+      operationId: postPdfTemplatePreview
       description: >-
-        Returns a PDF with all sender fields populated. By default, fields are filled with lorem ipsum values.
-        Pass custom field values as query parameters using the field label or field UUID as the key.
-      parameters:
-        - name: fields
-          in: query
-          required: false
-          description: >-
-            Key-value pairs to populate sender fields. Use the field label or field UUID as the key
-            and the desired value as the value. If omitted, fields are filled with lorem ipsum values.
-          schema:
-            type: object
-            additionalProperties:
-              type: string
-          style: deepObject
-          explode: true
+        Returns a PDF with fields populated for preview. Sender fields (element_type=admin) are filled with
+        the values you provide. If no values are provided,
+        all fields use lorem ipsum. Use GET /templatepdf/{pdfId}/fields/ and filter by element_type=admin
+        to find valid field labels and UUIDs.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+              description: >-
+                Key-value pairs to populate sender fields. Use the field label or UUID as the key.
+                If omitted, all fields are filled with lorem ipsum values.
+              example:
+                Company Name: Acme Ltd
+                249590ba-9b25-41cc-a94f-bec7e6a3be21: "2024-01-01"
       responses:
         '200':
-          description: A PDF file with sender fields populated
+          description: A PDF file with fields populated
           content:
             application/pdf:
               schema:
