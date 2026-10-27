@@ -1288,6 +1288,12 @@ paths:
         - templatepdf
       summary: Preview PDF template
       operationId: postPdfTemplatePreview
+      parameters:
+        - name: pdfId
+          in: path
+          required: true
+          schema:
+            type: string
       description: >-
         Returns a PDF with fields populated for preview. Sender fields (element_type=admin) are filled with
         the values you provide. If no values are provided,
